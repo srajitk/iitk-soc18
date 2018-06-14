@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+	
+		
+		<title> Project 1 | Log In</title>
+
+        <script src="jslibs/jquery.js"></script>
+		<script src="jslibs/sjcl.js"></script>
+		<script src="jslibs/sha256.js"></script>
+        <script src="js/register.js"></script>
+		<script src="js/login.js"></script>		
+
+		<link rel="icon" type="image/png" href="style/images/icons/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="style/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="style/vendor/animate/animate.css">
+		<link rel="stylesheet" type="text/css" href="style/vendor/css-hamburgers/hamburgers.min.css">
+		<link rel="stylesheet" type="text/css" href="style/vendor/select2/select2.min.css">
+		<link rel="stylesheet" type="text/css" href="style/css/util.css">
+		<link rel="stylesheet" type="text/css" href="style/css/main.css">
+		
+		
+    </head>
+    <body>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <div class="hov-img-zoom" data-tilt>
+                        <img src="style/images/img-01.png" alt="IMG">
+                    </div>
+
+        
+            
+                    <div class="loginForm">    
+                        <span class="login100-form-title">
+                            Log In...
+                        </span>
+                        <h4>Account Type:</h4>
+                        <input type="radio" name="accType" value="farmer"><span class="rdo"> Farmer</span> <br />
+                        <input type="radio" name="accType" value="buyer"><span class="rdo">Buyer</span><br />
+                        <h4>Login Using:</h4> 
+                        <input type="radio" name="loginType" value="mobno"> <span class="rdo">Mobile Number</span> <br />
+                        <input type="radio" name="loginType" value="email"> <span class="rdo">Email Id</span> <br />
+
+
+                        <div class="container-proceedBtn">
+                                <button class="proceedBtn" type="button" value="Submit">
+                                    Proceed
+                                </button>
+                        </div>
+                        
+                        <div id="emailLogin" style = "display:none;">
+                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                <input class="input100" type="text" name="email" placeholder="Email">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" name="psd" placeholder="Password">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="container-submitbtn">
+                                    <button class="submitbtn" type="submit" value="Submit">
+                                        Submit
+                                    </button>
+                            </div>
+                        </div>    
+                        <div id="mobLogin" style = "display:none;">
+                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                <input class="input100" type="text" name="mobno" placeholder="Mobile Number">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" name="psd" placeholder="Password">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="container-submitbtn">
+                                    <button class="submitbtn" type="submit" value="Submit">
+                                        Submit
+                                    </button>
+                            </div>
+                        </div>
+
+                        <div class="text-center padding-top: 12px">
+                            <span class="txt1">
+                                Forgot
+                            </span>
+                            <a class="txt2" href="#">
+                                Username / Password?
+                            </a>
+                        </div>
+
+                        <div class="text-center padding-top: 136px">
+                            <a class="txt2" href="#">
+                                Create your Account
+                                <i class="fa fa-long-arrow-right margin-left: 5px;" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>    
+            
+                </div>
+            </div>
+        </div>   
+
+    
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>    
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/select2/select2.min.js"></script>
+        
+        <script src="vendor/tilt/tilt.jquery.min.js"></script>
+        <script >
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+        
+       <!-- <script src="js/main.js"></script>-->
+    
+
+    </body>
+</html>
