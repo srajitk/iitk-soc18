@@ -6,7 +6,7 @@ $(Document).ready(function () {
 	var firstFormOk = false;
 	
     $("div.signupForm #newuser #basicForm button.proceedBtn").click(function () {
-        alert("submit clicked");     // check if field entries are valid occurs after this in edge, but before in chrome, hence html::required discouraged
+        // check if field entries are valid occurs after this in edge, but before in chrome, hence html::required discouraged
         firstname = $("div.signupForm #newuser #basicForm input[name = fname]").val();
         lastname = 	$("div.signupForm #newuser #basicForm input[name = lname]").val();
         dobirth = 	$("div.signupForm #newuser #basicForm input[name = dob]").val();
@@ -44,29 +44,34 @@ $(Document).ready(function () {
 			// This part will not use email ids, but will send an email with the activation link
 			
 			if (!entriesOK) {
-				alert("no entry can contain the characters {`, #, ', \", !, ;, =} or any whitespace character, please alter your entries accordingly");
+				alert("no entry can contain the characters {`, #, ', \", !, ;, =}, please alter your entries accordingly");
 			}
 			else {
 				if (psd1 != psd2) {
 					alert("passwords do not match");
 				} else {
-					alert("all entries to the first form are ok");
 					formType = 	$("div.signupForm #newuser #basicForm input:radio[name=accType]:checked").attr("value");
-					if (formType == "farmer"){
-						$("div.signupForm div#newuser div#basicForm").hide();
-						$("div.signupForm div#newuser div#farmerForm").show();													
-					} else if (formType == "buyer"){
-						$("div.signupForm div#newuser div#basicForm").hide();
-						$("div.signupForm div#newuser div#userForm").show();					
+					if (formType != "farmer" && formType != "buyer"){
+						alert("formtype missing");
 					}
-					alert (firstname + ", " + lastname+ ", " + dobirth+ ", " + emailid+ ", " + mobno+ ", " + psd1+ ", " + psd2+ ", " + formType);
+					if (formType == "farmer"){
+						$("div.signupForm #newuser div#basicForm").hide();
+						$("div.signupForm #newuser div#farmerForm").show();													
+					} else if (formType == "buyer"){
+						$("div.signupForm #newuser div#basicForm").hide();
+						$("div.signupForm #newuser div#userForm").show();					
+					}
 				}
 			}
 		}
-	});	
+	});		
+	$("#id01 button.returnbtn-id01").click(function () {
+		$("div.signupForm #newuser div#basicForm").show();
+		$("div.signupForm #newuser div#userForm").hide();					
+		$("div.signupForm #newuser div#farmerForm").hide();													
+	});
 	
 	$("div.signupForm #newuser #farmerForm button.signupbtn").click(function () {
-		//alert (firstname + ", " + lastname+ ", " + dobirth+ ", " + emailid+ ", " + mobno+ ", " + psd1+ ", " + psd2+ ", " + formType);
 		var pickupAddr = $("div.signupForm #newuser #farmerForm textarea[name = addr]").val();
 		if (pickupAddr == "") {
 			alert("required fields missing");
@@ -74,8 +79,7 @@ $(Document).ready(function () {
 		else {
 			entriesOK = (pickupAddr.match(regexChk) == null);
 			if (!entriesOK) {
-				alert(pickupAddr);
-				alert("no entry can contain the characters {`, #, ', \", !, ;, =} or any whitespace character, please alter your entries accordingly");
+				alert("no entry can contain the characters {`, #, ', \", !, ;, =}, please alter your entries accordingly");
 			} else {
 				var data = {
 					fname: firstname,
@@ -87,7 +91,6 @@ $(Document).ready(function () {
 					accType: formType,
 					};					
 				
-				alert(JSON.stringify(data));
 				// user data other than password sent here, salt obtained in return
 				$.ajax({
 					type: "POST",
@@ -97,6 +100,7 @@ $(Document).ready(function () {
 					success: function(data){
 						if (data.msg == "values ok") {
 							// prepending salt recieved to password and hashing on the frontend
+							alert(JSON.stringify(data));
 							var salt = data.salt;
 							var psd = salt + psd1;
 							var bitArray = sjcl.hash.sha256.hash(psd);
@@ -108,7 +112,7 @@ $(Document).ready(function () {
 								psdhash: digest_sha256,
 							};
 							
-							
+							alert(JSON.stringify(psdData));
 							// now to send the sha256 over to the backend
 							$.ajax({
 								type: "POST",
@@ -126,7 +130,6 @@ $(Document).ready(function () {
 						}
 						else {
 							alert(JSON.stringify(data));
-							alert("some error occured at stage 1");
 						}
 						
 						// pending work, to clear all  the entries of the form
@@ -161,7 +164,6 @@ $(Document).ready(function () {
 					accType: formType,
 					};					
 				
-				alert(JSON.stringify(data));
 				// user data other than password sent here, salt obtained in return
 				$.ajax({
 					type: "POST",
@@ -181,6 +183,7 @@ $(Document).ready(function () {
 								accType: formType,
 								psdhash: digest_sha256,
 							};
+							alert(JSON.stringify(psdData))
 							
 							
 							// now to send the sha256 over to the backend
@@ -190,7 +193,8 @@ $(Document).ready(function () {
 								data: psdData,
 								url: "./back/register2.php",
 								success: function(data){
-									alert("account created, enjoy");	
+									alert(JSON.stringify(data));
+									alert("account created, enjoy");	// BUG #1: NOT ALERTING, EVEN THOUGH ACCOUNT IS CREATED. WHY?
 								},
 								error: function(data) {
 									alert("something went wrong");
@@ -200,9 +204,7 @@ $(Document).ready(function () {
 						}
 						else {
 							alert(JSON.stringify(data));
-							alert("some error occured at stage 1");
-						}
-						
+						}				
 						// pending work, to clear all  the entries of the form
 					},
 					error: function (data) {

@@ -6,14 +6,24 @@ $(Document).ready(function () {
 		//alert("hello");
 		accType = $("div.loginForm input:radio[name=accType]:checked").attr("value");
 		loginType = $("div.loginForm input:radio[name=loginType]:checked").attr("value");
-		if (loginType == "mobno"){
+		if (loginType == "mobno" && accType != undefined){
+			$("div.loginForm #preLogin").hide();
 			$("div.loginForm #mobLogin").show();
 			$("div.loginForm #emailLogin").hide();
-		}
-		if (loginType == "email"){
+		} else if (loginType == "email" && accType != undefined){
+			$("div.loginForm #preLogin").hide();
 			$("div.loginForm #mobLogin").hide();
 			$("div.loginForm #emailLogin").show();
+		} else {
+			alert("required fields missing");
 		}
+	});
+	
+    $("div.loginForm button.backBtn").click(function () {	
+		$("div.loginForm #preLogin").show();
+		$("div.loginForm #mobLogin").hide();
+		$("div.loginForm #emailLogin").hide();
+	
 	});
 	
 	$("div.loginForm button.submitbtn").click(function () {
@@ -29,9 +39,6 @@ $(Document).ready(function () {
 			psd = $("div.loginForm div#emailLogin input[name = psd]").val();
 		}
 		
-		alert(mobno);
-		alert(email);
-		alert(psd);
 		
 		if ((mobno == "" && email == "") || psd == ""){
 			alert("reqd fields missing");
