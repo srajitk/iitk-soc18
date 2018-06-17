@@ -3,7 +3,7 @@ $(Document).ready(function () {
 	var mobno, email, psd, accType, loginType;
 	
     $("div.loginForm button.proceedBtn").click(function () {
-		//alert("hello");
+//		alert("hello");
 		accType = $("div.loginForm input:radio[name=accType]:checked").attr("value");
 		loginType = $("div.loginForm input:radio[name=loginType]:checked").attr("value");
 		if (loginType == "mobno" && accType != undefined){
