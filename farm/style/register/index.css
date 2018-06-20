@@ -1,12 +1,3 @@
-/* General, affect global objects */
-body { 
-  background: url(vegBack2.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 input[type = radio] {
 	size: 1.8vh;			/* how is this done, please do it before presentation, only the login part */
 }

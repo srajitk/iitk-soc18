@@ -103,7 +103,11 @@ $(Document).ready(function () {
 								url: "./back/login2.php",
 								success: function (data) {
 									if (data.access){
-										window.location.replace("user.php");
+										if (accType == "farmer"){
+											window.location.replace("farmer.php");
+										} else if (accType == "buyer") {
+											window.location.replace("buyer.php");
+										}
 										
 									} else if (!data.access){
 										alert("details are invalid!");

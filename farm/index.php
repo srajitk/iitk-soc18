@@ -3,7 +3,12 @@
 	if (empty($_SESSION['user_id']) or empty($_SESSION['accType'])){
 		session_destroy();
 	} else {
-		header("Location: user.php");
+		if ($_SESSION['accType'] == "farmer"){
+			header("Location: farmer.php");
+		}
+		elseif ($_SESSION['accType'] == "buyer"){
+			header("Location: buyer.php");
+		}
 		exit();
 	}
 ?>
@@ -17,10 +22,10 @@
 		<title> Project 1 | Log In</title>
 	
 	
-	<!--================================================== styles loaded from template ================-->	
+	<!--============================================== styles loaded from login template ==============-->	
 		<link rel="icon" type="image/png" href="style/login/images/icons/favicon.ico"/>
 		<link rel="stylesheet" type="text/css" href="jslibs/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="style/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="jslibs/animate/animate.css">
 		<link rel="stylesheet" type="text/css" href="jslibs/css-hamburgers/hamburgers.min.css">
 		<link rel="stylesheet" type="text/css" href="jslibs/select2/select2.min.css">
@@ -39,8 +44,15 @@
 	<script src="js/login.js"></script>		
 	
 	<link rel="stylesheet" href="style/register/index.css">
-	<script>
-	</script>
+	<style>
+		body { 
+		  background: url("style/images/vegBack2.jpg") no-repeat center center fixed; 
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		}
+	</style>
 	<script>
 			// VERTICALLY ALIGN FUNCTION
 		$(Document).ready(function () {
@@ -100,17 +112,17 @@
 		$(Document).ready(function () {
 			$("#newAccount").click(function () {
 				$('#id01').show(); $('div.limiter').hide();
-				$('body').css('background-image', 'url("style/register/vegBack2nofocus.jpg")');
+				$('body').css('background-image', 'url("style/images/vegBack2nofocus.jpg")');
 			});
 			
 			$("#id01 span.close-id01").click(function () {
 				$('#id01').hide(); $('div.limiter').show();
-				$('body').css('background-image', 'url("style/register/vegBack2.jpg")');
+				$('body').css('background-image', 'url("style/images/vegBack2.jpg")');
 			});
 			
 			$("#id01 button.cancelbtn-id01").click(function () {
 				$('#id01').hide(); $('div.limiter').show();
-				$('body').css('background-image', 'url("style/register/vegBack2.jpg")');
+				$('body').css('background-image', 'url("style/images/vegBack2.jpg")');
 			});
 			
 		});
@@ -220,7 +232,7 @@
 		</div>
 		
 		<div id="id01" class="modal signupForm">
-			<span class="close-id01" title="Close Modal">&times;</span>
+			<span class="close-id01">&times;</span>
 			<div id = "newuser" class="modal-content" style= "overflow:auto;">
 				<!--form class="modal-content" action="/action_page.php"-->
 				<!-- "<... action="new_user_back.php" method="post">" sends data to php but the callback function not well defined, as in jquery-->
