@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2018 at 01:07 PM
+-- Generation Time: Jun 24, 2018 at 06:24 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -108,6 +108,31 @@ INSERT INTO `farmer_tbl` (`user_id`, `joinDate`, `salt`, `password_hash`, `first
 (100009, '2018-06-08 08:20:57', '52441f976e3f7c4c08342e16b348ecb8d3587c4ab1132e85aaf389f92a1883aa', '1b4702c328a7210b5cef5db2e10b50e9af143bd70b08b9c46824c59e8dcaa9f2', 'Delta', 'D', '0938012212', '2016-04-06', 'delta@gov.rand', 'delta@farm'),
 (100011, '2018-06-14 23:59:28', '3d9bddba8691b5f3aca0f28c7aa2cfcca661b00db09227a1c391769b4d7cedc7', '8ab9abe7dd3798d370d599031faa0473a0da46894e233bd2e51b6316f9d87ab8', 'Phi', 'F', '9821188757', '2018-06-14', 'phi@farm.org', 'farm@phi'),
 (100013, '2018-06-15 15:25:19', '507281a6f34bae86d44a2ef69a29fb7ae9c35fd0e26769785ced74b91c692eaf', '41f42e4867318fa22927c3fdf5a0180e8c3788289106725b91d1d52d5da2f548', 'Kappa', 'K', '9876543219', '0000-00-00', '', 'k farm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_placed`
+--
+
+CREATE TABLE `orders_placed` (
+  `food` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `Cost` decimal(10,0) NOT NULL,
+  `A` decimal(10,0) NOT NULL,
+  `B` decimal(10,0) NOT NULL,
+  `C` decimal(10,0) NOT NULL,
+  `date_harvest` date NOT NULL,
+  `date_deliver` date NOT NULL,
+  `image_path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders_placed`
+--
+
+INSERT INTO `orders_placed` (`food`, `category`, `Cost`, `A`, `B`, `C`, `date_harvest`, `date_deliver`, `image_path`) VALUES
+('nimbu', 'fruits', '100', '10', '2', '3', '2018-05-29', '2018-06-13', 'sk007');
 
 --
 -- Indexes for dumped tables
