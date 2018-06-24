@@ -1,7 +1,12 @@
 <html>
 <head>
-		<script src = "jquery.js"></script>		
+		<script src = "../../jquery.js"></script>		
 		<script src = "placeorder.js"></script>
+		<!--script>
+			$(Document).ready(function () {
+				alert("hello world");
+			}); 
+		</script-->
 </head>
 <body>
 	<input type="radio" name="xxx" value="fruits" checked> Fruits

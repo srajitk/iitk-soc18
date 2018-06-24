@@ -8,21 +8,19 @@
 	$deliv = $_POST['deliver'];
 	$food= $_POST['food'];
 	
-	if(!$a) $a = "";
-	if(!$b) $b = "";
-	if(!$c) $c = "";
+	if(!$a) $a = 0;
+	if(!$b) $b = 0;
+	if(!$c) $c = 0;
 	
-	$conn= mysqli_connect("localhost","root","computer","farm_db");
+	$conn= mysqli_connect("localhost","root","","farm_db");
 	
-	$query11="INSERT INTO orders_placed (food, category,Cost,A,B,C,date_harvest,date_deliver,image_path)";
-	$query12="VALUES (".$food.", ".$category.", ".$cost.", ".$a.", ".$b.", ".$c.", ".$harvest.", ".$deliv.", sk007)";
-	$query1=$query11." ".$query12;
+	$query11="INSERT INTO orders_placed (`food`, `category`,`Cost`,`A`,`B`,`C`,`date_harvest`,`date_deliver`,`image_path`) VALUES ('".$food."', '".$category."', '".$cost."', '".$a."', '".$b."', '".$c."', '".$harvest."', '".$deliv."', 'sk007')";
 	
-	
-	if(mysqli_query($conn,$query1))
-		$res= "yeah babe";
-	else $res =mysqli_error($conn);
-	// $res= $query12;
+	$res = $_POST;
+	$res['query'] = $query11;
+	if(mysqli_query($conn,$query11))
+		$res['out'] = "yeah babe";
+	else $res['out'] = mysqli_error($conn);
 	
 	exit(JSON_encode($res));
 ?>

@@ -10,9 +10,7 @@ $(document).ready(function(){
 		var cQ = $("input[name='c']").val();
 		var paise = $("input[name='cost']").val();
 		var doh = $("input[name='doharvest']").val();
-		var dod = $("input[name='dodeliv']").val();
-		
-		
+		var dod = $("input[name='dodeliv']").val();		
 		
 		var order = {
 			food: item,
@@ -25,13 +23,15 @@ $(document).ready(function(){
 			deliver : dod
 		};
 		
+		alert(JSON.stringify(order));
+		
 		$.ajax({
 			type: "POST",
 			dataType: "json",
 			data: order,
 			url: "placeOrder.php",
 			success: function(data){
-				alert(data);
+				alert(JSON.stringify(data));
 			},
 			error: function(data) {
 				alert("something went wrong");
