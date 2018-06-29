@@ -78,11 +78,8 @@
 
 		<div class="icon-bar">
 			<button name = "home"><i class="fa fa-home"></i></button> 
-			<button name = "queue"><i class="fa fa-list"></i></button> 
-			<button name = "undecided"><i class="fa fa-question"></i></button> 
 			<button name = "place"><i class="fa fa-plus-circle"></i></button>
-			<button name = "dump"><i class="fa fa-trash"></i></button> 
-			<button name = "info"><i class="fa fa-info-circle"></i></button> 
+			<button name = "queue"><i class="fa fa-list"></i></button> 
 			<button name = "contactUs"><i class="fa fa-paper-plane"></i></button> 
 		</div>
 		<div class = "limiter home" style = "display:none;">
@@ -90,6 +87,34 @@
 				Name: <?php echo $fname.' '.$lname?><br />
 				Value: <?php echo $val; ?><br /> <br /> 
 				<button id = "logout">Logout</button>
+			</div>
+		</div>
+		<div class = "limiter place" style = "display:none;">
+			<div style = "width: 90%; height: 90%; margin: 20px; background: white;">
+					<form  method="post" action="upload.php" enctype="multipart/form-data">
+						<input type="radio" name="xxx" value="fruits" checked> Fruits
+						<input type="radio" name="xxx" value="vegetables"> Vegetables<br/>
+						<select name="frfood" class="fruits"style="display:block">
+							<option value="kela">Kela</option>
+							<option value="tamatar">Tamatar</option>
+							<option value="nimbu">Lemon</option>
+						</select>
+						<select name="vefood" class="vegetables" style="display:none">
+							<option>Aloo</option>
+							<option>Pyaaz</option>
+							<option>Lauki</option>
+						</select>
+						<h6>Quality(in Kg)</h6>
+						A: <input type="number" name='a'>
+						B: <input type="number" name='b'>
+						C: <input type="number" name='c'>
+						Total Cost (in Rs)<input type="number" name="cost" required>
+						Transport Required?<input type="checkbox" name="transport">
+						Date of harvest<input type="date" name="harvest" required>
+						Date of delivery<input type="date" name="deliver" required>
+						Select image to upload:<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="Place Order" name="submit">
+					</form>
 			</div>
 		</div>
 		<div class="limiter queue" style = "display:none;">

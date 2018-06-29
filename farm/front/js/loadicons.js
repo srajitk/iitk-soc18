@@ -1,16 +1,16 @@
 $(Document).ready(function () {
-	$(".cart .itemselector .tablinks").click(function () {
-		$(".cart .tabcontent").hide();
-		$(".cart .tabcontent").removeClass("active");
-		$(".cart .itemselector .tablinks").removeClass("active");
+	$(".place .itemselector .tablinks").click(function () {
+		$(".place .tabcontent").hide();
+		$(".place .tabcontent").removeClass("active");
+		$(".place .itemselector .tablinks").removeClass("active");
 		
 		var name = $(this).attr("name");
 		$(this).addClass('active');
 
-		$(".cart #" + name).show();
-		$(".cart #" + name).addClass("active");
+		$(".place #" + name).show();
+		$(".place #" + name).addClass("active");
 		
-		if ($(".cart #"+ name + " .imageSpace").html() == ""){
+		if ($(".place #"+ name + " .imageSpace").html() == ""){
 			
 			var tabData = {
 				tabname: name,
@@ -21,7 +21,7 @@ $(Document).ready(function () {
 				data: tabData,
 				url: "http://localhost/farm/back/loadIcons.php",
 				success: function (data) {
-					$(".cart #"+ name + " .imageSpace").html(data);
+					$(".place #"+ name + " .imageSpace").html(data);
 				},
 				error: function (data) {
 					alert("something went wrong while recieving data from loadIcons.php");

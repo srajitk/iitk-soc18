@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+		<link href="style/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+		<script>
+		  $( function() {
+			$( "#slider-range" ).slider({
+			  range: true,
+			  min: 0,
+			  max: 500,
+			  values: [ 75, 300 ],
+			  slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			  }
+			});
+			$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+			  " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		  } );
+		</script>
+		<style type="text/css">
+			.ui-slider-horizontal .ui-state-default {
+				width : 3px;
+				margin: 0px;
+			}
+		</style>
+				
+
+							<div id="slider"></div>
+							<p id="amount" style="border:0; color:#f6931f; font-weight:bold;"></p>
+		<script src="style/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+		<script src="style/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script>
+	$( "#slider" ).slider({
+		range: true,
+		min: 0,
+		max: 100,
+		values: [ 17, 67 ],
+		slide:function (event, ui){
+			$("#amount").html( "A: " + ui.values[0] + " ,B: " + (ui.values[1] - ui.values[0]) + " ,C: " + (100 - ui.values[1]));
+		}
+	});
+	$("#amount").html( "A: " + $("#slider").slider("values", 0) + " ,B: " + ($("#slider").slider("values", 1) - $("#slider").slider("values", 0)) + " ,C: " + (100 - $("#slider").slider("values", 1)));
+	</script>

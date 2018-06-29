@@ -7,13 +7,13 @@
 
 	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
-	$query = "SELECT `file_name`, `name_line1`, `name_line2`, `size` FROM `img_details_tbl` WHERE `tab_name` = '".$tabname."'";
+	$query = "SELECT `file_name`, `item_no` FROM `item_details_tbl` WHERE `tab_name` = '".$tabname."'";
 	
 	$result = mysqli_query($cxn, $query) or die($query);
 	
 	$html = "";
 	while ($row = mysqli_fetch_assoc($result)) {
-		$html .= '<div class = "imgbox"> <img src = "http://localhost/farm/back/fvicons/fv/'.$row['file_name'].'" style = "width: 54px; height: 54px"></img> </div>';
+		$html .= '<div class = "imgbox" id = "fv'.$row['item_no'].'"> <img src = "http://localhost/farm/back/fvicons/fv/'.$row['file_name'].'" style = "width: 72px; height: 72px"></img> </div>';
 	}
 	
 	mysqli_close($cxn);

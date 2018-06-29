@@ -106,6 +106,8 @@ $(Document).ready(function () {
 										if (accType == "farmer"){
 											window.location.replace("farmer.php");
 										} else if (accType == "buyer") {
+											alert(data);
+											alert(JSON.stringify(data));
 											window.location.replace("buyer.php");
 										}
 										
