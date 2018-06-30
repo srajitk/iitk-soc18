@@ -1,6 +1,6 @@
 <?php
 	
-	$connection = mysqli_connect("localhost","root","computer","farm_db");
+	$connection = mysqli_connect("localhost","root","","farm_db");
 	$query1= "SELECT image_path FROM orders_placed WHERE orderid = (SELECT max(orderid) FROM orders_placed)";
 	$result=mysqli_query($connection,$query1);
 	while($row=mysqli_fetch_assoc($result)){
@@ -20,7 +20,7 @@
     else {
         move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $newfilename);
 		exit(JSON_encode($newfilename));
-		exit(JSON_encode("KAAM KHATAM"));
+		exit(JSON_encode("KAAM KHATAM"));		// code will never reach here XD
 	}
 	
 ?>

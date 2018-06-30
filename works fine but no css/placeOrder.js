@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	//alert(1);
 	var food,category,aQ,bQ,cQ,transport,cost,harvest,deliver,file,errorChk;
 	var check = true;
 	var sqliChk = /[`#'"!;=~<>]/;		
@@ -12,7 +11,6 @@ $(document).ready(function(){
 	});
 	
 	$("input:submit[name=submit]").click(function(){
-		// alert(2);
 		category = $("input:radio[name=xxx]").val();
 		if(category=="fruits"){
 			food= $("select[name=frfood]").val();
@@ -27,10 +25,9 @@ $(document).ready(function(){
 		cost = $("input[name=cost]").val();
 		harvest = $("input[name=harvest]").val();
 		deliver = $("input[name=deliver]").val();
-		// alert(cost);
 		
 		if(new Date(harvest)> new Date(deliver)){
-			alert("Date of harvest must be earlier");
+			alert("Date of harvest must be earlier");	// also work for > today filter
 			return;
 		}
 		
@@ -44,9 +41,7 @@ $(document).ready(function(){
 			check = (check && (aQ.match(sqliChk)== null))   && (aQ.match(numChk)== null);
 			check = (check && (bQ.match(sqliChk)== null))   && (bQ.match(numChk)== null);
 			check = (check && (cQ.match(sqliChk)== null))   && (cQ.match(numChk)== null);
-			if(!check) return;	
-			
-			
+			if(!check) return;		// preferably some err msg here
 		}
 		var file_data = $('#fileToUpload').prop('files')[0];   
 		var form_data = new FormData();                  
@@ -74,7 +69,23 @@ $(document).ready(function(){
 			success: function(data){
 				alert(data);
 				if(data=="good"){
-					errorChk=1;
+					alert("Uploading Image");
+				    $.ajax({
+						url: 'uploading.php', // point to server-side PHP script 
+						dataType: 'json',  // what to expect back from the PHP script, if anything
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: form_data,                         
+						type: 'post',
+						success: function(data){
+							alert(data); // display response from the PHP script, if any
+						},
+						error: function(data) {
+							alert("went wrong");
+							alert(JSON.stringify(data));
+						}
+					});
 				}
 				else {
 					errorChk=0;
@@ -86,28 +97,28 @@ $(document).ready(function(){
 				
 			}
 		});
-			if(errorChk==1){
-				alert("Uploading Image");
-				 $.ajax({
-					url: 'uploading.php', // point to server-side PHP script 
-					dataType: 'json',  // what to expect back from the PHP script, if anything
-					cache: false,
-					contentType: false,
-					processData: false,
-					data: form_data,                         
-					type: 'post',
-					success: function(data){
-						alert(data); // display response from the PHP script, if any
-					},
-					error: function(data) {
-						alert("went wrong");
-						alert(JSON.stringify(data));
-					}
-				 });
-			}
-			else {
-				alert("Problem in uploading of image");
-			}
+		/*if(errorChk==1){			// NESTED CODE PROBABLY MORE APPROPRIATE (DUE TO ASYNC NATURE) (FROM PAST EXPERIENCE MAINLY)
+			alert("Uploading Image");
+			 $.ajax({
+				url: 'uploading.php', // point to server-side PHP script 
+				dataType: 'json',  // what to expect back from the PHP script, if anything
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: form_data,                         
+				type: 'post',
+				success: function(data){
+					alert(data); // display response from the PHP script, if any
+				},
+				error: function(data) {
+					alert("went wrong");
+					alert(JSON.stringify(data));
+				}
+			 });
+		}
+		else {
+			alert("Problem in uploading of image");
+		}*/
 			
 	});
 	
