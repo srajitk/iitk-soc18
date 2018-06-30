@@ -17,8 +17,8 @@
 	// $a=mysqli_insert_id($connection);
 	// exit(JSON_encode(alert($a));
 	
-	$query11="INSERT INTO orders_placed (food, category,Cost,A,B,C,date_harvest,date_deliver)";
-	$query12="VALUES ('".$food."', '".$category."', ".$cost.", ".$a.", ".$b.", ".$c.", '".$harvest."', '".$deliver."')";
+	$query11="INSERT INTO orders_placed (food, category,Cost,transport,A,B,C,date_harvest,date_deliver)";
+	$query12="VALUES ('".$food."', '".$category."', ".$cost.", ".$transport.", ".$a.", ".$b.", ".$c.", '".$harvest."', '".$deliver."')";
 	$query1=$query11." ".$query12;
 	if(mysqli_query($connection,$query1)){
 		$lastId=mysqli_insert_id($connection);

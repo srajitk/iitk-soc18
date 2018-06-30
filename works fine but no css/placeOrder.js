@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//alert(1);
-	var food,category,aQ,bQ,cQ,transport=0,cost,harvest,deliver,file;
+	var food,category,aQ,bQ,cQ,transport,cost,harvest,deliver,file;
 	var check = true;
 	var sqliChk = /[`#'"!;=~<>]/;		
 	var numChk = /[a-zA-Z]/;
@@ -23,6 +23,7 @@ $(document).ready(function(){
 		cQ = $("input[name=c]").val();
 		if($("input:checkbox[name=transport]").is(":checked"))
 			transport =1;
+		else transport=0;
 		cost = $("input[name=cost]").val();
 		harvest = $("input[name=harvest]").val();
 		deliver = $("input[name=deliver]").val();
