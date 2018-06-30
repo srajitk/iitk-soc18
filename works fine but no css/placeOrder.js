@@ -79,6 +79,7 @@ $(document).ready(function(){
 				else {
 					errorChk=0;
 				}
+				
 			},
 			error: function(data) {
 				alert("something went wrong");

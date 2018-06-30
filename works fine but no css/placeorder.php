@@ -33,7 +33,7 @@
 	
 	$query21="UPDATE orders_placed SET image_path='".$image_name."' WHERE orderid =".$lastId;
 	// exit(JSON_encode($query21));
-	if(mysqli_query($connection,$query21)){exit(JSON_encode("good"));}
+	if(mysqli_query($connection,$query21)){exit(JSON_encode($lastId));}
 	// $a=mysqli_insert_id($connection);
 		// exit(JSON_encode($a));
 	else {exit(JSON_encode("bad"));}
