@@ -9,11 +9,15 @@
 	$harvest = $_POST['doharvest'];
 	$deliver = $_POST['dodeliver'];
 	$name = $_POST['fileName'];
-	// exit(JSON_encode($_POST['fileName']));	
+	$extension = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+	// exit(JSON_encode($extension));	
 	
 	$connection =mysqli_connect("localhost","root","computer","farm_db");
 	
-
+	
+	if($extension != "jpg" && $extension != "png" && $extension != "jpeg"&& $extension != "gif" ) {
+		exit(JSON_encode("FIle type not image"));
+	}
 	// $a=mysqli_insert_id($connection);
 	// exit(JSON_encode(alert($a));
 	
@@ -32,5 +36,6 @@
 	if(mysqli_query($connection,$query21)){exit(JSON_encode("good"));}
 	// $a=mysqli_insert_id($connection);
 		// exit(JSON_encode($a));
+	else {exit(JSON_encode("bad"));}
 	mysqli_close($connection);
 ?>

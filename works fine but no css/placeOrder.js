@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//alert(1);
-	var food,category,aQ,bQ,cQ,transport,cost,harvest,deliver,file;
+	var food,category,aQ,bQ,cQ,transport,cost,harvest,deliver,file,errorChk;
 	var check = true;
 	var sqliChk = /[`#'"!;=~<>]/;		
 	var numChk = /[a-zA-Z]/;
@@ -72,32 +72,43 @@ $(document).ready(function(){
 			data: orderData,
 			url: "placeorder.php",
 			success: function(data){
-				alert(data);	
+				alert(data);
+				if(data=="good"){
+					errorChk=1;
+				}
+				else {
+					errorChk=0;
+				}
 			},
 			error: function(data) {
 				alert("something went wrong");
 				alert(JSON.stringify(data));
+				
 			}
 		});
-		
-		 $.ajax({
-			url: 'uploading.php', // point to server-side PHP script 
-			dataType: 'json',  // what to expect back from the PHP script, if anything
-			cache: false,
-			contentType: false,
-			processData: false,
-			data: form_data,                         
-			type: 'post',
-			success: function(data){
-				alert(data); // display response from the PHP script, if any
-			},
-			error: function(data) {
-				alert("went wrong");
-				alert(JSON.stringify(data));
+			if(errorChk==1){
+				alert("Uploading Image");
+				 $.ajax({
+					url: 'uploading.php', // point to server-side PHP script 
+					dataType: 'json',  // what to expect back from the PHP script, if anything
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,                         
+					type: 'post',
+					success: function(data){
+						alert(data); // display response from the PHP script, if any
+					},
+					error: function(data) {
+						alert("went wrong");
+						alert(JSON.stringify(data));
+					}
+				 });
 			}
-		 });
-		
-		
+			else {
+				alert("Problem in uploading of image");
+			}
+			
 	});
 	
 });
