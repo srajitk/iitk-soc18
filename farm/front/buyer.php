@@ -43,8 +43,6 @@
 			<link rel="stylesheet" type="text/css" href="jslibs/perfect-scrollbar/perfect-scrollbar.css">
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/util.css">
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/main.css">
-			<link rel="stylesheet" type="text/css" href="style/css/style.css">
-			<link rel="stylesheet" type="text/css" href="style/css/font-awesome.css">
 		<!--===============================================================================================-->
 		
 		
@@ -83,137 +81,131 @@
 		var k1 = false;
 		var k2 = true;
 		$(Document).ready(function () {
-			$("#orderDetails input:radio").click(function () {
+			$("#orderForm input:radio").click(function () {
 				if (!k1 && k2) {
-					$("#orderDetails #category .ok").css('color', '#00e841');
-					$("#orderDetails #category .ok").css('border', '3px solid #00e841');
 					detailok1 = true;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
 					
 				}
 				k1 = true;
 			});
-			$("#orderDetails #category input[type=number]").keyup(function () {
-				k2 = ($("#orderDetails #category input[type=number]:valid").length > 0);
+			$("#orderForm input[type=number]").keyup(function () {
+				k2 = ($("#orderForm input[type=number]:valid").length > 0);
 				if (k1 && k2){
-					$("#orderDetails #category .ok").css('color', '#00e841');
-					$("#orderDetails #category .ok").css('border', '3px solid #00e841');
 					detailok1 = true;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
 				}
 				
 				if (k1 && !k2) {
-					$("#orderDetails #category .ok").css('color', '#777');
-					$("#orderDetails #category .ok").css('border', '3px solid #777');
 					detailok1 = false;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', true);
+					$("#orderForm button[name = confirm]").prop('disabled', true);
 					
 				}
 			});
-		});
 		
-		$(Document).ready(function () {
-			$("#orderDetails #date .slideTwo input:checkbox").change(function () {
-				if ($("#orderDetails #date .slideTwo input:checked").length > 0){
-					$("#orderDetails #date #stagger").show();
-					$("#orderDetails #date #onetime").hide();
-				} else {
-					$("#orderDetails #date #onetime").show();
-					$("#orderDetails #date #stagger").hide();
-				}
-			});
-		});
-		
-		$(Document).ready(function () {
-			var checkStaggerDate = function () {
-				var dt1 = new Date($("#orderDetails #date #stagger input[name=startDate]").val());
-				var dt2 = new Date($("#orderDetails #date #stagger input[name=endDate]").val());
-				var min = new Date();
-				var max = new Date();
-				min.setDate(min.getDate() + 1);
-				max.setDate(max.getDate() + 90);
-				var step = $("#orderDetails #date #stagger input[name=step]").val();
-				if ((step != "") &1& (dt1 != "") && (dt2 != "") && (dt1 < dt2) && (min < dt1) && (max > dt2)){
-					var istep = parseInt(step);
-					if (((dt2 - dt1) / (1000*3600*24) % istep) == 0){
-						$("#orderDetails #date .ok").css('color', '#00e841');
-						$("#orderDetails #date .ok").css('border', '3px solid #00e841');
-						detailok2 = true;
-						$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
-					} else {
-						$("#orderDetails #date .ok").css('color', '#777');
-						$("#orderDetails #date .ok").css('border', '3px solid #777');
-						detailok2 = false;
-						$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', true);
-					
-					}
-				} else {
-					$("#orderDetails #date .ok").css('color', '#777');
-					$("#orderDetails #date .ok").css('border', '3px solid #777');
-					detailok2 = false;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', true);
-				}
-			}
-			
 			var chkDate = function () {
-				var dt = new Date($("#orderDetails #date #onetime input[name=oneDate]").val());
+				var dt = new Date($("#orderForm input[type = date]").val());
 				var min = new Date();
 				var max = new Date();
 				min.setDate(min.getDate() + 1);
 				max.setDate(max.getDate() + 90);
 				if (min < dt && max > dt){
-					$("#orderDetails #date .ok").css('color', '#00e841');
-					$("#orderDetails #date .ok").css('border', '3px solid #00e841');
 					detailok2 = true;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
 				} else {
-					$("#orderDetails #date .ok").css('color', '#777');
-					$("#orderDetails #date .ok").css('border', '3px solid #777');				
 					detailok2 = false;
-					$("#orderDetails #confirmOrder button[name = confirm]").prop('disabled', true);
+					$("#orderForm button[name = confirm]").prop('disabled', true);
 				}
 			}
+			
+			$("#orderForm input[type = date]").change(chkDate);
+		});
 		
-			$("#orderDetails #date #stagger input[name=endDate]").change(checkStaggerDate);
-			$("#orderDetails #date #stagger input[name=startDate]").change(checkStaggerDate);
-			$("#orderDetails #date #stagger input[name=step]").keyup(checkStaggerDate);
-			$("#orderDetails #date #stagger input[name=step]").change(checkStaggerDate);
-			$("#orderDetails #date .slideTwo input:checkbox").change(function () {
-				if ($("#orderDetails #date .slideTwo input:checked").length > 0){
-					checkStaggerDate();
-				} else {
-					chkDate();
+		</script>
+		<script>
+		
+			var removeByAttr = function(arr, attr, value){
+				var i = arr.length;
+				while(i--){
+				   if( arr[i] 
+					   && arr[i].hasOwnProperty(attr) 
+					   && (arguments.length > 2 && arr[i][attr] === value ) ){ 
+
+					   arr.splice(i,1);
+
+				   }
 				}
-			});
-			$("#orderDetails #date #onetime input[name=oneDate]").change(chkDate);
-		});
+				return arr;
+			}
 		
-		</script>
-		<script>
+			function toObject(arr) {
+			  var rv = {};
+			  for (var i = 0; i < arr.length; ++i)
+				if (arr[i] !== undefined) rv[i] = arr[i];
+			  return rv;
+			}
+			var present = [];
+			var details = [];
 			$(Document).ready(function () {
-				var menulen = $("#menu").outerWidth(true);
-				var vdlen = $("#vegDetails").outerWidth(true);
-				
-				var len = menulen + vdlen - 24;
-				
-				$("#orderDetails").css("width", len + "px");
+				$("#orderForm button[name = confirm]").click(function () {
+					
+					//html tag formation
+					var s = $(".dynamic img").attr('src');
+					var n = $(".dynamic img").attr('title');
+					var tag = '<img src = "'+s+'"  title = "'+n+'">';
+					
+					//object formation
+					var categ = $("#orderForm input[name = qlty]:checked").val();
+					var qty = $("#orderForm input[name=quantity]").val();
+					var date = $("#orderForm input[name=orderDate]").val();
+					
+					var obj = {
+						id: n,
+						cat: categ,
+						qty:qty,
+						date: date
+					};
+					
+					//front end mgmt					
+					var prev = parseInt($("#cost").html());
+					var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
+					$("#cost").html(curr);
+					
+					if (present.includes(n)) {
+						alert("overriding previous order");
+						$("#pay #imgspace img[title = "+n+"]").remove();
+						$("#pay #imgspace").append(tag);
+						removeByAttr(details, 'id', n);
+						details.push(obj);
+					} else {
+						$("#pay #imgspace").append(tag);
+						present.push(n);
+						details.push(obj);
+					}
+					
+					if (present.length > 0) {
+						$("#pay button[name = pay]").prop('disabled', false);
+					} else {
+						$("#pay button[name = pay]").prop('disabled', true);
+					}
+				});
+				$("#pay button[name = pay]").click(function () {
+					x = toObject(details);
+					$.ajax({
+						type: "POST",
+						datatype: "json",
+						data: x,
+						url: "http://localhost/farm/back/recBuyOrder.php",
+						success: function (data) {
+							alert("order placed");
+						},
+						error: function (data) {
+							alert("couldn't place buy order");
+							alert(JSON.stringify(data));
+						},
+					});
+				});
 			});
-		
-			$(window).resize(function () {
-				var menulen = $("#menu").outerWidth(true);
-				var vdlen = $("#vegDetails").outerWidth(true);
-				
-				var len = menulen + vdlen - 24;
-				
-				$("#orderDetails").css("width", len + "px");
-			});
-		</script>
-		<script>
-		$(Document).ready(function () {		/* To be changed from */
-			$("#hashtag").click(function () {
-				$("#orderDetails").fadeIn();
-			});
-		});
 		</script>
 		
         <title> Project 1 | <?php echo $fname?></title>
@@ -237,122 +229,81 @@
 		<div class="limiter place" style = "display:none;">
 			<div class = "orderPortal">
 				<div style = "width:100%; height: 100%; min-width: 750px; min-height: 690px; overflow: auto;">
-					<div id = "oprow1">
-						<div id = "menu">
-							<div class = "itemselector">
-								<button class="tablinks" name = "fruitsSmall">Fruits Small</button>
-								<button class="tablinks" name = "fruitsMedium">Fruits Medium</button>
-								<button class="tablinks" name = "fruitsLarge">Fruits Large</button>
-								<button class="tablinks" name = "potatoGourds">Potato & Gourds</button>
-								<button class="tablinks" name = "greenVeg">Green Veg</button>
-								<button class="tablinks" name = "generalVeg">General Veg</button>
-								<button class="tablinks" name = "leafyVeg">Leafy Veg</button>
-								<button class="tablinks" name = "saladChinese">Salad & Chinese</button>
-								<button class="tablinks" name = "flavourVeg">Flavour Veg</button>
-							</div>
-							<div id="fruitsSmall" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-
-							<div id="fruitsMedium" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-
-							<div id="fruitsLarge" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="potatoGourds" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="greenVeg" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="generalVeg" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="leafyVeg" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="saladChinese" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
-							
-							<div id="flavourVeg" class="tabcontent" style = "display:none;">
-								<div class = "imageSpace"></div>
-							</div>
+					<div id = "helper">
+						<div id = "msg">Please select a vegetable/fruit first (by navigating to the appropriate category)</div>
+					</div>
+					<div id = "menu">
+						<div class = "itemselector">
+							<button class="tablinks" name = "fruitsSmall">Fruits Small</button>
+							<button class="tablinks" name = "fruitsMedium">Fruits Medium</button>
+							<button class="tablinks" name = "fruitsLarge">Fruits Large</button>
+							<button class="tablinks" name = "potatoGourds">Potato & Gourds</button>
+							<button class="tablinks" name = "greenVeg">Green Veg</button>
+							<button class="tablinks" name = "generalVeg">General Veg</button>
+							<button class="tablinks" name = "leafyVeg">Leafy Veg</button>
+							<button class="tablinks" name = "saladChinese">Salad & Chinese</button>
+							<button class="tablinks" name = "flavourVeg">Flavour Veg</button>
 						</div>
-						<div id = "vegDetails" style = "display:none;">
-							<div class = "dynamic"></div>
-							<div class = "const" style = "display:none;">
-								<button type = "submit" id = "hashtag">Place Order</button>
-							</div>
+						<div id="fruitsSmall" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+
+						<div id="fruitsMedium" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+
+						<div id="fruitsLarge" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="potatoGourds" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="greenVeg" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="generalVeg" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="leafyVeg" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="saladChinese" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
+						</div>
+						
+						<div id="flavourVeg" class="tabcontent" style = "display:none;">
+							<div class = "imageSpace"></div>
 						</div>
 					</div>
-					<div id = "oprow2">
-						<div id = "orderDetails" style = "display:none;">
-							<div style = "width:78vw; padding: 12px; min-width: 1080px; position: absolute; height: 100%">
-								<div id = "confirmOrder">
-									<h2> Relevant Details </h2>
-									<br/>Expected Price Of A: Rs <?php echo 100?>, B: Rs <?php echo 60?>, C: Rs <?php echo 40?>
-									
-									<button type = "submit" name = "confirm" disabled>Confirm</button>
-								</div>
-								<div class = "detail" id = "pref">
-									Other Preferences will come here...
-								</div>
-								<div class = "detail" id = "date">
-									<div class = "detailHead">Dates:</div>
-									<p style = "position: absolute; margin-top: 2px; margin-left: 4px;font-size: 18px;">Stagger :</p>
-									<div class="slideTwo">	
-										<input type="checkbox" value="None" id="slideTwo" name="check" />
-										<label for="slideTwo"></label>
-									</div>
-									<div id = "stagger" style = "display: none;">
-										Start Date: <input type = "date" name = "startDate" /><br/>
-										Step: <input type = "number" name = "step" min = "1" max = "28" step = "1" value = "7"/><br/>
-										End Date: <input type = "date" name = "endDate" /><br/>
-									</div>
-									<div id = "onetime">
-										Date: <input type = "date" name = "oneDate" />
-									</div>
-									<div class = "ok"><i class="fa fa-check"></i></div>
-								</div>
-								<div class = "detail" id = "category">
-									<div class = "detailHead">Quality & Qty</div>
-									<p style = "font-size: 16px;">Category:</p>
-										<div class = "cat">																	
-											<ul>
-												<li>
-													<input type="radio" id="a" name="selector">
-													<label for="a">A</label>
-													<div class="check"></div>
-												</li>
-
-												<li>
-													<input type="radio" id="b" name="selector">
-													<label for="b">B</label>
-													<div class="check"><div class="inside"></div></div>
-												</li>
-
-												<li>
-													<input type="radio" id="c" name="selector">
-													<label for="c">C</label>    
-													<div class="check"><div class="inside"></div></div>
-												</li>
-											</ul>
-										</div>
-									<span style = "font-size: 14px">Quantity: 
-									<input type = "number" name = "quantity" min = "0.1" max = "1000" step = "0.05" value = "1" required /> kg
-									<span class="validity"></span></span>
-									
-									<div class = "ok"><i class="fa fa-check"></i></div>
-								</div>
+					<div id = "orderDetails" style = "display:none;">
+						<div id = "vegDetails">
+							<div class = "dynamic"></div>
+							<div class = "static"></div>
+							<div class = "hidden" style = "display:none;">
+								<p name = 'ut'></p>
+								<p name = 'cost'></p>
 							</div>
+						</div>
+						<div id = "orderForm">
+							Category: 
+								<input type = "radio" name = "qlty" value = "a" />A
+								<input type = "radio" name = "qlty" value = "b" />B
+								<input type = "radio" name = "qlty" value = "c" />C<br /><br />
+							Quantity (in <span class = "units">kg</span>):
+								<input type = "number" name = "quantity" min = "1" max = "1000" step = "0.5" value = "1" required /><br /><br />
+							Date Of Delivery:
+								<input type = "date" name = "orderDate"/>
+							<button type = "submit" name = "confirm" disabled>Confirm</button>
+						</div>
+						<div id = "pay">
+							<div id = "imgspace" style = "width: 100%; height: 70%; padding: 16px;">
+							</div>
+							<button type = "submit" name = "pay" disabled>Proceed to Payment (Rs <span id = "cost">0</span>/-)</button>
 						</div>
 					</div>
 				</div>
@@ -360,69 +311,8 @@
 		</div>
 		<div class="limiter cart" style = "display:none;">
 		</div>
-	<div class="limiter contactus">	
-		<div class="wthree-dot">
-			<h1>Contact our team</h1>
-			<div class="profile">
-				<div class="wrap">
-					<!-- contact -->
-					<div class="contact">
-						<div class="contact-row agileits-w3layouts">  
-							<div class="contact-w3lsleft">
-								<div class="contact-grid agileits">
-									<h4>DROP US A LINE </h4>
-									<form action="#" method="post"> 
-										<input type="text" name="Name" placeholder="Name" required="">
-										<input type="email" name="Email" placeholder="Email" required=""> 
-										<input type="text" name="Phone Number" placeholder="Phone Number" required="">
-										<textarea name="Message" placeholder="Message..." required=""></textarea>
-										<input type="submit" value="Submit" >
-									</form> 
-								</div>
-							</div>
-							<div class="contact-w3lsright">
-								<div class="agileits-contact-right">
-									<h2>Our Contacts</h2>
-									<div class="address-row">
-										<div class="address-left">
-											<i class="fa fa-home" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Visit Us</h5>
-											<p>Office address</p>
-										</div>
-										<div class="clear"> </div>
-									</div>
-									<div class="address-row w3-agileits">
-										<div class="address-left">
-											<i class="fa fa-envelope" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Mail Us</h5>
-											<p><a href="mailto:info@example.com"> abc@xyz.com</a></p>
-										</div>
-										<div class="clear"> </div>
-									</div>
-									<div class="address-row">
-										<div class="address-left">
-											<i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Call Us</h5>
-											<p>1234567890</p>
-										</div>
-										<div class="clear"> </div>
-									</div> 
-								</div>
-							</div>
-							<div class="clear"> </div>
-						</div>	
-					</div> 
-					
-				</div>
-			</div>
-		</div>
-	</div>
+
+
 	<!--===================================================scripts loaded from table template =========-->	
 		<script src="jslibs/jquery/jquery-3.2.1.min.js"></script>
 		<script src="jslibs/bootstrap/js/popper.js"></script>

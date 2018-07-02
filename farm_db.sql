@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2018 at 04:45 AM
+-- Generation Time: Jul 02, 2018 at 04:47 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -61,19 +61,10 @@ CREATE TABLE `buy_contracts_tbl` (
   `contract_id` int(11) NOT NULL,
   `buyer_id` int(10) UNSIGNED NOT NULL,
   `fv_id` smallint(3) UNSIGNED NOT NULL,
-  `start` date NOT NULL,
-  `stop` date NOT NULL,
-  `step` tinyint(4) NOT NULL,
+  `Date` date NOT NULL,
   `qty` int(11) NOT NULL,
   `category` set('a','b','c') NOT NULL DEFAULT 'b'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `buy_contracts_tbl`
---
-
-INSERT INTO `buy_contracts_tbl` (`contract_id`, `buyer_id`, `fv_id`, `start`, `stop`, `step`, `qty`, `category`) VALUES
-(1, 100005, 177, '2018-06-30', '2018-08-25', 7, 10000, 'b');
 
 -- --------------------------------------------------------
 
@@ -338,23 +329,23 @@ CREATE TABLE `orders_placed` (
   `food` text NOT NULL,
   `category` text NOT NULL,
   `Cost` int(11) NOT NULL,
+  `transport` tinyint(1) NOT NULL DEFAULT '0',
   `A` int(11) NOT NULL,
   `B` int(11) NOT NULL,
   `C` int(11) NOT NULL,
   `date_harvest` date NOT NULL,
   `date_deliver` date NOT NULL,
-  `image_path` text NOT NULL
+  `image_path` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders_placed`
 --
 
-INSERT INTO `orders_placed` (`orderid`, `food`, `category`, `Cost`, `A`, `B`, `C`, `date_harvest`, `date_deliver`, `image_path`) VALUES
-(18, 'kela', 'fruits', 1000, 123, 13, 1, '2018-07-06', '2018-07-07', 'FallMilkyWay.jpg'),
-(19, 'kela', 'fruits', 1000, 123, 13, 1, '2018-07-06', '2018-07-07', 'FallMilkyWay.jpg'),
-(20, 'kela', 'fruits', 10001, 1000, 100, 1, '2018-07-05', '2018-07-06', 'Elephant.jpg'),
-(21, 'kela', 'fruits', 10001, 1000, 100, 1, '2018-07-05', '2018-07-06', 'Elephant.jpg');
+INSERT INTO `orders_placed` (`orderid`, `food`, `category`, `Cost`, `transport`, `A`, `B`, `C`, `date_harvest`, `date_deliver`, `image_path`) VALUES
+(1, 'tamatar', 'fruits', 1000, 1, 100, 10, 1, '2018-07-24', '2018-08-01', 'tamatar_1'),
+(2, 'tamatar', 'fruits', 1000, 1, 100, 10, 1000, '2018-07-24', '2018-08-01', 'tamatar_2'),
+(3, 'tamatar', 'fruits', 1000, 1, 100, 10, 1000, '2018-07-24', '2018-08-01', 'tamatar_3');
 
 --
 -- Indexes for dumped tables
@@ -414,7 +405,7 @@ ALTER TABLE `buyer_tbl`
 -- AUTO_INCREMENT for table `buy_contracts_tbl`
 --
 ALTER TABLE `buy_contracts_tbl`
-  MODIFY `contract_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `contract_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `farmer_tbl`
@@ -426,7 +417,7 @@ ALTER TABLE `farmer_tbl`
 -- AUTO_INCREMENT for table `orders_placed`
 --
 ALTER TABLE `orders_placed`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

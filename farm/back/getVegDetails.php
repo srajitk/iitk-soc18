@@ -20,17 +20,64 @@
 	
 	$fv = mysqli_real_escape_string($cxn, $fv);
 	
-	$query = "SELECT `name_line1`, `name_line2` FROM `farm_db`.`item_details_tbl` WHERE `item_details_tbl`.`item_no` = '$fv';";
+	$query = "SELECT `name_line1`, `name_line2`, `qty_slab_no`, `price_q1` FROM `farm_db`.`item_details_tbl` WHERE `item_details_tbl`.`item_no` = '$fv';";
 	
 	$result = mysqli_query($cxn, $query) or die ("couldn't execute query: $query");
 	
 	$row = mysqli_fetch_assoc($result);
+	
+	switch($row['qty_slab_no']) {
+		case 0:
+		$return['uts'] = 'kg';
+		$return['min'] = 1;	
+		$return['max'] = 20;
+		$return['step'] = 1;
+		break;
+		case 1:
+		$return['uts'] = 'g';
+		$return['min'] = 100;
+		$return['max'] = 1000;
+		$return['step'] = 100;
+		break;
+		case 2:
+		$return['uts'] = 'g';
+		$return['min'] = 250;
+		$return['max'] = 2000;
+		$return['step'] = 250;
+		break;
+		case 3:
+		$return['uts'] = 'dz';
+		$return['min'] = 1;
+		$return['max'] = 10;
+		$return['step'] = 1;
+		break;
+		case 4:
+		$return['uts'] = 'pc';
+		$return['min'] = 1;
+		$return['max'] = 10;
+		$return['step'] = 1;
+		break;
+		case 5:
+		$return['uts'] = 'bndl';
+		$return['min'] = 1;
+		$return['max'] = 10;
+		$return['step'] = 1;
+		break;
+		case 6:
+		$return['uts'] = 'pkt';
+		$return['min'] = 1;
+		$return['max'] = 10;
+		$return['step'] = 1;
+		break;
+	}								
+	
 	
 	if ($row["name_line1"] != ""){
 		$return["status"] = "ok";
 		$return["err"] = "None";
 		$return["name1"] = $row["name_line1"];
 		$return["name2"] = $row["name_line2"];
+		$return["utPrice"] = $row["price_q1"];
 	}
 	else {
 		$return["status"] = "error";

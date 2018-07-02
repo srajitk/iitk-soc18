@@ -16,7 +16,7 @@ $(Document).ready(function () {
 					var name1 = x['name1'];
 					var name2 = x['name2'];
 					var newHtml = "";
-					newHtml += '<img src = "'+ src +'"></img>';
+					newHtml += '<img src = "'+ src +'" title = "'+fvid+'"></img>';
 					newHtml += '<div id = "fvname">';
 					if (name2 == ""){
 						newHtml += name1;
@@ -25,8 +25,18 @@ $(Document).ready(function () {
 					}
 					newHtml += '</div>';
 					$(".place #vegDetails .dynamic").html(newHtml);
+					$("#orderDetails").show();
 					$(".place #vegDetails .const").show();
 					$("#vegDetails").attr('name', fvid);
+					$("#orderForm span.units").html(x['uts']);
+					$("#orderForm input[name = quantity]").attr('min', x['min']);
+					$("#orderForm input[name = quantity]").attr('max', x['max']);
+					$("#orderForm input[name = quantity]").attr('step', x['step']);
+					$("#orderDetails .static").html("Price of " + x['min'] + x['uts'] + " is Rs " + x['utPrice']);
+					$("#orderDetails .hidden p[name=cost]").html(x['utPrice']);
+					$("#orderDetails .hidden p[name=ut]").html(x['min']);
+				} else {
+					alert("something not ok in data recieved from backend");
 				}
 			},
 			error: function (data) {

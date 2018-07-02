@@ -2,8 +2,7 @@ $(Document).ready(function () {
 	
 	var mobno, email, psd, accType, loginType;
 	
-    $("div.loginForm button.proceedBtn").click(function () {
-//		alert("hello");
+    $("div.loginForm button.proceedBtn").click(function () { 	
 		accType = $("div.loginForm input:radio[name=accType]:checked").attr("value");
 		loginType = $("div.loginForm input:radio[name=loginType]:checked").attr("value");
 		if (loginType == "mobno" && accType != undefined){
@@ -70,6 +69,7 @@ $(Document).ready(function () {
 						email: email,
 					};
 				}
+				
 				$.ajax({
 					type:"POST",
 					dataType: "json",
@@ -106,8 +106,6 @@ $(Document).ready(function () {
 										if (accType == "farmer"){
 											window.location.replace("farmer.php");
 										} else if (accType == "buyer") {
-											alert(data);
-											alert(JSON.stringify(data));
 											window.location.replace("buyer.php");
 										}
 										
@@ -126,8 +124,8 @@ $(Document).ready(function () {
 						}
 					},
 					error: function (data) {
-						alert(JSON.stringify(data));
 						alert("something went wrong");
+						alert(JSON.stringify(data));
 					}
 				});
 			}
