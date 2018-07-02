@@ -1,0 +1,85 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+
+body {
+	background: url("../images/basketsFaded.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+}
+
+.profile {
+	position:absolute;
+	right: 5vw;
+	width: 30vw;
+	max-width: 300px;
+	min-width: 150px;
+	top: 5vh;
+	bottom: 5vh;
+	padding: 3vh 3vw;
+	font-size: 2.2vh;
+	background: rgba(255,255,255, 0.84);
+	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+}
+
+.profile button {	
+	margin-right:auto;
+	margin-left:auto;
+	padding: 0 25px;
+	font-family: Montserrat-Bold;	
+	text-transform: uppercase;
+	font-size: 1.8vh;
+	color:#fff;
+	background: #57b846;	
+	line-height: 1.5;
+	height: 4.8vh;
+	/*border-radius: 2.4vh;*/
+	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+	
+}
+.profile button:hover{
+	background-color:#338333;
+}
+
+@media all and (max-width:30em){
+	.profile button {
+		display:block;
+		margin:0.2em auto;
+	}
+}

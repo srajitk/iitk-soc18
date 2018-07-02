@@ -1,0 +1,367 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+
+body {
+	background: url("../images/basketsFaded.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+}
+
+/* Profile */
+.profile {
+	position:absolute;
+	right: 5vw;
+	width: 30vw;
+	max-width: 300px;
+	min-width: 150px;
+	top: 5vh;
+	bottom: 5vh;
+	padding: 3vh 3vw;
+	font-size: 2.2vh;
+	background: rgba(255,255,255, 0.84);
+	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+}
+
+.profile button {	
+	margin-right:auto;
+	margin-left:auto;
+	padding: 0 25px;
+	font-family: Montserrat-Bold;	
+	text-transform: uppercase;
+	font-size: 1.8vh;
+	color:#fff;
+	background: #07af1a;	
+	line-height: 1.5;
+	height: 4.8vh;
+	/*border-radius: 2.4vh;*/
+	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+	
+}
+.profile button:hover{
+	background-color:#338333;
+}
+
+@media all and (max-width:30em){
+	.profile button {
+		display:block;
+		margin:0.2em auto;
+	}
+}
+
+/* Order Portal */
+.orderPortal {
+	position:absolute;
+	right: 5vw;
+	width: 84vw;
+	max-width: 1500px;
+	top: 2.5vh;
+	bottom: 2.5vh;
+	font-size: 16px;
+	background: rgba(255,255,255, 0.84);
+	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+	overflow: auto;
+	font-family: Poppins-Medium;
+}
+
+ /* Style the tab */
+#helper {
+	width: 96%;
+	margin: 12px auto; 
+	height:  80px;
+	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+	padding: 16px;
+}
+ 
+#menu {
+	width: 96%;
+	margin: 12px auto; 
+	height:  226px;
+	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#orderDetails {
+	width: 96%;
+	margin: 12px auto;
+	height: 320px;
+	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	display:flex;
+	overflow: auto;
+}
+ 
+.orderPortal .itemselector {
+    /*border: 1px solid #ccc;*/
+    background-color: #f1f1f1;
+	width: 100%;
+	height: 54px;
+	overflow: auto;
+	/*height: 279px;
+	overflow: auto;
+	float: left;*/
+}
+
+/* Style the buttons that are used to open the tab content */
+.itemselector button {
+    /*display: block;*/
+	height: 54px;
+    background-color: inherit;
+	font-size: 13px;
+    color: black;
+    padding: 6px;
+    width: 	11.1%;
+	min-width: 80px;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+	
+	float: left;
+}
+
+.itemselector button[name=potatoGourds] {
+	width: 11.2%;
+}
+
+/* Change background color of buttons on hover */
+.itemselector button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.itemselector button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    /*border: 1px solid #ccc;*/
+    width: 100%;
+    border-left: none;
+    height: 172px;
+	background: white;
+	overflow: auto;
+	display:block;
+} 
+
+.tabheader {
+	height: 60px;
+	padding: 12px;
+	border-bottom: 2px solid #ccc;
+}
+
+.imgbox {
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	cursor: pointer;
+	float:left;
+	padding: 4px;
+}
+
+.imgbox img {
+	border: none;
+    display: block;
+
+}
+
+.imgbox :hover {
+	box-shadow: 0 0.5vw 1.5vh 0 rgba(0, 0, 0, 0.1), 0 0.75vw 2vh 0 rgba(0, 0, 0, 0.05);
+	transition: all 0.4s;
+}
+
+.imgbox :active {
+	box-shadow: 0 0.1vw 0.33vh 0 rgba(0, 0, 0, 0.2), 0 0.25vw 0.75vh 0 rgba(0, 0, 0, 0.1);
+	transition: all 0.2s;
+}
+
+.imageSpace {
+	height: 172px;
+	padding: 6px;
+}
+
+/* Individual Veg Details*/
+#vegDetails {
+	width: 200px;
+	padding: 12px;
+
+	margin: 12px;
+
+	
+	border-right: 1px solid #ccc;
+}
+
+#vegDetails img {
+	width: 126px;
+	height: 126px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	display: block;
+	margin: auto;
+}
+
+#vegDetails #fvname {
+	width: 100%;
+	height: 3em;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	/*border-bottom: 1px solid #ccc;*/
+}
+
+#vegDetails button {
+	font-size: 18px;
+	margin: 16px auto;
+	padding: 12px;
+	border-radius: 6px;
+	display: block;
+	background: #07af1a;
+	opacity: 0.9;
+	color: white;
+	font-family: Poppins-Bold;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#vegDetails button:hover {
+	opacity: 1;
+	transition: all 0.4s;
+}
+
+#vegDetails button:active {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#orderDetails #orderForm {
+	width: 360px;
+	padding: 12px;
+	margin-left: 12px;
+}
+
+#orderForm input {
+	display: inline;
+	
+}
+
+#orderForm input[type = number] {
+	border: 3px solid #ccc !important;
+}
+
+#orderForm button[name = confirm] {
+	background: green;
+	display: block;
+	width: 80%;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;	
+	height: 2.5em;
+	color: white;
+	font-size: 20px;
+	background-color: #07af1a;
+	opacity: 0.96;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#orderForm button[name = confirm]:hover {
+	opacity: 1;
+	transition: all 0.4s;
+}
+
+#orderForm button[name = confirm]:active {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#orderForm button[name = confirm]:disabled {
+	background-color: #777;
+	transition: all 0.4s;
+}
+
+#pay button[name = pay] {
+	background: green;
+	display: block;
+	width: 80%;
+	margin: 20px auto;
+	height: 2.5em;
+	color: white;
+	font-size: 20px;
+	background-color: #07af1a;
+	opacity: 0.96;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#pay button[name = pay]:hover {
+	opacity: 1;
+	transition: all 0.4s;
+}
+
+#pay button[name = pay]:active {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#pay button[name = pay]:disabled {
+	background-color: #777;
+	transition: all 0.4s;
+}
+
+#orderDetails #pay {
+	width: 600px;
+	padding: 12px;
+	margin-left: 12px;
+}
+
+#pay #imgspace img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	display: block;
+	float:left;
+	/*margin: auto;*/
+}

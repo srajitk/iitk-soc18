@@ -121,7 +121,7 @@
 			$result = mysqli_query($cxn, $chkquery) or die("couldn't excecute query");
 			$row = mysqli_fetch_assoc($result);
 			if ($row["taken"] == 1){
-				$return["msg"] += "mobile number already taken; ";
+				$return["msg"] .= "mobile number already taken; ";
 				exit(json_encode($return));
 			}
 			// checking if the email id is taken
@@ -129,7 +129,7 @@
 			$result2 = mysqli_query($cxn, $chkquery) or die("couldn't excecute query");
 			$row2 = mysqli_fetch_assoc($result);
 			if ($row2["taken"] == 1){
-				$return["msg"] += "email already taken";
+				$return["msg"] .= "email already taken";
 				exit(json_encode($return));
 			}
 				
