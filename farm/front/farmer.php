@@ -190,7 +190,69 @@
 				</div>
 			</div>
 		</div>
-
+	<div class="limiter contactUs" style = "display:none;">	
+		<div class="wthree-dot">
+			<h1>Contact our team</h1>
+			<div class="profile2">
+				<div class="wrap">
+					<!-- contact -->
+					<div class="contact">
+						<div class="contact-row agileits-w3layouts">  
+							<div class="contact-w3lsleft">
+								<div class="contact-grid agileits">
+									<h4>DROP US A LINE </h4>
+									<form action="#" method="post"> 
+										<input type="text" name="Name" placeholder="Name" required="">
+										<input type="email" name="Email" placeholder="Email" required=""> 
+										<input type="text" name="Phone Number" placeholder="Phone Number" required="">
+										<textarea name="Message" placeholder="Message..." required=""></textarea>
+										<input type="submit" value="Submit" >
+									</form> 
+								</div>
+							</div>
+							<div class="contact-w3lsright">
+								<div class="agileits-contact-right">
+									<h2>Our Contacts</h2>
+									<div class="address-row">
+										<div class="address-left">
+											<i class="fa fa-home" aria-hidden="true"></i>
+										</div>
+										<div class="address-right">
+											<h5>Visit Us</h5>
+											<p>Office address</p>
+										</div>
+										<div class="clear"> </div>
+									</div>
+									<div class="address-row w3-agileits">
+										<div class="address-left">
+											<i class="fa fa-envelope" aria-hidden="true"></i>
+										</div>
+										<div class="address-right">
+											<h5>Mail Us</h5>
+											<p><a href="mailto:info@example.com"> abc@xyz.com</a></p>
+										</div>
+										<div class="clear"> </div>
+									</div>
+									<div class="address-row">
+										<div class="address-left">
+											<i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+										</div>
+										<div class="address-right">
+											<h5>Call Us</h5>
+											<p>1234567890</p>
+										</div>
+										<div class="clear"> </div>
+									</div> 
+								</div>
+							</div>
+							<div class="clear"> </div>
+						</div>	
+					</div> 
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!--===================================================scripts loaded from table template =========-->	
 		<script src="jslibs/jquery/jquery-3.2.1.min.js"></script>
