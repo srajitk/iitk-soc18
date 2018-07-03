@@ -372,7 +372,7 @@
 											</div>
 											<div class="address-right">
 												<h5>Mail Us</h5>
-												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in</a></p>
+												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in,srajitk@iitk.ac.in,shobhitj@iitk.ac.in</a></p>
 											</div>
 											<div class="clear"> </div>
 										</div>
@@ -382,7 +382,7 @@
 											</div>
 											<div class="address-right">
 												<h5>Call Us</h5>
-												<p>9868110215</p>
+												<p>9868110215,7355601852,9417281099</p>
 											</div>
 											<div class="clear"> </div>
 										</div> 

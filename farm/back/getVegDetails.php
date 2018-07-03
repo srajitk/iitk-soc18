@@ -18,7 +18,7 @@
 		exit(json_encode($return));
 	}
 	
-	if (preg_match('/^d{0,3}$/', $fv)) {
+	if (preg_match('/^\d{0,3}$/', $fv)) {
 		
 		$fv = mysqli_real_escape_string($cxn, $fv);
 		
@@ -85,6 +85,6 @@
 			$return["status"] = "error";
 			$return["err"] = "couldn't find item";
 		}
+		exit(json_encode($return));
 	}
-	exit(json_encode($return));
 ?>

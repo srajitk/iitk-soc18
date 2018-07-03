@@ -1,5 +1,4 @@
 $(Document).ready(function () {		
-
 	var detailok1 = false;		// qlty, qty
 	var detailok2 = false;		// dates
 	var detailok3 = true;		// misc
@@ -36,6 +35,7 @@ $(Document).ready(function () {
 	}
 
 	$(".imageSpace").on("click", ".imgbox", function () {
+		//alert("hello");
 		var fvid = ($(this).attr('id')).slice(2);
 		var src = $(this).children().attr('src');
 		var vdata = {
@@ -47,7 +47,7 @@ $(Document).ready(function () {
 			data: vdata,
 			url: "http://localhost/farm/back/getVegDetails.php",
 			success: function (data) {
-				x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP?? 
+				var x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP?? 
 				if (x['status'] == "ok"){
 					var name1 = x['name1'];
 					var name2 = x['name2'];

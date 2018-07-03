@@ -31,7 +31,6 @@ body {
 	background-size: cover;	
 }
 
-/* Profile */
 .profile {
 	position:absolute;
 	right: 5vw;
@@ -275,6 +274,8 @@ body {
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Now different from farmer.css */
+
 #orderDetails #orderForm {
 	width: 360px;
 	padding: 12px;
@@ -282,8 +283,7 @@ body {
 }
 
 #orderForm input {
-	display: inline;
-	
+	display: inline;	
 }
 
 #orderForm input[type = number] {

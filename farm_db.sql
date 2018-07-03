@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2018 at 05:14 AM
+-- Generation Time: Jul 03, 2018 at 06:27 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -347,26 +347,17 @@ INSERT INTO `item_details_tbl` (`item_no`, `file_name`, `image_name`, `name_line
 
 CREATE TABLE `orders_placed` (
   `orderid` int(11) NOT NULL,
-  `food` text NOT NULL,
-  `category` text NOT NULL,
+  `farmer_id` int(10) UNSIGNED NOT NULL,
+  `food` varchar(32) NOT NULL,
   `Cost` int(11) NOT NULL,
   `transport` tinyint(1) NOT NULL DEFAULT '0',
   `A` int(11) NOT NULL,
   `B` int(11) NOT NULL,
   `C` int(11) NOT NULL,
-  `date_harvest` date NOT NULL,
-  `date_deliver` date NOT NULL,
-  `image_path` text
+  `date_harvest` datetime NOT NULL,
+  `date_deliver` datetime NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orders_placed`
---
-
-INSERT INTO `orders_placed` (`orderid`, `food`, `category`, `Cost`, `transport`, `A`, `B`, `C`, `date_harvest`, `date_deliver`, `image_path`) VALUES
-(1, 'tamatar', 'fruits', 1000, 1, 100, 10, 1, '2018-07-24', '2018-08-01', 'tamatar_1'),
-(2, 'tamatar', 'fruits', 1000, 1, 100, 10, 1000, '2018-07-24', '2018-08-01', 'tamatar_2'),
-(3, 'tamatar', 'fruits', 1000, 1, 100, 10, 1000, '2018-07-24', '2018-08-01', 'tamatar_3');
 
 --
 -- Indexes for dumped tables
@@ -410,7 +401,8 @@ ALTER TABLE `item_details_tbl`
 -- Indexes for table `orders_placed`
 --
 ALTER TABLE `orders_placed`
-  ADD PRIMARY KEY (`orderid`);
+  ADD PRIMARY KEY (`orderid`),
+  ADD KEY `farmer_id` (`farmer_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -438,7 +430,7 @@ ALTER TABLE `farmer_tbl`
 -- AUTO_INCREMENT for table `orders_placed`
 --
 ALTER TABLE `orders_placed`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -450,6 +442,12 @@ ALTER TABLE `orders_placed`
 ALTER TABLE `buy_contracts_tbl`
   ADD CONSTRAINT `buyer_withdrawal` FOREIGN KEY (`buyer_id`) REFERENCES `buyer_tbl` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `item_withdrawal` FOREIGN KEY (`fv_id`) REFERENCES `item_details_tbl` (`item_no`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders_placed`
+--
+ALTER TABLE `orders_placed`
+  ADD CONSTRAINT `orders_placed_ibfk_1` FOREIGN KEY (`farmer_id`) REFERENCES `farmer_tbl` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
