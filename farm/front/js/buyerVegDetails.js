@@ -1,4 +1,40 @@
 $(Document).ready(function () {		
+
+	var detailok1 = false;		// qlty, qty
+	var detailok2 = false;		// dates
+	var detailok3 = true;		// misc
+	
+	var k1 = false;
+	var k2 = false;
+	
+	var chkqty = function () {
+		k2 = ($("#orderForm input[type=number]:valid").length > 0);
+		if (k1 && k2){
+			detailok1 = true;
+			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+		}
+		
+		if (k1 && !k2) {
+			detailok1 = false;
+			$("#orderForm button[name = confirm]").prop('disabled', true);
+		}
+	}
+	
+	var chkDate = function () {
+		var dt = new Date($("#orderForm input[type = date]").val());
+		var min = new Date();
+		var max = new Date();
+		min.setDate(min.getDate() + 1);
+		max.setDate(max.getDate() + 90);
+		if (min < dt && max > dt){
+			detailok2 = true;
+			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+		} else {
+			detailok2 = false;
+			$("#orderForm button[name = confirm]").prop('disabled', true);
+		}
+	}
+
 	$(".imageSpace").on("click", ".imgbox", function () {
 		var fvid = ($(this).attr('id')).slice(2);
 		var src = $(this).children().attr('src');
@@ -16,7 +52,7 @@ $(Document).ready(function () {
 					var name1 = x['name1'];
 					var name2 = x['name2'];
 					var newHtml = "";
-					newHtml += '<img src = "'+ src +'" title = "'+fvid+'"></img>';
+					newHtml += '<img src = "'+ src +'" name = "'+fvid+'"></img>';
 					newHtml += '<div id = "fvname">';
 					if (name2 == ""){
 						newHtml += name1;
@@ -35,6 +71,8 @@ $(Document).ready(function () {
 					$("#orderDetails .static").html("Price of " + x['min'] + x['uts'] + " is Rs " + x['utPrice']);
 					$("#orderDetails .hidden p[name=cost]").html(x['utPrice']);
 					$("#orderDetails .hidden p[name=ut]").html(x['min']);
+					chkDate();
+					chkqty();
 				} else {
 					alert("something not ok in data recieved from backend");
 				}
@@ -45,4 +83,17 @@ $(Document).ready(function () {
 			},
 		});
 	});
+
+	// the clicking of a radio cannot be undone, therefore k1 starts as false and turns true on the first click
+	$("#orderForm input:radio").click(function () {
+		k1 = true;
+		if (k1 && k2) {
+			detailok1 = true;
+			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
+		}
+	});
+	
+	$("#orderForm input[type=number]").keyup(chkqty);
+	$("#orderForm input[type=number]").change(chkqty);
+	$("#orderForm input[type = date]").change(chkDate);
 });

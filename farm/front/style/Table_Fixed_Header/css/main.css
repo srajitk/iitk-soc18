@@ -157,14 +157,15 @@ iframe {
   justify-content: center;*/
   flex-wrap: wrap;
   padding: 3vh 3vw;
+  overflow: auto;
 }
 
 .wrap-table100 {
 	margin-left:6vw;
   /*width: 1170px;*/ width: 80vw;
-  min-width:400px;
+  min-width: 1000px;
 }
-
+	
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 .table100 {
@@ -180,29 +181,50 @@ th, td {
   padding-right: 10px; 
 }
 
-.column1 {
+.queue .column1 {
   width: 37%;
   padding-left: 20px;
 }
 
-.column2 {
+.queue .column2 {
   width: 22%;
 }
 
-.column3 {
+.queue .column3 {
   width: 7%;
 }	
 
-.column4 {
+.queue .column4 {
   width: 7%;
 }
 
-.column5 {
+.queue .column5 {
   width: 7%;
 }
 
-.column6 {
+.queue .column6 {
   width: 20%;
+}
+
+.cart .column1 {
+  width: 45%;
+  padding-left: 20px;
+}
+
+.cart .column2 {
+  width: 25%;
+}
+
+.cart .column3 {
+  width: 10%;
+}	
+
+.cart .column4 {
+  width: 10%;
+}
+
+.cart .column5 {
+  width: 10%;
 }
 
 .table100-head th {
@@ -457,8 +479,7 @@ th, td {
 }
 
 .table100.ver5 th {
-  font-family: Lato-Bold;
-  font-size: 1vw;	
+  font-size: 18px;	
   color: #363636;
   line-height: 1.4;
   text-transform: uppercase;
@@ -467,8 +488,7 @@ th, td {
 }
 
 .table100.ver5 td {
-  font-family: Lato-Regular;
-  font-size: 0.8vw;
+  font-size: 16px;
   color: #404040;
   line-height: 1.4;
 
@@ -478,29 +498,29 @@ th, td {
 
 .table100.ver5 .table100-body tr {
   overflow: hidden; 
-  border-bottom: 0.6vw solid #fff;
-  border-radius: 0.6vw;
+  border-bottom: 10px solid #fff;
+  border-radius: 10px;
 }
 
 .table100.ver5 .table100-body table { 
   border-collapse: separate; 
-  border-spacing: 0 0.6vw; 
+  border-spacing: 0 10px; 
 }
 
 .table100.ver5 .table100-body td {
     border: solid 1px transparent;
     border-style: solid none;
-    padding:0.6vw;
+    padding:10px;
 }
 .table100.ver5 .table100-body td:first-child {
     border-left-style: solid;
-    border-top-left-radius: 0.6vw; 
-    border-bottom-left-radius: 0.6vw;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
 }
 .table100.ver5 .table100-body td:last-child {
     border-right-style: solid;
-    border-bottom-right-radius: 0.6vw; 
-    border-top-right-radius: 0.6vw; 
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
 }
 
 .table100.ver5 tr:hover td {
@@ -510,17 +530,17 @@ th, td {
 
 .table100.ver5 .table100-head th:first-child {
     border-left-style: solid;
-    border-top-left-radius: 0.6vw; 
-    border-bottom-left-radius: 0.6vw;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
 }
 .table100.ver5 .table100-head th:last-child {
     border-right-style: solid;
-    border-bottom-right-radius: 0.6vw; 
-    border-top-right-radius: 0.6vw; 
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
 }
 
 .table100.ver5 .table100-head th {
-  padding:0.8vw;
+  padding:12px;
 }
 
 /*---------------------------------------------*/

@@ -45,14 +45,15 @@
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/main.css">
 		<!--===============================================================================================-->
 		
-		
-				
+						
 		<link rel = "stylesheet" type = "text/css" href="style/sideIcons/sidebar.css">
+		<link rel = "stylesheet" type = "text/css" href="style/general/style.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/buyer.css">
 		
 		<script src = "jslibs/jquery.js"></script>
 		<script src = "js/logout.js"></script>
 		<script src = "js/loadicons.js"></script>
+		<script src = "js/loadCart.js"></script>
 		<script src = "js/buyerVegDetails.js"></script>
 		
 		<script>
@@ -71,56 +72,6 @@
 					}
 				});
 			});
-		</script>
-		<script>
-		
-		var detailok1 = false;		// qlty, qty
-		var detailok2 = false;		// dates
-		var detailok3 = true;		// misc
-		
-		var k1 = false;
-		var k2 = true;
-		$(Document).ready(function () {
-			$("#orderForm input:radio").click(function () {
-				if (!k1 && k2) {
-					detailok1 = true;
-					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
-					
-				}
-				k1 = true;
-			});
-			$("#orderForm input[type=number]").keyup(function () {
-				k2 = ($("#orderForm input[type=number]:valid").length > 0);
-				if (k1 && k2){
-					detailok1 = true;
-					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
-				}
-				
-				if (k1 && !k2) {
-					detailok1 = false;
-					$("#orderForm button[name = confirm]").prop('disabled', true);
-					
-				}
-			});
-		
-			var chkDate = function () {
-				var dt = new Date($("#orderForm input[type = date]").val());
-				var min = new Date();
-				var max = new Date();
-				min.setDate(min.getDate() + 1);
-				max.setDate(max.getDate() + 90);
-				if (min < dt && max > dt){
-					detailok2 = true;
-					$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
-				} else {
-					detailok2 = false;
-					$("#orderForm button[name = confirm]").prop('disabled', true);
-				}
-			}
-			
-			$("#orderForm input[type = date]").change(chkDate);
-		});
-		
 		</script>
 		<script>
 		
@@ -151,8 +102,8 @@
 					
 					//html tag formation
 					var s = $(".dynamic img").attr('src');
-					var n = $(".dynamic img").attr('title');
-					var tag = '<img src = "'+s+'"  title = "'+n+'">';
+					var n = $(".dynamic img").attr('name');
+					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"></div></div>';
 					
 					//object formation
 					var categ = $("#orderForm input[name = qlty]:checked").val();
@@ -167,20 +118,25 @@
 					};
 					
 					//front end mgmt					
-					var prev = parseInt($("#cost").html());
-					var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
-					$("#cost").html(curr);
 					
 					if (present.includes(n)) {
-						alert("overriding previous order");
-						$("#pay #imgspace img[title = "+n+"]").remove();
+						alert("order already placed")
+						/*alert("overriding previous order");
+						$("#pay #imgspace div[name = "+n+"]").remove();
 						$("#pay #imgspace").append(tag);
 						removeByAttr(details, 'id', n);
 						details.push(obj);
+						var prev = parseInt($("#cost").html());
+						var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
+						$("#cost").html(curr);*/
+
 					} else {
 						$("#pay #imgspace").append(tag);
 						present.push(n);
 						details.push(obj);
+						var prev = parseInt($("#cost").html());
+						var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
+						$("#cost").html(curr);
 					}
 					
 					if (present.length > 0) {
@@ -283,6 +239,7 @@
 					<div id = "orderDetails" style = "display:none;">
 						<div id = "vegDetails">
 							<div class = "dynamic"></div>
+							<br />
 							<div class = "static"></div>
 							<div class = "hidden" style = "display:none;">
 								<p name = 'ut'></p>
@@ -295,7 +252,7 @@
 								<input type = "radio" name = "qlty" value = "b" />B
 								<input type = "radio" name = "qlty" value = "c" />C<br /><br />
 							Quantity (in <span class = "units">kg</span>):
-								<input type = "number" name = "quantity" min = "1" max = "1000" step = "0.5" value = "1" required /><br /><br />
+								<input type = "number" name = "quantity" required /><br /><br />
 							Date Of Delivery:
 								<input type = "date" name = "orderDate"/>
 							<button type = "submit" name = "confirm" disabled>Confirm</button>
@@ -310,70 +267,134 @@
 			</div>
 		</div>
 		<div class="limiter cart" style = "display:none;">
-		</div>
-<div class="limiter contactUs" style = "display:none;">	
-		<div class="wthree-dot">
-			<h1>Contact our team</h1>
-			<div class="profile2">
-				<div class="wrap">
-					<!-- contact -->
-					<div class="contact">
-						<div class="contact-row agileits-w3layouts">  
-							<div class="contact-w3lsleft">
-								<div class="contact-grid agileits">
-									<h4>DROP US A LINE </h4>
-									<form action="#" method="post"> 
-										<input type="text" name="Name" placeholder="Name" required="">
-										<input type="email" name="Email" placeholder="Email" required=""> 
-										<input type="text" name="Phone Number" placeholder="Phone Number" required="">
-										<textarea name="Message" placeholder="Message..." required=""></textarea>
-										<input type="submit" value="Submit" >
-									</form> 
-								</div>
-							</div>
-							<div class="contact-w3lsright">
-								<div class="agileits-contact-right">
-									<h2>Our Contacts</h2>
-									<div class="address-row">
-										<div class="address-left">
-											<i class="fa fa-home" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Visit Us</h5>
-											<p>Office address</p>
-										</div>
-										<div class="clear"> </div>
-									</div>
-									<div class="address-row w3-agileits">
-										<div class="address-left">
-											<i class="fa fa-envelope" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Mail Us</h5>
-											<p><a href="mailto:info@example.com"> abc@xyz.com</a></p>
-										</div>
-										<div class="clear"> </div>
-									</div>
-									<div class="address-row">
-										<div class="address-left">
-											<i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-										</div>
-										<div class="address-right">
-											<h5>Call Us</h5>
-											<p>1234567890</p>
-										</div>
-										<div class="clear"> </div>
-									</div> 
-								</div>
-							</div>
-							<div class="clear"> </div>
-						</div>	
-					</div> 
-					
+			<div class="container-table100">
+				<div class="wrap-table100">
+					<div class="table100 ver5">
+						<div class="table100-head">
+							<table>
+								<thead>
+									<tr class="row100 head">
+										<th class="cell100 column1">Veg/Fruit Name</th>
+										<th class="cell100 column2">Date of Delivery</th>
+										<th class="cell100 column3">Quantity</th>
+										<th class="cell100 column4">Category</th>
+										<th class="cell100 column5">Price</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+
+						<div class="table100-body js-pscroll">
+							<table>
+								<tbody>
+									<tr class="row100 body">
+										<td class="cell100 column1">Alpha </td>
+										<td class="cell100 column2">100 kg</td>
+										<td class="cell100 column3">80</td>
+										<td class="cell100 column4">10</td>
+										<td class="cell100 column5">10</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column1">Phi</td>
+										<td class="cell100 column2">10000 kg</td>
+										<td class="cell100 column3">70</td>
+										<td class="cell100 column4">30</td>
+										<td class="cell100 column5">0</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column1">Aditya Shivaji Yemulwad</td>
+										<td class="cell100 column2">10 kg</td>
+										<td class="cell100 column3">40</td>
+										<td class="cell100 column4">45</td>
+										<td class="cell100 column5">15</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column1">Patel Preet Rajesh Kumar</td>
+										<td class="cell100 column2">10000 kg</td>
+										<td class="cell100 column3">0</td>
+										<td class="cell100 column4">85</td>
+										<td class="cell100 column5">15</td>
+									</tr>
+									
+									<tr class="row100 body">
+										<td class="cell100 column1">Gamma</td>
+										<td class="cell100 column2">100 kg</td>
+										<td class="cell100 column3">0</td>
+										<td class="cell100 column4">85</td>
+										<td class="cell100 column5">15</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="limiter contactUs" style = "display:none;">	
+			<div class="wthree-dot">
+				<h1>Contact our team</h1>
+				<div class="profile2">
+					<div class="wrap">
+						<!-- contact -->
+						<div class="contact">
+							<div class="contact-row agileits-w3layouts">  
+								<div class="contact-w3lsleft">
+									<div class="contact-grid agileits">
+										<h4>DROP US A LINE </h4>
+										<form action="#" method="post"> 
+											<input type="text" name="Name" placeholder="Name" required="">
+											<input type="email" name="Email" placeholder="Email" required=""> 
+											<input type="text" name="Phone Number" placeholder="Phone Number" required="">
+											<textarea name="Message" placeholder="Message..." required=""></textarea>
+											<input type="submit" value="Submit" >
+										</form> 
+									</div>
+								</div>
+								<div class="contact-w3lsright">
+									<div class="agileits-contact-right">
+										<h2>Our Contacts</h2>
+										<div class="address-row">
+											<div class="address-left">
+												<i class="fa fa-home" aria-hidden="true"></i>
+											</div>
+											<div class="address-right">
+												<h5>Visit Us</h5>
+												<p>IIT Kanpur, Hall 5</p>
+											</div>
+											<div class="clear"> </div>
+										</div>
+										<div class="address-row w3-agileits">
+											<div class="address-left">
+												<i class="fa fa-envelope" aria-hidden="true"></i>
+											</div>
+											<div class="address-right">
+												<h5>Mail Us</h5>
+												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in</a></p>
+											</div>
+											<div class="clear"> </div>
+										</div>
+										<div class="address-row">
+											<div class="address-left">
+												<i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+											</div>
+											<div class="address-right">
+												<h5>Call Us</h5>
+												<p>9868110215</p>
+											</div>
+											<div class="clear"> </div>
+										</div> 
+									</div>
+								</div>
+								<div class="clear"> </div>
+							</div>	
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 	<!--===================================================scripts loaded from table template =========-->	

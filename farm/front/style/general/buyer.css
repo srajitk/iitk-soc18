@@ -335,6 +335,27 @@ body {
 	transition: all 0.4s;
 }
 
+@media (max-width: 1080px) {
+	#pay button[name = pay] {
+		font-size: 14px;
+	}
+	.orderPortal {
+		font-size: 12px;
+	}
+	
+	.itemselector button {
+		font-size: 11px;
+	}
+	
+	#vegDetails button {
+		font-size: 14px;
+	}
+	
+	#orderForm button[name = confirm] {
+		font-size: 14px;
+	}
+}
+
 #pay button[name = pay]:hover {
 	opacity: 1;
 	transition: all 0.4s;
@@ -361,7 +382,40 @@ body {
 	height: 60px;
 	border-radius: 50%;
 	border: 2px solid #ccc;
+	/*margin: auto;*/
+}
+
+.orderImgPlace {
+	width: 60px;
+	height: 60px;
 	display: block;
 	float:left;
-	/*margin: auto;*/
+	
+}
+
+.tip {
+	display: none;
+    width: 120px;
+	height: 240px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+
+.orderImgPlace:hover .tip{
+	display: inline;
+}
+
+.cart th{
+	font-family: Montserrat-bold;
+}
+.cart td{
+	font-family: Poppins-regular;
 }
