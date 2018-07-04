@@ -1,4 +1,4 @@
-<?php
+<?php 
 	session_start();
 	if (empty($_SESSION['user_id']) or empty($_SESSION['accType'])){
 		header("Location: index.php");
@@ -7,6 +7,7 @@
 	}
 	else{
 		$return = "";
+		$ratio=1;	
 		foreach ($_POST as $order){
 				
 			switch($order['cat']){
@@ -14,7 +15,7 @@
 				case "b": $ratio=0.75; break;
 				case "c": $ratio=0.4; break;
 			}
-				
+				exit(JSON_encode($ratio);
 			$host = "localhost";
 			$username = "root";
 			$dbname = "farm_db";
@@ -43,7 +44,7 @@
 
 					if (mysqli_num_rows($result) == 0) {
 						$return['k'] = "inside";
-						$query = "INSERT INTO `buy_contracts_tbl` (`buyer_id`, `fv_id`, `Date`, `qty`, `category`, `Amount`) VALUES ('".$_SESSION['user_id']."', '".$order['id']."', '".$order['date']."', '".$order['qty']."', '".$order['cat']."', ".$price*$order['qty'].")";
+						$query = "INSERT INTO `buy_contracts_tbl` (`buyer_id`, `fv_id`, `Date`, `qty`, `category`, `Amount`) VALUES ('".$_SESSION['user_id']."', '".$order['id']."', '".$order['date']."', '".$order['qty']."', '".$order['cat']."', ".$price*$order['qty']*$ratio.")";
 						mysqli_query($cxn, $query) or die ("couldn't execute query");
 					} elseif (mysqli_num_rows($result) == 1) {
 						$row = mysqli_fetch_assoc($result);

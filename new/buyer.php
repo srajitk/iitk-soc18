@@ -163,7 +163,7 @@
 						type: "POST",
 						datatype: "json",
 						data: x,
-						url: "http://localhost/farm/back/recBuyOrder.php",
+						url: "http://localhost/farm2/back/recBuyOrder.php",
 						success: function (data) {
 
 							alert(data);
