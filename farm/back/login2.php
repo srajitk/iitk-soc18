@@ -28,8 +28,6 @@
 	
 	$return = $_POST;
 	
-	$back_hash = hash("sha256", $front_hash);
-	
 	//retrieving the back hash from the database...
 	$host = "localhost";
 	$username = "root";
@@ -37,7 +35,7 @@
 	
 	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
-	$query = "SELECT `password_hash`,`user_id` FROM `".$tblName."` WHERE `".$paramName."` = '".$data."'";
+	$query = "SELECT `password_hash`,`user_id`, `salt1` FROM `".$tblName."` WHERE `".$paramName."` = '".$data."'";
 	
 	$result = mysqli_query($cxn, $query) or die("couldn't excecute query");
 	
@@ -45,6 +43,9 @@
 	
 	$hash = $row["password_hash"];
 	$usr = $row["user_id"];
+	$salt2 = $row["salt1"];
+	
+	$back_hash = hash("sha256", $front_hash.$salt2);
 	
 	$return["hash"] = $hash;
 	
