@@ -1,37 +1,37 @@
 <?php
 	$fv = $_POST['id'];
-	
+
 	/*$return = $_POST;
 	$return["A"] = 1;
 	$return['sdf'] = "sdf";*/
-	
+
 	$host = "localhost";
 	$username = "root";
 	$dbname = "farm_db";
-	
+
 	$cxn = mysqli_connect($host, $username, "", $dbname);
-	
+
 	if (mysqli_connect_errno()){
 		$return["status"] = "error";
 		$return["err"] = "couldn't connect to database";
-		$return["errmsg"] = mysqli_connect_error();	
+		$return["errmsg"] = mysqli_connect_error();
 		exit(json_encode($return));
 	}
-	
+
 	if (preg_match('/^\d{0,3}$/', $fv)) {
-		
+
 		$fv = mysqli_real_escape_string($cxn, $fv);
-		
+
 		$query = "SELECT `name_line1`, `name_line2`, `qty_slab_no`, `price_q1` FROM `farm_db`.`item_details_tbl` WHERE `item_details_tbl`.`item_no` = '$fv';";
-		
+
 		$result = mysqli_query($cxn, $query) or die ("couldn't execute query: $query");
-		
+
 		$row = mysqli_fetch_assoc($result);
-		
+
 		switch($row['qty_slab_no']) {
 			case 0:
 			$return['uts'] = 'kg';
-			$return['min'] = 1;	
+			$return['min'] = 1;
 			$return['max'] = 20;
 			$return['step'] = 1;
 			break;
@@ -71,9 +71,9 @@
 			$return['max'] = 10;
 			$return['step'] = 1;
 			break;
-		}								
-		
-		
+		}
+
+
 		if ($row["name_line1"] != ""){
 			$return["status"] = "ok";
 			$return["err"] = "None";

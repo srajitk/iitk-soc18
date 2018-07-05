@@ -5,7 +5,11 @@
 	$username = "root";
 	$dbname = "farm_db";
 
+<<<<<<< HEAD
 	$cxn = mysqli_connect($host, $username, "", $dbname);
+=======
+	$cxn = mysqli_connect($host, $username, "computer", $dbname);
+>>>>>>> 9b10d483d5e4a89fef3b59ccf9fd25aa270c2151
 	
 	$query = "SELECT `file_name`, `item_no` FROM `item_details_tbl` WHERE `tab_name` = '".$tabname."'";
 	
