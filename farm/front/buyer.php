@@ -6,26 +6,26 @@
 		exit();
 	}
 	else{
-		$usr = $_SESSION['user_id']; 
-		
+		$usr = $_SESSION['user_id'];
+
 		$host = "localhost";
 		$username = "root";
 		$dbname = "farm_db";
-		
+
 		$cxn = mysqli_connect($host, $username, "", $dbname);
-		
+
 		$query = "SELECT `first_name`,`last_name` FROM `buyer_tbl` WHERE `user_id` = '".$usr."'";
-		
+
 		$result = mysqli_query($cxn, $query) or die($query);
-		
+
 		$row = mysqli_fetch_assoc($result);
-		
+
 		$fname = $row['first_name'];
 		$lname = $row['last_name'];
-		
+
 		mysqli_close($cxn);
 	}
-	
+
 ?>
 <!DOCTYPE html>
 
@@ -33,8 +33,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-		
-		<!--============================================== styles loaded from table template ==============-->	
+
+		<!--============================================== styles loaded from table template ==============-->
 			<link rel="icon" type="image/png" href="style/login/images/icons/favicon.ico"/>
 			<link rel="stylesheet" type="text/css" href="jslibs/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href="style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -44,27 +44,27 @@
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/util.css">
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/main.css">
 		<!--===============================================================================================-->
-		
-						
+
+
 		<link rel = "stylesheet" type = "text/css" href="style/sideIcons/sidebar.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/style.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/buyer.css">
-		
+
 		<script src = "jslibs/jquery.js"></script>
 		<script src = "js/logout.js"></script>
 		<script src = "js/loadicons.js"></script>
 		<script src = "js/loadCart.js"></script>
 		<script src = "js/buyerVegDetails.js"></script>
-		
+
 		<script>
 			$(Document).ready(function () {
-				$(".icon-bar button").on('click', function () {					
+				$(".icon-bar button").on('click', function () {
 					$(this).siblings().removeClass('active');
 					$(this).toggleClass('active');
 					var txt = "." + ($(".icon-bar button.active").attr('name'));
-					
+
 					if ($(".limiter:visible").length > 0){
-						$(".limiter:visible").fadeOut(function () {						
+						$(".limiter:visible").fadeOut(function () {
 							$(txt).fadeIn();
 						});
 					} else {
@@ -74,13 +74,13 @@
 			});
 		</script>
 		<script>
-		
+
 			var removeByAttr = function(arr, attr, value){
 				var i = arr.length;
 				while(i--){
-				   if( arr[i] 
-					   && arr[i].hasOwnProperty(attr) 
-					   && (arguments.length > 2 && arr[i][attr] === value ) ){ 
+				   if( arr[i]
+					   && arr[i].hasOwnProperty(attr)
+					   && (arguments.length > 2 && arr[i][attr] === value ) ){
 
 					   arr.splice(i,1);
 
@@ -88,7 +88,7 @@
 				}
 				return arr;
 			}
-		
+
 			function toObject(arr) {
 			  var rv = {};
 			  for (var i = 0; i < arr.length; ++i)
@@ -98,27 +98,42 @@
 			var present = [];
 			var details = [];
 			$(Document).ready(function () {
+				var ratio =1;
+				var prev;
+				var curr;
+				var paise = [];
 				$("#orderForm button[name = confirm]").click(function () {
-					
-					//html tag formation
-					var s = $(".dynamic img").attr('src');
-					var n = $(".dynamic img").attr('name');
-					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"></div></div>';
-					
+
 					//object formation
 					var categ = $("#orderForm input[name = qlty]:checked").val();
 					var qty = $("#orderForm input[name=quantity]").val();
 					var date = $("#orderForm input[name=orderDate]").val();
-					
+					switch(categ){
+						case "a" : ratio =1; break;
+						case "b" : ratio = 0.75; break;
+						case "c" : ratio = 0.40; break;
+					}
+					//html tag formation
+					var p = $("#paisa").html();
+					var cat = "<label>Category:"+categ+"</label><br/>";
+					var quan = "<label>Quantity:"+qty+"</label><br/>";
+					var pa = "<label>Cost:"+p*qty*ratio+"</label><br/>";
+					var dod = "<label>Date of Delivery:"+date+"</label><br/>";
+					var s = $(".dynamic img").attr('src');
+					var n = $(".dynamic img").attr('name');
+					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"><label class="clearOrder">CLear Order   X</label><br/><br/>'+cat+quan+dod+pa+'</div></div>';
+					paise.push(p*qty*ratio);
+
+
 					var obj = {
 						id: n,
 						cat: categ,
 						qty:qty,
 						date: date
 					};
-					
-					//front end mgmt					
-					
+
+					//front end mgmt
+
 					if (present.includes(n)) {
 						alert("order already placed")
 						/*alert("overriding previous order");
@@ -134,11 +149,11 @@
 						$("#pay #imgspace").append(tag);
 						present.push(n);
 						details.push(obj);
-						var prev = parseInt($("#cost").html());
-						var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
+						prev = parseInt($("#cost").html());
+						curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) * ratio/ parseInt($("#orderDetails .hidden p[name=ut]").html());
 						$("#cost").html(curr);
 					}
-					
+
 					if (present.length > 0) {
 						$("#pay button[name = pay]").prop('disabled', false);
 					} else {
@@ -153,7 +168,8 @@
 						data: x,
 						url: "http://localhost/farm/back/recBuyOrder.php",
 						success: function (data) {
-							alert("order placed");
+
+							alert(data);
 						},
 						error: function (data) {
 							alert("couldn't place buy order");
@@ -161,23 +177,77 @@
 						},
 					});
 				});
+				$("#imgspace").on('click',".clearOrder",function(){
+					var na = $(this).parent().parent().attr("name");
+					// alert(JSON.stringify(present));
+					// alert(na);
+					present = jQuery.grep(present, function(value) {
+					  return value != na;
+					});
+					var index;
+					details.some(function(entry, i) {
+						if (entry.id == na) {
+							index = i;
+							return true;
+						}
+					});
+					// alert(index);
+					details.splice(index,1);
+					// alert(JSON.stringify(details));
+					Array.prototype.sum = function (prop) {
+						var total = 0
+						for ( var i = 0, _len = details.length; i < _len; i++ ) {
+							total += details[i][prop]
+						}
+						return total
+					}
+					curr = curr-paise[index];
+					$("#cost").html(curr);
+					$(this).parent().parent().remove();
+
+				});
+				$("#changePic").click(function(){
+					var file_data = $('#profPic').prop('files')[0];
+					var form_data1 = new FormData();
+					form_data1.append('file', file_data);
+					$.ajax({
+						url: 'http://localhost/farm/back/uploadProfilePic.php', // point to server-side PHP script
+						dataType: 'json',  // what to expect back from the PHP script, if anything
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: form_data1,
+						type: 'post',
+						success: function(data){
+							alert(data); // display response from the PHP script, if any
+
+						},
+						error: function(data) {
+							alert("went wrong");
+							alert(JSON.stringify(data));
+						}
+					 });
+				});
 			});
 		</script>
-		
+
         <title> Project 1 | <?php echo $fname?></title>
 
     </head>
     <body>
-		
+
 
 		<div class="icon-bar">
-			<button name = "home"><i class="fa fa-home"></i></button> 
+			<button name = "home"><i class="fa fa-home"></i></button>
 			<button name = "place"><i class="fa fa-plus-circle"></i></button>
-			<button name = "cart"><i class="fa fa-shopping-cart"></i></button> 
-			<button name = "contactUs"><i class="fa fa-paper-plane"></i></button> 
+			<button name = "cart"><i class="fa fa-shopping-cart"></i></button>
+			<button name = "contactUs"><i class="fa fa-paper-plane"></i></button>
 		</div>
 		<div class = "limiter home" style = "display:none;">
-			<div class = "profile">				
+			<div class = "profile">
+				<img src="../back/uploads/<?php echo $_SESSION['accType']."_".$_SESSION['user_id'];?>.jpg" width=auto; height="100px" id="userPic"></img><br/><br/>
+				<input type="file" id="profPic" name="profPic"><br/>
+				<button width="100px" id="changePic">Change Profile Pic</button><br/>
 				Name: <?php echo $fname.' '.$lname?><br /><br />
 				<button id = "logout">Logout</button>
 			</div>
@@ -211,27 +281,27 @@
 						<div id="fruitsLarge" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="potatoGourds" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="greenVeg" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="generalVeg" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="leafyVeg" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="saladChinese" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
-						
+
 						<div id="flavourVeg" class="tabcontent" style = "display:none;">
 							<div class = "imageSpace"></div>
 						</div>
@@ -247,7 +317,7 @@
 							</div>
 						</div>
 						<div id = "orderForm">
-							Category: 
+							Category:
 								<input type = "radio" name = "qlty" value = "a" />A
 								<input type = "radio" name = "qlty" value = "b" />B
 								<input type = "radio" name = "qlty" value = "c" />C<br /><br />
@@ -261,6 +331,8 @@
 							<div id = "imgspace" style = "width: 100%; height: 70%; padding: 16px;">
 							</div>
 							<button type = "submit" name = "pay" disabled>Proceed to Payment (Rs <span id = "cost">0</span>/-)</button>
+							<div id="paisa" style="display:none">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -318,7 +390,7 @@
 										<td class="cell100 column4">85</td>
 										<td class="cell100 column5">15</td>
 									</tr>
-									
+
 									<tr class="row100 body">
 										<td class="cell100 column1">Gamma</td>
 										<td class="cell100 column2">100 kg</td>
@@ -333,24 +405,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="limiter contactUs" style = "display:none;">	
+		<div class="limiter contactUs" style = "display:none;">
 			<div class="wthree-dot">
 				<h1>Contact our team</h1>
 				<div class="profile2">
 					<div class="wrap">
 						<!-- contact -->
 						<div class="contact">
-							<div class="contact-row agileits-w3layouts">  
+							<div class="contact-row agileits-w3layouts">
 								<div class="contact-w3lsleft">
 									<div class="contact-grid agileits">
 										<h4>DROP US A LINE </h4>
-										<form action="#" method="post"> 
+										<form action="#" method="post">
 											<input type="text" name="Name" placeholder="Name" required="">
-											<input type="email" name="Email" placeholder="Email" required=""> 
+											<input type="email" name="Email" placeholder="Email" required="">
 											<input type="text" name="Phone Number" placeholder="Phone Number" required="">
 											<textarea name="Message" placeholder="Message..." required=""></textarea>
 											<input type="submit" value="Submit" >
-										</form> 
+										</form>
 									</div>
 								</div>
 								<div class="contact-w3lsright">
@@ -372,7 +444,7 @@
 											</div>
 											<div class="address-right">
 												<h5>Mail Us</h5>
-												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in,srajitk@iitk.ac.in,shobhitj@iitk.ac.in</a></p>
+												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in</a></p>
 											</div>
 											<div class="clear"> </div>
 										</div>
@@ -382,22 +454,22 @@
 											</div>
 											<div class="address-right">
 												<h5>Call Us</h5>
-												<p>9868110215,7355601852,9417281099</p>
+												<p>9868110215</p>
 											</div>
 											<div class="clear"> </div>
-										</div> 
+										</div>
 									</div>
 								</div>
 								<div class="clear"> </div>
-							</div>	
-						</div> 
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 
-	<!--===================================================scripts loaded from table template =========-->	
+	<!--===================================================scripts loaded from table template =========-->
 		<script src="jslibs/jquery/jquery-3.2.1.min.js"></script>
 		<script src="jslibs/bootstrap/js/popper.js"></script>
 		<script src="jslibs/bootstrap/js/bootstrap.min.js"></script>
@@ -411,8 +483,8 @@
 					ps.update();
 				})
 			});
-				
-			
+
+
 		</script>
 	<!--===============================================================================================-->
 		<script src="style/Table_Fixed_Header/js/main.js"></script>

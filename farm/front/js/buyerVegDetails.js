@@ -2,23 +2,23 @@ $(Document).ready(function () {
 	var detailok1 = false;		// qlty, qty
 	var detailok2 = false;		// dates
 	var detailok3 = true;		// misc
-	
+
 	var k1 = false;
 	var k2 = false;
-	
+
 	var chkqty = function () {
 		k2 = ($("#orderForm input[type=number]:valid").length > 0);
 		if (k1 && k2){
 			detailok1 = true;
 			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
 		}
-		
+
 		if (k1 && !k2) {
 			detailok1 = false;
 			$("#orderForm button[name = confirm]").prop('disabled', true);
 		}
 	}
-	
+
 	var chkDate = function () {
 		var dt = new Date($("#orderForm input[type = date]").val());
 		var min = new Date();
@@ -35,7 +35,6 @@ $(Document).ready(function () {
 	}
 
 	$(".imageSpace").on("click", ".imgbox", function () {
-		//alert("hello");
 		var fvid = ($(this).attr('id')).slice(2);
 		var src = $(this).children().attr('src');
 		var vdata = {
@@ -47,7 +46,7 @@ $(Document).ready(function () {
 			data: vdata,
 			url: "http://localhost/farm/back/getVegDetails.php",
 			success: function (data) {
-				var x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP?? 
+				var x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP??
 				if (x['status'] == "ok"){
 					var name1 = x['name1'];
 					var name2 = x['name2'];
@@ -68,11 +67,13 @@ $(Document).ready(function () {
 					$("#orderForm input[name = quantity]").attr('min', x['min']);
 					$("#orderForm input[name = quantity]").attr('max', x['max']);
 					$("#orderForm input[name = quantity]").attr('step', x['step']);
-					$("#orderDetails .static").html("Price of " + x['min'] + x['uts'] + " is Rs " + x['utPrice']);
+					$("#orderDetails .static").html("Price of " + x['min'] + x['uts'] + " is<br> A: Rs " + x['utPrice'] + "<br>  B: Rs " +x['utPrice']*0.75+"<br> C: Rs "+x['utPrice']*0.4);
 					$("#orderDetails .hidden p[name=cost]").html(x['utPrice']);
 					$("#orderDetails .hidden p[name=ut]").html(x['min']);
 					chkDate();
 					chkqty();
+					$("#paisa").html("");
+					$("#paisa").append(x['utPrice']);
 				} else {
 					alert("something not ok in data recieved from backend");
 				}
@@ -92,7 +93,7 @@ $(Document).ready(function () {
 			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
 		}
 	});
-	
+
 	$("#orderForm input[type=number]").keyup(chkqty);
 	$("#orderForm input[type=number]").change(chkqty);
 	$("#orderForm input[type = date]").change(chkDate);

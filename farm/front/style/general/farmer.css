@@ -3,32 +3,32 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  src: url('../fonts/poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
   font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf');
 }
 
 /*////////////////////////////////////////////////////////////////////*/
 
 body {
-	background: url("../images/basketsFaded.jpg") no-repeat center center fixed; 
+	background: url("../images/basketsFaded.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;	
+	background-size: cover;
 }
 
 .profile {
@@ -47,19 +47,19 @@ body {
 	align-items: center;
 }
 
-.profile button {	
+.profile button {
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
-	font-family: Montserrat-Bold;	
+	font-family: Montserrat-Bold;
 	text-transform: uppercase;
 	font-size: 1.8vh;
 	color:#fff;
-	background: #57b846;	
+	background: #57b846;
 	line-height: 1.5;
 	height: 4.8vh;
 	/*border-radius: 2.4vh;*/
-	
+
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -71,7 +71,7 @@ body {
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
-	
+
 }
 .profile button:hover{
 	background-color:#338333;
@@ -104,17 +104,17 @@ body {
  /* Style the tab */
 #helper {
 	width: 96%;
-	margin: 12px auto; 
+	margin: 12px auto;
 	height:  80px;
 	background: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	
+
 	padding: 16px;
 }
- 
+
 #menu {
 	width: 96%;
-	margin: 12px auto; 
+	margin: 12px auto;
 	height:  226px;
 	background: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -129,7 +129,7 @@ body {
 	display:flex;
 	overflow: auto;
 }
- 
+
 .orderPortal .itemselector {
     /*border: 1px solid #ccc;*/
     background-color: #f1f1f1;
@@ -156,7 +156,7 @@ body {
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
-	
+
 	float: left;
 }
 
@@ -185,7 +185,7 @@ body {
 	background: white;
 	overflow: auto;
 	display:block;
-} 
+}
 
 .tabheader {
 	height: 60px;
@@ -276,7 +276,7 @@ body {
 #orderDetails #orderForm {
 	width: 100%;
 	padding: 12px;
-	margin-left: 12px;	
+	margin-left: 12px;
 	font-size: 14px;
 }
 
@@ -289,12 +289,13 @@ body {
 	/*right: 30%;
 	float: right;
 	position: relative;*/
-	position: absolute;
+	position: relative;
 	left: 450px;
 	min-width: 120px;
 	max-width: 250px;
 	border: 3px solid #ccc !important;
 	text-align: center;
+	margin-right:900px;
 }
 
 #orderForm button[name = confirm] {
@@ -303,7 +304,7 @@ body {
 	width: 80%;
 	margin-top: 40px;
 	margin-left: auto;
-	margin-right: auto;	
+	margin-right: auto;
 	height: 2.5em;
 	color: white;
 	font-size: 16px;
@@ -326,4 +327,10 @@ body {
 #orderForm button[name = confirm]:disabled {
 	background-color: #777;
 	transition: all 0.4s;
+}
+#chutiyaKta{
+	display:none;
+}
+#imageAayi:hover #chutiyaKta {
+	display:inline;
 }
