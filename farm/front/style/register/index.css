@@ -1,0 +1,119 @@
+input[type = radio] {
+	size: 1.8vh;			/* how is this done, please do it before presentation, only the login part */
+}
+
+#id01 * {box-sizing: border-box}
+/* Full-width input fields */
+#id01 input[type=text], #id01 input[type=password], #id01 input[type=email], #id01 textarea{
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 5px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+#id01 input[type=text]:focus, #id01 input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for all buttons */
+#id01 button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+#id01 button:hover {
+    opacity:1;
+}
+
+/* Extra styles for the cancel button */
+#id01 .cancelbtn-id01 {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+#id01 .cancelbtn-id01, #id01 .signupbtn, #id01 .proceedBtn, #id01 .returnbtn-id01 {
+  float: left;
+  width: 50%;
+}
+
+/* Extra styles for the cancel button */
+#id01 .returnbtn-id01 {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Add padding to container elements */
+#id01 .container-id01 {
+	font-size: 1em;
+    padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 60vw; /* Could be more or less, depending on screen size */
+    height: 80vh; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+#id01 hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close-id01 {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close-id01:hover,
+.close-id01:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    #id01 .cancelbtn-id01, #id01 .signupbtn {
+       width: 100%;
+    }
+}
+
+

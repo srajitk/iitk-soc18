@@ -1,0 +1,301 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/* reset */
+/*html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+xol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+.contactUs a{text-decoration:none;}
+.contactUs .txt-rt{text-align:right;}/* text align right */
+.contactUs .txt-lt{text-align:left;}/* text align left */
+.contactUs .txt-center{text-align:center;}/* text align center */
+.contactUs .float-rt{float:right;}/* float right */
+.contactUs .float-lt{float:left;}/* float left */
+.contactUs .clear{clear:both;}/* clear float */
+.contactUs .pos-relative{position:relative;}/* Position Relative */
+.contactUs .pos-absolute{position:absolute;}/* Position Absolute */
+.contactUs .vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.contactUs .vertical-top{	vertical-align:top;}/* vertical align top */
+.contactUs nav.vertical ul li{	display:block;}/* vertical menu */
+.contactUs nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+.contactUs img{max-width:100%;}
+/*end reset*/
+
+
+.contactUs h1,h2,h3,h4,h5,h6{
+	margin:0;			   
+}	
+.contactUs p{
+	margin:0;
+}
+.contactUs ul{
+	margin:0;
+	padding:0;
+}
+.contactUs label{
+	margin:0;
+}
+.contactUs a{
+	transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+.contactUs a:hover{
+	transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+.contactUs .wrap {
+    width: 50%;
+    margin: 2em auto 0;
+	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
+}
+/*--profile start here--*/
+.contactUs h1 {
+   font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.contactUs .wthree-dot {
+	margin-top : 32px;
+	opacity: 0.86;
+}
+
+
+/*-- contact --*/ 
+.contactUs .contact{
+    background: #0bb509;
+}
+.contactUs .contact-grid {
+	background: #ffffff;
+    padding: 3.5em;
+}
+.contactUs .contact-w3lsleft {
+    float: left;
+    width: 55%;
+}
+.contactUs .contact-w3lsright{
+	float:left;
+	width:45%;
+}
+.contactUs .agileits-contact-right{
+    padding: 8em 2em 0;
+}
+.contactUs .contact-grid h4 {
+    font-size: 1.2em;
+    color: #000;
+    margin: 0 0 1em 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.contactUs .contact input[type="text"], .contactUs .contact input[type="email"], .contactUs .contact textarea {
+    width: 90%;
+    color: #999999;
+    background: #fff;
+    outline: none;
+    font-size: .9em;
+    padding: .8em 1em;
+    margin-bottom: 1.5em;
+    border: solid 1px #b2b2b2 !important;
+    -webkit-appearance: none;
+}
+.contactUs .contact textarea {
+    resize: none;
+    min-height: 10em;
+    font-family: 'Roboto', sans-serif;
+}
+.contactUs .contact input[type="submit"] { 
+	outline: none;
+    color: #fff;
+    padding: .8em 3em;
+    font-size: .9em;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: #000000;
+    border: solid 1px #000000;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+.contactUs .contact input[type="submit"]:hover{
+	background: none; 
+	border-color:#000000;
+	color:#000000;
+}
+.contactUs .contact ::-webkit-input-placeholder{
+	color:#555 !important;
+}
+.contactUs .address-row {
+    margin-top: 2em;
+}
+.contactUs .contact-w3lsright h2 {
+    font-size: 1em;
+    color: #000000;
+    font-weight: 800;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.contactUs .address-left {
+    padding: 0;
+    text-align: center;
+    float: left;
+    width: 20%;
+}
+.contactUs .address-row i.fa {
+    font-size: 1.2em;
+    border: 1px solid #000000;
+    padding: .5em;
+    color: #000000;
+    transition: .5s all;
+}
+.contactUs .address-right {
+    float: left;
+}
+.contactUs .address-right p{
+    color: #ffffff;
+    font-size: .9em;
+    margin: .5em 0 0 0;
+}
+.contactUs .address-row h5 {
+    font-size: 1em;
+    color: #000000;
+    margin: 0;
+    font-weight: 600;
+}
+.contactUs .address-row p a {
+	color: #ffffff;
+    margin: 1em 0 0 0;
+    text-decoration: none;
+}
+.contactUs .address-row p a:hover{
+    color: #000000;
+}
+.contactUs .address h4 {
+    font-size: 1.8em;
+    color: #bb3756;
+    margin-bottom: 0.6em;
+    text-transform: uppercase;
+}
+.contactUs .wthree_footer_copy{
+	margin:2em 0 0 0;
+	text-align:center;
+}
+.contactUs .wthree_footer_copy p{
+	color:#FFFFFF;
+	font-size:.9em;
+	margin:0;
+}
+.contactUs .wthree_footer_copy p a{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+.contactUs .wthree_footer_copy p a:hover{
+	color:#000000;
+}
+/*-- //contact --*/
+/*-- responsive --*/
+@media(max-width:1366px){
+	.contactUs .address-right {
+		width: 76%;
+	}
+	.contactUs .address-right p {
+		font-size: .8em;
+	}
+}
+@media(max-width:1280px){
+	.contactUs .wrap {
+		width: 60%;
+	}
+}
+@media(max-width:1080px){
+	.contactUs .wrap {
+		width: 70%;
+	}
+}
+@media(max-width:900px){
+	.contactUs .wrap {
+		width: 80%;
+	}
+}
+@media(max-width:800px){
+	.contactUs .wrap {
+		width: 90%;
+	}
+}
+@media(max-width:800px){
+	.contactUs .address-right {
+		width: 70%;
+		margin-left: 1em;
+	}
+}
+@media(max-width:600px){
+	.contactUs .contact-w3lsleft {
+		float: none;
+		width: 100%;
+	}
+	.contactUs .contact-w3lsright {
+		float: none;
+		width: 100%;
+	}
+	.contactUs .agileits-contact-right {
+		padding: 4em 2em;
+	}
+	.contactUs .address-left {
+		text-align:left;
+		width: 10%;
+	}
+	.contactUs h1 {
+		font-size: 2.5em;
+	}
+}
+@media(max-width:480px){
+	.contactUs h1 {
+		font-size: 2em;
+	}
+}
+@media(max-width:414px){
+	.contactUs .contact input[type="text"], .contactUs .contact input[type="email"], .contactUs .contact textarea {
+		width: 88%;
+	}
+	.contactUs .contact-grid {
+		padding: 2em;
+	}
+}
+@media(max-width:384px){
+	.contactUs h1 {
+		font-size: 1.5em;
+	}
+	.contactUs .address-left {
+		width: 15%;
+	}
+}
+@media(max-width:320px){
+	.contactUs .contact textarea {
+		min-height: 7em;
+	}
+	.contactUs .agileits-contact-right {
+		padding: 3em 2em;
+	}
+	.contactUs .address-left {
+		width: 17%;
+	}
+	.contactUs .contact input[type="submit"] {
+		padding: .8em 2em;
+	}
+}
+/*-- //responsive --*/
+++
