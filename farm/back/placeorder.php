@@ -26,7 +26,7 @@
 
 		$extension = strtolower(pathinfo($name,PATHINFO_EXTENSION));
 
-		$connection =mysqli_connect("localhost","root","","farm_db");
+		$connection =mysqli_connect("localhost","root","computer","farm_db");
 
 		if ($extension != "jpg" && $extension != "png" && $extension != "jpeg" && $extension != "gif" ) {
 			exit(JSON_encode("File type not image"));
