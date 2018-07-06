@@ -56,6 +56,7 @@
 		<script src = "js/loadicons.js"></script>
 		<script src = "js/farmerVegDetails.js"></script>
 		<script src = "js/placeSellContract.js"></script>
+		<script src = "js/loadQ.js"></script>
 
 		<script>
 			$(Document).ready(function () {
@@ -89,7 +90,7 @@
 				$("#fileToUpload").change(function() {
 				  readURL(this);
 
-				  $("#imageAayi span").html("View Image Uploaded");
+				  $("#imageAayi span").html("View Image");
 				});
 			});
 		</script>
@@ -114,7 +115,7 @@
 		</div>
 		<div class="limiter place" style = "display:none;">
 			<div class = "orderPortal">
-				<div style = "width:100%; height: 100%; min-width: 750px; min-height: 690px; overflow: auto;">
+				<div style = "width:100%; height: 100%; min-width: 840px; min-height: 690px; overflow: auto;">
 					<div id = "helper">
 						<div id = "msg">Please select a vegetable/fruit first (by navigating to the appropriate category)</div>
 					</div>
@@ -180,22 +181,22 @@
 							Quantity (in <span class = "units">kg</span>):
 								<input type = "number" name = "quantity" min = "50" max = "50000" step = "5" required /><br /><br />
 							Price charged (in Rs):
-								<input type = "number" name = "price" min = "1000" max = "1000000" step = "500" required /><br /><br />
+								<input type = "number" name = "price" min = "1000" max = "1000000" step = "500" required /><br />
 							Transport Required:&nbsp; <input type = "checkbox" name = "transport"><br/>
 							Date, time Of Harvest:
-								<input type = "date" name = "harvDate"/>
-								<input type = "time" name = "harvTime"/><br />
+								<input type = "time" name = "harvTime"/>
+								<input type = "date" name = "harvDate"/><br />
 							Date, time Of Collection:
-								<input type = "date" name = "colDate"/>
-								<input type = "time" name = "colTime"/><br />
-							Attach photograph: <input type="file" name="fileToUpload" id="fileToUpload"><br />
+								<input type = "time" name = "colTime"/>
+								<input type = "date" name = "colDate"/><br /><br />
+							<span style = "margin-top: 12px;">Attach photograph: <input type="file" name="fileToUpload" id="fileToUpload"></span>
+								<div id="imageAayi"><span>No Image</span>
+								</div>
+								<div  id="chutiyaKta">
+									<img id="imgUploaded">
+								</div><br/><br/>
 							Category Division: <p id = "catslider" style = "display:inline;"></p>
 								<div id="slider" style = "width: 50%; float: right; margin-top: 6px;"></div><br/>
-								<div id="imageAayi" ><span>No Image Uploaded </span>
-									<div  id="chutiyaKta">
-										<img src="xyz" id="imgUploaded" style="width:200px; height:150px;"><br />
-									</div>
-								</div>
 							<button type = "submit" name = "confirm" disabled>Confirm</button>
 						</div>
 					</div>
@@ -211,11 +212,11 @@
 								<thead>
 									<tr class="row100 head">
 										<th class="cell100 column1">Name</th>
-										<th class="cell100 column2">Quantity</th>
-										<th class="cell100 column3">A</th>
-										<th class="cell100 column4">B</th>
-										<th class="cell100 column5">C</th>
-										<th class="cell100 column6">Price/kg</th>
+										<th class="cell100 column2">Date Of Delivery</th>
+										<th class="cell100 column3">Order Placed On</th>
+										<th class="cell100 column4">Price(Rs)</th>
+										<th class="cell100 column5">Transport</th>
+										<th class="cell100 column6">Rank</th>
 									</tr>
 								</thead>
 							</table>
@@ -224,50 +225,6 @@
 						<div class="table100-body js-pscroll">
 							<table>
 								<tbody>
-									<tr class="row100 body">
-										<td class="cell100 column1">Alpha </td>
-										<td class="cell100 column2">100 kg</td>
-										<td class="cell100 column3">80</td>
-										<td class="cell100 column4">10</td>
-										<td class="cell100 column5">10</td>
-										<td class="cell100 column6">180</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Phi</td>
-										<td class="cell100 column2">10000 kg</td>
-										<td class="cell100 column3">70</td>
-										<td class="cell100 column4">30</td>
-										<td class="cell100 column5">0</td>
-										<td class="cell100 column6">150</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Aditya Shivaji Yemulwad</td>
-										<td class="cell100 column2">10 kg</td>
-										<td class="cell100 column3">40</td>
-										<td class="cell100 column4">45</td>
-										<td class="cell100 column5">15</td>
-										<td class="cell100 column6">75</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Patel Preet Rajesh Kumar</td>
-										<td class="cell100 column2">10000 kg</td>
-										<td class="cell100 column3">0</td>
-										<td class="cell100 column4">85</td>
-										<td class="cell100 column5">15</td>
-										<td class="cell100 column6">140</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Gamma</td>
-										<td class="cell100 column2">100 kg</td>
-										<td class="cell100 column3">0</td>
-										<td class="cell100 column4">85</td>
-										<td class="cell100 column5">15</td>
-										<td class="cell100 column6">140</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>

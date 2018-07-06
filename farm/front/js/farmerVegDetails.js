@@ -98,6 +98,7 @@ $(Document).ready(function () {
 					$("#orderDetails").show();
 					$(".place #vegDetails .const").show();
 					$("#vegDetails").attr('name', fvid);
+					$("#chutiyaKta img").attr('src', src);
 				} else {
 					alert("something not ok in data recieved from backend");
 				}

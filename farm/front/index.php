@@ -145,13 +145,9 @@
 							<div id ="preLogin">
 								Account Type:<br />
 								<input type="radio" name="accType" value="farmer"> Farmer 
-<<<<<<< HEAD
-								<input type="radio" name="accType" value="buyer"> Buyer <br />
-=======
 								<input type="radio" name="accType" value="buyer"> Buyer
 								<input type="radio" name="accType" value="evaluator"> Evaluator
 								<br />
->>>>>>> 9b10d483d5e4a89fef3b59ccf9fd25aa270c2151
 								Login Using:<br />
 								<input type="radio" name="loginType" value="mobno"> Mobile Number 
 								<input type="radio" name="loginType" value="email"> Email Id <br /><br />

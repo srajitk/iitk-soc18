@@ -275,7 +275,10 @@ body {
 
 #orderDetails #orderForm {
 	width: 100%;
-	padding: 12px;
+	padding-left: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-right: 7.5%;
 	margin-left: 12px;
 	font-size: 14px;
 }
@@ -286,16 +289,22 @@ body {
 
 #orderForm input[type = number] {
 	width: 40%;
-	/*right: 30%;
+	/*right: 7.5%; /*both ok*/
+	/*right: 100px;*/
 	float: right;
-	position: relative;*/
 	position: relative;
-	left: 450px;
 	min-width: 120px;
-	max-width: 250px;
+	max-width: 480px;
 	border: 3px solid #ccc !important;
 	text-align: center;
-	margin-right:900px;
+}
+
+#orderForm input[type = date] {
+	float: right;
+}
+
+#orderForm input[type = time] {
+	float: right;
 }
 
 #orderForm button[name = confirm] {
@@ -328,9 +337,48 @@ body {
 	background-color: #777;
 	transition: all 0.4s;
 }
+
+input#fileToUpload {
+	width: 220px;
+}
+
+#imageAayi {
+	width: 162px;
+	float: right;
+	padding: 6px;
+	z-index: 4;
+	position: relative;
+	bottom: 6px;
+	transition: all 0.4s;
+}
+
 #chutiyaKta{
 	display:none;
+	position: fixed;
+	left:0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(100,100,100,0.7);
+	transition: all 0.4s;
 }
-#imageAayi:hover #chutiyaKta {
-	display:inline;
+
+#imageAayi:hover {
+	transition: all 0.4s;
+	background-color:white;
+}
+
+#imageAayi:hover+#chutiyaKta {
+	transition: all 0.4s;
+	display:block;
+	z-index: 3;	
+}
+
+#imageAayi:hover+#chutiyaKta img {
+	transition: all 0.4s;
+	display: block;
+	position: fixed;
+	left: 25vw;
+	top: 25vh;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
