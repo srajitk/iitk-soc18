@@ -12,7 +12,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 
-		$cxn = mysqli_connect($host, $username, "", $dbname);
+		$cxn = mysqli_connect($host, $username, "computer", $dbname);
 
 		$query = "SELECT `first_name`,`last_name`, `value` FROM `farmer_tbl` WHERE `user_id` = '".$usr."'";
 
@@ -92,6 +92,9 @@
 
 				  $("#imageAayi span").html("View Image");
 				});
+			
+				
+					
 			});
 		</script>
         <title> Project 1 | <?php echo $fname?></title>
@@ -228,6 +231,22 @@
 								</tbody>
 							</table>
 						</div>
+							
+						
+					</div>
+					<div id = "overlayContainer">
+						<div name="orderDetails" id="overlay" style="display:none">
+							Food:<span name="food"></span>, 
+							Time Placed::<span name="time"></span>, 
+							Date of Harvest:<span name="harvest"></span>, 
+							Date to Deliver:<span name="deliver"></span>, 
+							Cost:<span name="cost"></span>, 
+							A:<span name="a"></span>, 
+							B:<span name="b"></span>, 
+							C:<span name="c"></span>, 
+							Transport:<span name="transport"></span>, 
+							Rank:<span name="rank"></span>, 					
+						</div>
 					</div>
 				</div>
 			</div>
@@ -294,7 +313,6 @@
 				</div>
 			</div>
 		</div>
-
 
 	<!--===================================================scripts loaded from table template =========-->
 		<script src="jslibs/jquery/jquery-3.2.1.min.js"></script>

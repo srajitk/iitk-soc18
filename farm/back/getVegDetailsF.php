@@ -9,7 +9,7 @@
 	$username = "root";
 	$dbname = "farm_db";
 	
-	$cxn = mysqli_connect($host, $username, "", $dbname);
+	$cxn = mysqli_connect($host, $username, "computer", $dbname);
 	
 	if (mysqli_connect_errno()){
 		$return["status"] = "error";

@@ -14,7 +14,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 		
-		$cxn = mysqli_connect($host, $username, "", $dbname);
+		$cxn = mysqli_connect($host, $username, "computer", $dbname);
 		
 		$query = "SELECT CONCAT(`item_details_tbl`.`name_line1`, \" \",`item_details_tbl`.`name_line2`) AS `name`, `date_deliver`,`time_placed`, `Cost`,`transport`,`rank_in_q` FROM `orders_placed`,`item_details_tbl` WHERE `farmer_id` = ".$_SESSION['user_id']." AND `item_details_tbl`.`item_no` = `orders_placed`.`food` ORDER BY `date_deliver` ";
 		
