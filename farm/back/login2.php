@@ -11,6 +11,10 @@
 			$tblName = "buyer_tbl";
 			$paramName = "mobile_no";
 		}
+		elseif ($acc == "evaluator") {
+			$tblName = "evaluator_tbl";
+			$paramName = "mobile_no";
+		}
 	}
 	elseif ($login == "email") {
 		if ($acc == "farmer") {
@@ -19,6 +23,10 @@
 		}
 		elseif ($acc == "buyer") {
 			$tblName = "buyer_tbl";
+			$paramName = "email";
+		}
+		elseif ($acc == "evaluator") {
+			$tblName = "evaluator_tbl";
 			$paramName = "email";
 		}
 	}

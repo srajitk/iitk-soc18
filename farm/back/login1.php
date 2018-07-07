@@ -31,6 +31,14 @@
 			$query = "SELECT `salt` FROM `buyer_tbl` WHERE `email` = '".$email."'";
 		}
 	}
+	if ($acc == "evaluator"){
+		if ($login == "mobno"){
+			$query = "SELECT `salt` FROM `evaluator_tbl` WHERE `mobile_no` = '".$mob."'";
+		}
+		elseif ($login == "email"){
+			$query = "SELECT `salt` FROM `evaluator_tbl` WHERE `email` = '".$email."'";
+		}
+	}
 	$result = mysqli_query($cxn, $query) or die("couldn't excecute query");
 	
 	if (mysqli_num_rows($result) == 0){

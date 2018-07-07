@@ -284,10 +284,7 @@
 						Account Type: <br />
 						<input type="radio" name="accType" value="farmer"> Farmer <br />
 						<input type="radio" name="accType" value="buyer"> Buyer <br />
-<<<<<<< HEAD
-=======
 						<input type="radio" name="accType" value="evaluator"> Evaluator <br />
->>>>>>> 9b10d483d5e4a89fef3b59ccf9fd25aa270c2151
 						*Password:<br />
 						<input type="password" name="psd1"/><br />
 						*Re-enter Password:<br />
