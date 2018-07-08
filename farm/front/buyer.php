@@ -118,10 +118,11 @@
 					var p = $("#paisa").html();
 					var cat = "<label>Category:"+categ+"</label><br/>";
 					var quan = "<label>Quantity:"+qty+"</label><br/>";
-					var pa = '<label class="xyx" name="ono'+count+'">Cost:'+p*qty*ratio+'</label><br/>';
+					var pa = '<label id="khao'+n+'" name="ono'+count+'">Cost:'+p*qty*ratio+'</label><br/>';
 					var dod = "<label>Date of Delivery:"+date+"</label><br/>";
 					var s = $(".dynamic img").attr('src');
 					var n = $(".dynamic img").attr('name');
+					var pa = '<label id="khao'+n+'" name="ono'+count+'">Cost:'+p*qty*ratio+'</label><br/>';
 					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"><label class="clearOrder">Clear Order   X</label><br/><br/>'+cat+quan+dod+pa+'</div></div>';
 					
 					count=count+1;
@@ -136,16 +137,27 @@
 					//front end mgmt
 
 					if (present.includes(n)) {
-						alert("order already placed")
-						/*alert("overriding previous order");
+						// alert("order already placed")
+						alert("overriding previous order");
+						var tut = $("#cost").html();
+						var fuf = $("#khao"+n).html();						
+						fuf = fuf.substr(5);
+						tut =tut-fuf;
+						// alert(tut);
+						// $("#cost").html(fuf);
 						$("#pay #imgspace div[name = "+n+"]").remove();
-						$("#pay #imgspace").append(tag);
+						$("#pay #imgspace").append(tag);						
+						fuf = $("#khao"+n).html();						
+						fuf = fuf.substr(5);
+						tut = parseInt(tut)+parseInt(fuf);
+						// alert(tut);
+						$("#cost").html(tut);
 						removeByAttr(details, 'id', n);
 						details.push(obj);
-						var prev = parseInt($("#cost").html());
-						var curr = prev + parseInt($("#orderDetails .hidden p[name=cost]").html()) * parseInt(qty) / parseInt($("#orderDetails .hidden p[name=ut]").html());
-						$("#cost").html(curr);*/
-
+						
+						
+						// var qyq = $("div[name="+n+"]").attr("class");
+						// alert(qyq);
 					} else {
 						$("#pay #imgspace").append(tag);
 						present.push(n);

@@ -6,7 +6,7 @@
 		exit();
 	}
 	else{
-		$connection = mysqli_connect("localhost","root","","farm_db");
+		$connection = mysqli_connect("localhost","root","computer","farm_db");
 
 		$return = $_POST;
 		

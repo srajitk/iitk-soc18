@@ -80,7 +80,7 @@ $(Document).ready(function () {
 			type: "POST",
 			datatype: "json",
 			data: vdata,
-			url: "http://localhost/farm/back/getVegDetails.php",
+			url: "http://localhost/farm/back/getVegDetailsF.php",
 			success: function (data) {
 				var x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP?? 
 				if (x['status'] == "ok"){

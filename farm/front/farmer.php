@@ -12,7 +12,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 
-		$cxn = mysqli_connect($host, $username, "", $dbname);
+		$cxn = mysqli_connect($host, $username, "computer", $dbname);
 
 		$query = "SELECT `first_name`,`last_name`, `value` FROM `farmer_tbl` WHERE `user_id` = '".$usr."'";
 
