@@ -67,7 +67,7 @@ $(Document).ready(function () {
 					$("#orderForm input[name = quantity]").attr('min', x['min']);
 					$("#orderForm input[name = quantity]").attr('max', x['max']);
 					$("#orderForm input[name = quantity]").attr('step', x['step']);
-					$("#orderDetails .static").html("Price of " + x['min'] + x['uts'] + " is<br> A: Rs " + x['utPrice'] + "<br>  B: Rs " +x['utPrice']*0.75+"<br> C: Rs "+x['utPrice']*0.4);
+					$("#orderDetails .static").html("Expected price of " + x['min'] + x['uts'] + " is<br> A: Rs " + x['utPrice'] + "<br>  B: Rs " +x['utPrice']*0.75+"<br> C: Rs "+x['utPrice']*0.4);
 					$("#orderDetails .hidden p[name=cost]").html(x['utPrice']);
 					$("#orderDetails .hidden p[name=ut]").html(x['min']);
 					chkDate();

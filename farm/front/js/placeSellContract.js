@@ -19,7 +19,7 @@ $(Document).ready(function(){
 		var form_data = new FormData();                  
 		form_data.append('file', file_data);
 		var name= file_data.name;
-		
+
 		var sellOrder = {
 			khana: fvid,
 			logistics : transport,
@@ -41,7 +41,8 @@ $(Document).ready(function(){
 			url: "http://localhost/farm/back/placeorder.php",			
 			success: function(data){
 				alert(data);
-				if(data=="good"){
+				x = JSON.parse(data);
+				if(x['status'] =="good"){
 					alert("Uploading Image");
 					$.ajax({
 						url: "http://localhost/farm/back/uploading.php",			
@@ -61,9 +62,9 @@ $(Document).ready(function(){
 					});
 				}
 				else {
-					alert("Problem in uploading of image");
+					alert(JSON.stringify(x));
 				}
-				
+			
 				
 			},
 			error: function(data) {

@@ -1,8 +1,5 @@
 $(Document).ready(function () {
-	// var detailedOrder = [];
-	// alert(a);
 	$('button[name=queue]').click(function (){
-		// alert(b);
 		$.ajax({
 			type: "POST",
 			datatype: "json",
@@ -10,7 +7,7 @@ $(Document).ready(function () {
 			url: "http://localhost/farm/back/loadFarmerQ.php",
 			success: function (data) {
 				var x = JSON.parse(data);		// AGAIN, WHY IS THIS NOT A JSON OBJECT LIKE SOME OF THE OTHERS
-				// alert(x['tbl'][3][2]);
+
 				var Html = "";
 				for (var i = 0; i < x['tbl'].length; i++){
 					Html += '<tr class="row100 body xxx" id="rno'+(i+1)+'">';

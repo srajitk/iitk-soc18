@@ -13,7 +13,7 @@
 	$username = "root";
 	$dbname =  "farm_db";
 	
-	$cxn = mysqli_connect($host, $username, "computer", $dbname);
+	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
 	if ($acc == "farmer"){
 		if ($login == "mobno"){

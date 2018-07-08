@@ -48,18 +48,21 @@ body {
 }
 
 .profile button {
+    border: none;
+	background-color: #07af1a;
+	font-family: Montserrat-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.5;
+	height: 42px;
+	padding: 6px 25px;
+    cursor: pointer;
+
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
-	font-family: Montserrat-Bold;
-	text-transform: uppercase;
-	font-size: 1.8vh;
 	color:#fff;
-	background: #57b846;
-	line-height: 1.5;
-	height: 4.8vh;
-	/*border-radius: 2.4vh;*/
-
+	
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -71,7 +74,6 @@ body {
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
-
 }
 .profile button:hover{
 	background-color:#338333;
@@ -350,6 +352,7 @@ input#fileToUpload {
 	position: relative;
 	bottom: 6px;
 	transition: all 0.4s;
+	border: 2px #ccc solid;
 }
 
 #chutiyaKta{
@@ -361,6 +364,11 @@ input#fileToUpload {
 	height: 100vh;
 	background: rgba(100,100,100,0.7);
 	transition: all 0.4s;
+}
+
+#chutiyaKta img {
+	height: 50vh;
+	width: auto;
 }
 
 #imageAayi:hover {
@@ -378,9 +386,13 @@ input#fileToUpload {
 	transition: all 0.4s;
 	display: block;
 	position: fixed;
-	left: 25vw;
-	top: 25vh;
+	left: 20vw;
+	top: 20vh;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#userPic {
+	margin:auto;
 }
 
 div#overlayContainer {
@@ -410,4 +422,60 @@ div#overlay {
 
 tr.body {
 	position: relative;
+}
+
+
+#cntct {
+	padding: 6px;
+	margin-top: 12px;
+	opacity: 0.9;
+	transition: all 0.5s;
+}
+
+#cntct:hover {
+	opacity: 1;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.5s;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: none;
+	background-color: #07af1a;
+	font-family: Montserrat-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.5;
+	height: 42px;
+	padding: 6px 25px;
+    cursor: pointer;
+
+	margin-right:auto;
+	margin-left:auto;
+	padding: 0 25px;
+	color:#fff;
+	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+
+}
+.custom-file-upload:hover{
+	background-color:#338333;
+}
+@media all and (max-width:30em){
+	.custom-file-upload {
+		display:block;
+		margin:0.2em auto;
+	}
 }

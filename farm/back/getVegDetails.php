@@ -1,15 +1,10 @@
 <?php
 	$fv = $_POST['id'];
-
-	/*$return = $_POST;
-	$return["A"] = 1;
-	$return['sdf'] = "sdf";*/
-
 	$host = "localhost";
 	$username = "root";
 	$dbname = "farm_db";
 
-	$cxn = mysqli_connect($host, $username, "commputer", $dbname);
+	$cxn = mysqli_connect($host, $username, "", $dbname);
 
 	if (mysqli_connect_errno()){
 		$return["status"] = "error";
