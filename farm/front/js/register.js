@@ -51,13 +51,16 @@ $(Document).ready(function () {
 					alert("passwords do not match");
 				} else {
 					formType = 	$("div.signupForm #newuser #basicForm input:radio[name=accType]:checked").attr("value");
-					if (formType != "farmer" && formType != "buyer"){
+					if (formType != "farmer" && formType != "buyer" && formType != "evaluator"){
 						alert("formtype missing");
 					}
 					if (formType == "farmer"){
 						$("div.signupForm #newuser div#basicForm").hide();
 						$("div.signupForm #newuser div#farmerForm").show();													
 					} else if (formType == "buyer"){
+						$("div.signupForm #newuser div#basicForm").hide();
+						$("div.signupForm #newuser div#userForm").show();					
+					} else if (formType == "evaluator"){
 						$("div.signupForm #newuser div#basicForm").hide();
 						$("div.signupForm #newuser div#userForm").show();					
 					}

@@ -20,12 +20,14 @@
 		$username = "root";
 		$dbname = "farm_db";
 		
-		$cxn = mysqli_connect($host, $username, "",$dbname);
+		$cxn = mysqli_connect($host, $username, "computer",$dbname);
 		
 		if ($acc == "farmer"){
 			$query = "UPDATE `farmer_tbl` SET `password_hash` = '".$back_hash."', `salt1` = '".$salt2."' WHERE `farmer_tbl`.`mobile_no` = '".$mob."'; ";
 		}elseif ($acc == "buyer"){
 			$query = "UPDATE `buyer_tbl` SET `password_hash` = '".$back_hash."', `salt1` = '".$salt2."' WHERE `buyer_tbl`.`mobile_no` = '".$mob."'; ";
+		}elseif ($acc == "evaluator"){
+			$query = "UPDATE `evaluator_tbl` SET `password_hash` = '".$back_hash."', `salt1` = '".$salt2."' WHERE `evaluator_tbl`.`mobile_no` = '".$mob."'; ";
 		}
 		
 		mysqli_query($cxn, $query) or die ($query);

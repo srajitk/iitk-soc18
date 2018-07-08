@@ -12,7 +12,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 
-		$cxn = mysqli_connect($host, $username, "", $dbname);
+		$cxn = mysqli_connect($host, $username, "computer", $dbname);
 
 		$query = "SELECT `first_name`,`last_name` FROM `buyer_tbl` WHERE `user_id` = '".$usr."'";
 
@@ -101,7 +101,8 @@
 				var ratio =1;
 				var prev;
 				var curr;
-				var paise = [];
+				
+				var count=1;
 				$("#orderForm button[name = confirm]").click(function () {
 
 					//object formation
@@ -117,13 +118,13 @@
 					var p = $("#paisa").html();
 					var cat = "<label>Category:"+categ+"</label><br/>";
 					var quan = "<label>Quantity:"+qty+"</label><br/>";
-					var pa = "<label>Cost:"+p*qty*ratio+"</label><br/>";
+					var pa = '<label class="xyx" name="ono'+count+'">Cost:'+p*qty*ratio+'</label><br/>';
 					var dod = "<label>Date of Delivery:"+date+"</label><br/>";
 					var s = $(".dynamic img").attr('src');
 					var n = $(".dynamic img").attr('name');
-					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"><label class="clearOrder">CLear Order   X</label><br/><br/>'+cat+quan+dod+pa+'</div></div>';
-					paise.push(p*qty*ratio);
-
+					var tag = '<div name = "'+n+'" class = "orderImgPlace"><img src = "'+s+'" ></img><div class = "tip"><label class="clearOrder">Clear Order   X</label><br/><br/>'+cat+quan+dod+pa+'</div></div>';
+					
+					count=count+1;
 
 					var obj = {
 						id: n,
@@ -201,8 +202,16 @@
 						}
 						return total
 					}
-					curr = curr-paise[index];
-					$("#cost").html(curr);
+					var mom=$(this).next().next().next().next().next().next().next().next().next().html();
+					mom = mom.substr(5)	;
+					// alert(mom);
+					var qwe = $("#cost").html();
+					qwe = qwe - mom;
+					// alert(qwe);	
+					if(qwe==0){
+						$("button[name = pay]").css("background","#777");
+					}
+					$("#cost").html(qwe);
 					$(this).parent().parent().remove();
 
 				});
