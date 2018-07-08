@@ -91,7 +91,12 @@
 				  readURL(this);
 
 				  $("#imageAayi span").html("View Image");
+				  if(!$("#fileToUpload").val()){				
+					  $("div.orderForm button[name=confirm]").attr("disabled", "disabled");
+					  $("div.orderForm button[name=confirm]").css("background-color","#777");
+				  }
 				});
+
 			
 				$("#changePic").click(function(){
 					var file_data = $('#profPic').prop('files')[0];
@@ -115,6 +120,14 @@
 						}
 					 });
 				});
+
+				if($("#fileToUpload").val()==""){				
+					  $("div.orderForm button[name=confirm]").attr("disabled", "disabled");
+					  $("div.orderForm button[name=confirm]").css("background-color","#777");
+				  }
+				
+					
+
 			});
 	
 		</script>

@@ -107,11 +107,16 @@ $(Document).ready(function () {
 											window.location.replace("farmer.php");
 										} else if (accType == "buyer") {
 											window.location.replace("buyer.php");
+										} else if (accType == "evaluator") {
+											window.location.replace("evaluator.php");
 										}
 										
 									} else if (!data.access){
 										alert("details are invalid!");
 										alert(JSON.stringify(data));
+										$("#emailLogin input[name=email]").val("");
+										$("#emailLogin input[name=psd]").val("");
+										$("#emailLogin input[name=mobno]").val("");
 									}
 								},
 								error: function (data) {
