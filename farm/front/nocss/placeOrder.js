@@ -70,7 +70,7 @@ $(document).ready(function(){
 			url: "placeorder.php",
 			success: function(data){
 				alert(data);
-				if(data=="good"){
+				/*if(data=="good"){
 					alert("Uploading Image");
 					 $.ajax({
 						url: 'uploading.php',
@@ -92,7 +92,7 @@ $(document).ready(function(){
 				else {
 					alert("Problem in uploading of image");
 				}
-				
+				*/
 				
 			},
 			error: function(data) {

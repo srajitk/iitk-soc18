@@ -19,6 +19,7 @@ $(Document).ready(function () {
 					$("#orderForm button").prop("disabled", true);
 				}
 				else {
+					// what if $("#fileToUpload") IS EMPTY ? @Srajit
 					$("#orderForm button").prop("disabled", false);
 				}
 			}
@@ -40,7 +41,7 @@ $(Document).ready(function () {
 	$("#orderForm input[name=colDate]").keyup(chkok);
 	$("#orderForm input[name=colTime]").change(chkok);
 	
-	$("#orderForm button").click( function () {
+	/*$("#orderForm button").click( function () {
 		var fvid = $("#vegDetails").attr('name');
 		var t1 = (new Date($("#orderForm input[name = harvDate]").val() +" "+ $("#orderForm input[name = harvTime]").val()));
 		var t2 = (new Date($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()));
@@ -51,7 +52,7 @@ $(Document).ready(function () {
 		var b = ($("#slider").slider("values", 1) - $("#slider").slider("values", 0));
 		var c = 100 - $("#slider").slider("values", 1);
 		
-		var sellOrder = {
+		var sellOrder = {			// same stuff in placeSellContract.js. WHY?
 			fvid: fvid,
 			th: t1,
 			tc: t2,
@@ -61,12 +62,12 @@ $(Document).ready(function () {
 			b: b,
 			c: c
 		};
-		$.ajax({
+		$.ajax({			// * empty, most likely not needed, delete soon
 			type: "POST",
 			datatype: "json",
 			data: sellOrder,
 		});
-	});
+	})*/;
 
 	$(".imageSpace").on("click", ".imgbox", function () {
 		//alert("hello");
@@ -109,17 +110,4 @@ $(Document).ready(function () {
 			},
 		});
 	});
-/*
-	// the clicking of a radio cannot be undone, therefore k1 starts as false and turns true on the first click
-	$("#orderForm input:radio").click(function () {
-		k1 = true;
-		if (k1 && k2) {
-			detailok1 = true;
-			$("#orderForm button[name = confirm]").prop('disabled', !(detailok1 && detailok2 && detailok3));
-		}
-	});
-	
-	$("#orderForm input[type=number]").keyup(chkqty);
-	$("#orderForm input[type=number]").change(chkqty);
-	$("#orderForm input[type = date]").change(chkDate);*/
 });

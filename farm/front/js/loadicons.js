@@ -30,4 +30,14 @@ $(Document).ready(function () {
 			});
 		}
 	});
+	$("#faq").click(function(){
+		$("#CONTACT").toggle();
+		//$(this).parent().toggle();
+		$("#FAQ").toggle();
+	});
+	$("#cntct").click(function(){
+		$("#FAQ").toggle();
+		//$(this).parent().toggle();
+		$("#CONTACT").toggle();
+	});
 });

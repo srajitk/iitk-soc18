@@ -48,18 +48,21 @@ body {
 }
 
 .profile button {
+    border: none;
+	background-color: #07af1a;
+	font-family: Montserrat-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.5;
+	height: 42px;
+	padding: 6px 25px;
+    cursor: pointer;
+
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
-	font-family: Montserrat-Bold;
-	text-transform: uppercase;
-	font-size: 1.8vh;
 	color:#fff;
-	background: #07af1a;
-	line-height: 1.5;
-	height: 4.8vh;
-	/*border-radius: 2.4vh;*/
-
+	
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -71,7 +74,6 @@ body {
 	-o-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	transition: all 0.4s;
-
 }
 .profile button:hover{
 	background-color:#338333;
@@ -227,7 +229,7 @@ body {
 #vegDetails {
 	width: 200px;
 	padding: 12px;
-
+	font-size: 14px;
 	margin: 12px;
 
 
@@ -335,6 +337,30 @@ body {
 	transition: all 0.4s;
 }
 
+
+
+@media (max-width: 1500px) {
+	#vegDetails {
+		font-size: 14px;
+	}
+}
+
+
+@media (max-width: 1440px) {
+	#vegDetails {
+		font-size: 13px;
+	}
+}
+
+
+@media (max-width: 1360px) {
+	#vegDetails {
+		font-size: 11px;
+	}
+}
+
+
+
 @media (max-width: 1080px) {
 	#pay button[name = pay] {
 		font-size: 14px;
@@ -347,6 +373,10 @@ body {
 		font-size: 11px;
 	}
 
+	#vegDetails {
+		font-size: 10px;
+	}
+	
 	#vegDetails button {
 		font-size: 14px;
 	}
@@ -418,4 +448,62 @@ body {
 }
 .cart td{
 	font-family: Poppins-regular;
+}
+
+#userPic {
+	display: block;
+	margin:auto;
+	clip: rect(0px,100px,100px,0px);
+}
+
+#cntct {
+	padding: 6px;
+	margin-top: 12px;
+	opacity: 0.9;
+}
+
+#cntct:hover {
+	opacity: 1;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: none;
+	background-color: #07af1a;
+	font-family: Montserrat-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.5;
+	height: 42px;
+	padding: 6px 25px;
+    cursor: pointer;
+
+	margin-right:auto;
+	margin-left:auto;
+	padding: 0 25px;
+	color:#fff;
+	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+
+}
+.custom-file-upload:hover{
+	background-color:#338333;
+}
+@media all and (max-width:30em){
+	.custom-file-upload {
+		display:block;
+		margin:0.2em auto;
+	}
 }

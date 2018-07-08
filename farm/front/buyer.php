@@ -254,10 +254,13 @@
 		</div>
 		<div class = "limiter home" style = "display:none;">
 			<div class = "profile">
-				<img src="../back/uploads/<?php echo $_SESSION['accType']."_".$_SESSION['user_id'];?>.jpg" width=auto; height="100px" id="userPic"></img><br/><br/>
-				<input type="file" id="profPic" name="profPic"><br/>
-				<button width="100px" id="changePic">Change Profile Pic</button><br/>
 				Name: <?php echo $fname.' '.$lname?><br /><br />
+				<img src="http://localhost/farm/back/uploads/<?php echo $_SESSION['accType']."_".$_SESSION['user_id'];?>.jpg" width=auto; height="100px" id="userPic" onerror="this.src='fallback-img.jpg'"></img><br/><br/>
+				<label for="profPic" class="custom-file-upload">
+					<i class="fa fa-user-circle"></i>&nbsp; Try New Pic
+				</label>
+				<input type="file" id="profPic" name="profPic"><br/>
+				<button width="100%" id="changePic"><i class="fa fa-cloud-upload"></i>&nbsp;Change Pic</button><br/>
 				<button id = "logout">Logout</button>
 			</div>
 		</div>
@@ -368,45 +371,6 @@
 						<div class="table100-body js-pscroll">
 							<table>
 								<tbody>
-									<tr class="row100 body">
-										<td class="cell100 column1">Alpha </td>
-										<td class="cell100 column2">100 kg</td>
-										<td class="cell100 column3">80</td>
-										<td class="cell100 column4">10</td>
-										<td class="cell100 column5">10</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Phi</td>
-										<td class="cell100 column2">10000 kg</td>
-										<td class="cell100 column3">70</td>
-										<td class="cell100 column4">30</td>
-										<td class="cell100 column5">0</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Aditya Shivaji Yemulwad</td>
-										<td class="cell100 column2">10 kg</td>
-										<td class="cell100 column3">40</td>
-										<td class="cell100 column4">45</td>
-										<td class="cell100 column5">15</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Patel Preet Rajesh Kumar</td>
-										<td class="cell100 column2">10000 kg</td>
-										<td class="cell100 column3">0</td>
-										<td class="cell100 column4">85</td>
-										<td class="cell100 column5">15</td>
-									</tr>
-
-									<tr class="row100 body">
-										<td class="cell100 column1">Gamma</td>
-										<td class="cell100 column2">100 kg</td>
-										<td class="cell100 column3">0</td>
-										<td class="cell100 column4">85</td>
-										<td class="cell100 column5">15</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -414,24 +378,22 @@
 				</div>
 			</div>
 		</div>
-		<div class="limiter contactUs" style = "display:none;">
+		<div class="limiter contactUs" style = "display:none;">	
 			<div class="wthree-dot">
-				<h1>Contact our team</h1>
+				<div id = "CONTACT">
+				<h1 id="ID1">Contact our team</h1>
 				<div class="profile2">
 					<div class="wrap">
 						<!-- contact -->
 						<div class="contact">
-							<div class="contact-row agileits-w3layouts">
+							<div class="contact-row agileits-w3layouts">  
 								<div class="contact-w3lsleft">
 									<div class="contact-grid agileits">
 										<h4>DROP US A LINE </h4>
-										<form action="#" method="post">
-											<input type="text" name="Name" placeholder="Name" required="">
-											<input type="email" name="Email" placeholder="Email" required="">
-											<input type="text" name="Phone Number" placeholder="Phone Number" required="">
+										<form action="#" method="post"> 
 											<textarea name="Message" placeholder="Message..." required=""></textarea>
 											<input type="submit" value="Submit" >
-										</form>
+										</form> 
 									</div>
 								</div>
 								<div class="contact-w3lsright">
@@ -463,19 +425,72 @@
 											</div>
 											<div class="address-right">
 												<h5>Call Us</h5>
-												<p>9868110215</p>
+												<p>9868110210</p>
+											</div>
+											<br><br><br><br>
+											<div class="address-right">
+												<input type="submit" value="FAQ's" id="faq">
 											</div>
 											<div class="clear"> </div>
-										</div>
+										</div> 
+										
 									</div>
 								</div>
 								<div class="clear"> </div>
-							</div>
+							</div>	
+						</div> 
+					</div>
+				</div>
+				</div>
+				<div id="FAQ" style = "display:none">
+				<h1 id="ID2" >FAQ's</h1>
+				<div class="profile2">
+					<div class="wrapfaq">
+						<!-- contact -->
+						
+						<div class="contact-row agileits-w3layouts">  
+							<div class="contact-w3lsleftfaq">
+								<div class="contact-grid agileits">
+									<div style = "overflow:auto;height: 50vh;min-height: 120px;">
+										<p>Q: What do the icons on the left signify?</p>
+										<p>Ans: The icons are, from the top, Home (this is where you may find your personal details), Place Order 
+										(this is the portal where you buy from us), My Cart (this is a list of all the orders you have placed with
+										us so far), and finally Contact Us, where you currently are. </p><br />
+										<p>Q: Are orders recorded when I press confirm on the Place Order section?</p>
+										<p>Ans: No, the orders are collectively placed only when you press Proceed To Payment</p><br>
+										<p>Q: What do category A,B,C specify? Why is C so cheap?</p>
+										<p>Ans: A,B,C represent decreasing order of quality. A is guaranteed to be fresh and represents the best amongst 
+										the produce. B is somewhat below A, but perfectly ok for all households to eat. C is specifically for those who 
+										cannot afford B or would like to save cash, it is by far the cheapest, but quality is not guaranteed.</p><br>
+										<p>Q: Is C quality even safe to eat?</p>
+										<p>Ans: Indeed, while not up to A or B, it is certainly not harmful to the health, we immediately discard those 
+										fruits/vegetables that do not meet the standards of basic ediblity.</p><br>
+										<p>Q: The price on the cart is not what is shown in the "Proceed To Payment" button, why?</p>
+										<p>Ans: Proceed to payment only shows indicative price, the actual is set by the farmers. As farmers propose to 
+										sell their produce to us, we compare their offers and buy from the ones with the best prices, minimum delay between
+										harvest and sale and maximum reputation among us, the prices they quote are the ones that appear on the list. </p><br>
+										<p>Q: I wish to set orders for continuous delivery, rather than filling out the form everyday. Does the website have
+										that feature</p>
+										<p>Ans: We are working on it and will integrate it asap.</p><br>
+										<p>Q: When can I expect to receive an order that I placed?</p>
+										<p>Ans: The actual time of delivery depends on the transport agency responsible for that particular order, however in
+										most circumstances it should reach on the same day, if it doesn't, please report to us, we will immediately take all 
+										necessary action.</p><br>
+										<p>Q: Is there an app for this too, using the website is too inconvient?</p>
+										<p>Ans: We are working on it.</p><br>
+										<p>Q: Some aspects of my form aren't working correctly. Please help.</p>
+										<p>Ans: Mail us the problem immediately. We will correct it asap</p><br>
+										
+									</div>
+									<input type="submit" value="Contact our team" id="cntct" style="background:black;color:white">	 
+								</div>
+							</div>						 
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 	<!--===================================================scripts loaded from table template =========-->

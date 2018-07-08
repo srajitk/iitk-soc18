@@ -6,7 +6,7 @@
 	$dbname = "farm_db";
 
 
-	$cxn = mysqli_connect($host, $username, "computer", $dbname);
+	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
 	$query = "SELECT `file_name`, `item_no` FROM `item_details_tbl` WHERE `tab_name` = '".$tabname."'";
 

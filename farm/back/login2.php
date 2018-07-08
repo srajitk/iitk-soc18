@@ -41,7 +41,7 @@
 	$username = "root";
 	$dbname =  "farm_db";
 	
-	$cxn = mysqli_connect($host, $username, "computer", $dbname);
+	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
 	$query = "SELECT `password_hash`,`user_id`, `salt1` FROM `".$tblName."` WHERE `".$paramName."` = '".$data."'";
 	

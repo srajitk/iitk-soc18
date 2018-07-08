@@ -68,8 +68,10 @@ table{border-collapse:collapse;border-spacing:0;}
     text-transform: uppercase;
 }
 .contactUs .wthree-dot {
-	margin-top : 32px;
+	margin-top : 2.5vh;
 	opacity: 0.86;
+	height: 97.5vh;
+	overflow: auto;
 }
 
 
@@ -108,6 +110,7 @@ table{border-collapse:collapse;border-spacing:0;}
     padding: .8em 1em;
     margin-bottom: 1.5em;
     border: solid 1px #b2b2b2 !important;
+	height: 320px;
     -webkit-appearance: none;
 }
 .contactUs .contact textarea {
@@ -124,6 +127,7 @@ table{border-collapse:collapse;border-spacing:0;}
     cursor: pointer;
     background: #000000;
     border: solid 1px #000000;
+	opacity: 0.9;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -131,9 +135,11 @@ table{border-collapse:collapse;border-spacing:0;}
     -ms-transition: 0.5s all;
 }
 .contactUs .contact input[type="submit"]:hover{
-	background: none; 
+	opacity: 1;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	/*background: none; 
 	border-color:#000000;
-	color:#000000;
+	color:#000000;*/
 }
 .contactUs .contact ::-webkit-input-placeholder{
 	color:#555 !important;
@@ -296,6 +302,12 @@ table{border-collapse:collapse;border-spacing:0;}
 	.contactUs .contact input[type="submit"] {
 		padding: .8em 2em;
 	}
+}
+
+.wrapfaq {
+	margin-bottom: 2vh;
+	margin-top: 2vh;
+	margin-right: 5vw;
 }
 /*-- //responsive --*/
 ++

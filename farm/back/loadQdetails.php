@@ -9,7 +9,7 @@
 		exit();
 	}
 	
-	$cxn = mysqli_connect("localhost","root","computer","farm_db");
+	$cxn = mysqli_connect("localhost","root","","farm_db");
 	
 	$query11 = "SELECT * FROM orders_placed WHERE farmer_id =". $_SESSION['user_id'];
 	
