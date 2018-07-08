@@ -114,6 +114,9 @@ $(Document).ready(function () {
 									} else if (!data.access){
 										alert("details are invalid!");
 										alert(JSON.stringify(data));
+										$("#emailLogin input[name=email]").val("");
+										$("#emailLogin input[name=psd]").val("");
+										$("#emailLogin input[name=mobno]").val("");
 									}
 								},
 								error: function (data) {

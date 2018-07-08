@@ -91,8 +91,15 @@
 				  readURL(this);
 
 				  $("#imageAayi span").html("View Image");
+				  if(!$("#fileToUpload").val()){				
+					  $("div.orderForm button[name=confirm]").attr("disabled", "disabled");
+					  $("div.orderForm button[name=confirm]").css("background-color","#777");
+				  }
 				});
-			
+				if($("#fileToUpload").val()==""){				
+					  $("div.orderForm button[name=confirm]").attr("disabled", "disabled");
+					  $("div.orderForm button[name=confirm]").css("background-color","#777");
+				  }
 				
 					
 			});

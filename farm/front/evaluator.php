@@ -25,7 +25,7 @@
 		
 		mysqli_close($cxn);
 	}
-
+	// session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -33,5 +33,5 @@
 
 <body>
 <hr/>
-
+<button> </button>
 </body>
