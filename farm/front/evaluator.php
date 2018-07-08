@@ -25,13 +25,18 @@
 		
 		mysqli_close($cxn);
 	}
+	// echo "Hello";
 	// session_destroy();
 ?>
 
 <!DOCTYPE html>
-<head></head>
+<head>
+	<script src="js/logout.js"></script>
+
+</head>
 
 <body>
 <hr/>
-<button> </button>
+<button id = "logout">Logout</button>
 </body>
+</html>
