@@ -5,6 +5,11 @@
 		session_destroy();
 		exit();
 	}
+	elseif ($_SESSION['accType'] != 'evaluator') {
+		header("Location: index.php");
+		session_destroy();
+		exit();
+	}
 	else{
 		$usr = $_SESSION['user_id'];
 		
@@ -12,7 +17,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 
-		$cxn = mysqli_connect($host, $username, "computer", $dbname);
+		$cxn = mysqli_connect($host, $username, "", $dbname);
 
 		$query = "SELECT `first_name`,`last_name` FROM `evaluator_tbl` WHERE `user_id` = '".$usr."'";
 
@@ -25,8 +30,6 @@
 		
 		mysqli_close($cxn);
 	}
-	// echo "Hello";
-	// session_destroy();
 ?>
 
 <!DOCTYPE html>

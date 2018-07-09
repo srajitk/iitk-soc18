@@ -1,31 +1,56 @@
 $(Document).ready(function () {		
 
 	var chkok = function () {
-		if (($("#orderForm input[name=quantity]:valid").length > 0) && ($("#orderForm input[name=price]:valid").length > 0)){
-			var t1 = (new Date($("#orderForm input[name = harvDate]").val() +" "+ $("#orderForm input[name = harvTime]").val()));
-			var t2 = (new Date($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()));
-			var now = new Date();
-			
-			var delt = t2 - t1;
-			if (delt !== delt) {
-				//alert ("dates not specified properly");
-				$("#orderForm button").prop("disabled", true);
-			} else {
-				if (delt < 0){
-					//alert("dates of harvesting cannot be after the dates of collection");
-					$("#orderForm button").prop("disabled", true);
-				} else if (t2 - now < 0) {
-					//alert("please enter a valid date for collection");
-					$("#orderForm button").prop("disabled", true);
+		if (! isNaN(Date.parse($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()))) {
+			if (! isNaN(Date.parse($("#orderForm input[name = harvDate]").val() +" "+ $("#orderForm input[name = harvTime]").val()))) {
+				if (($("#orderForm input[name=quantity]:valid").length > 0) && ($("#orderForm input[name=price]:valid").length > 0)){
+					var t1 = (new Date($("#orderForm input[name = harvDate]").val() +" "+ $("#orderForm input[name = harvTime]").val()));
+					var t2 = (new Date($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()));
+					var now = new Date();
+					
+					var delt = t2 - t1;
+					if (delt !== delt) {
+						//alert ("dates not specified properly");
+						$("#orderForm button[name = confirm]").prop("disabled", true);
+					} else {
+						if (delt < 0){
+							//alert("dates of harvesting cannot be after the dates of collection");
+							$("#orderForm button[name = confirm]").prop("disabled", true);
+						} else if (t2 - now < 0) {														/* To change, queue entries may only occur 7 days hence */
+							//alert("please enter a valid date for collection");
+							$("#orderForm button[name = confirm]").prop("disabled", true);
+						}
+						else {
+							// what if $("#fileToUpload") IS EMPTY ? @Srajit
+							$("#orderForm button[name = confirm]").prop("disabled", false);
+						}
+					}
 				}
 				else {
-					// what if $("#fileToUpload") IS EMPTY ? @Srajit
-					$("#orderForm button").prop("disabled", false);
+					$("#orderForm button[name = confirm]").prop("disabled", true);
 				}
+			}
+			else {
+				$("#orderForm button[name = confirm]").prop("disabled", true);
 			}
 		}
 		else {
-			$("#orderForm button").prop("disabled", true);
+			$("#orderForm button[name = confirm]").prop("disabled", true);
+		}
+	}
+	
+	var chkokQ = function () {
+		var t2 = (new Date($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()));
+		var now = new Date();
+		if (! isNaN(Date.parse($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()))) {
+			if (t2 - now < 0) {
+				$("#orderForm button[name = seeQueue]").prop("disabled", true);
+			}
+			else {
+				$("#orderForm button[name = seeQueue]").prop("disabled", false);
+			}
+		} else {
+			$("#orderForm button[name = seeQueue]").prop("disabled", true);
 		}
 	}
 	
@@ -40,34 +65,9 @@ $(Document).ready(function () {
 	$("#orderForm input[name=colDate]").change(chkok);
 	$("#orderForm input[name=colDate]").keyup(chkok);
 	$("#orderForm input[name=colTime]").change(chkok);
-	
-	/*$("#orderForm button").click( function () {
-		var fvid = $("#vegDetails").attr('name');
-		var t1 = (new Date($("#orderForm input[name = harvDate]").val() +" "+ $("#orderForm input[name = harvTime]").val()));
-		var t2 = (new Date($("#orderForm input[name = colDate]").val() +" "+ $("#orderForm input[name = colTime]").val()));
-		var qty = $("#orderForm input[name=quantity]:valid").val();
-		var price = $("#orderForm input[name=price]:valid").val();
-		
-		var a = $("#slider").slider("values",0);
-		var b = ($("#slider").slider("values", 1) - $("#slider").slider("values", 0));
-		var c = 100 - $("#slider").slider("values", 1);
-		
-		var sellOrder = {			// same stuff in placeSellContract.js. WHY?
-			fvid: fvid,
-			th: t1,
-			tc: t2,
-			qty: qty,
-			price: price,
-			a: a,
-			b: b,
-			c: c
-		};
-		$.ajax({			// * empty, most likely not needed, delete soon
-			type: "POST",
-			datatype: "json",
-			data: sellOrder,
-		});
-	})*/;
+	$("#orderForm input[name=colDate]").change(chkokQ);
+	$("#orderForm input[name=colDate]").keyup(chkokQ);
+	$("#orderForm input[name=colTime]").change(chkokQ);
 
 	$(".imageSpace").on("click", ".imgbox", function () {
 		//alert("hello");
@@ -80,8 +80,10 @@ $(Document).ready(function () {
 			type: "POST",
 			datatype: "json",
 			data: vdata,
-			url: "http://localhost/farm/back/getVegDetails.php",
+			url: "http://localhost/farm/back/getVegDetailsF.php",
 			success: function (data) {
+				//alert("hello");
+				//alert(data);
 				var x = JSON.parse(data);		// WHY THE HELL IS DATA NOT ALREADY A JSON OBJECT DESPITE USING json_encode IN PHP?? 
 				if (x['status'] == "ok"){
 					var name1 = x['name1'];

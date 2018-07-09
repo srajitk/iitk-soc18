@@ -4,7 +4,11 @@
 		header("Location: index.php");
 		session_destroy();
 		exit();
+	} elseif ($_SESSION['accType'] != 'buyer') {
+		session_destroy();
+		exit();
 	}
+	
 	else{
 		$return = "";
 		foreach ($_POST as $order){

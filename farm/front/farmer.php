@@ -5,6 +5,11 @@
 		session_destroy();
 		exit();
 	}
+	elseif ($_SESSION['accType'] != 'farmer') {
+		header("Location: index.php");
+		session_destroy();
+		exit();
+	}
 	else{
 		$usr = $_SESSION['user_id'];
 
@@ -57,6 +62,7 @@
 		<script src = "js/farmerVegDetails.js"></script>
 		<script src = "js/placeSellContract.js"></script>
 		<script src = "js/loadQ.js"></script>
+		<script src = "js/viewQ.js"></script>
 
 		<script>
 			$(Document).ready(function () {
@@ -145,8 +151,9 @@
 		</div>
 		<div class = "limiter home" style = "display:none;">
 			<div class = "profile">
-				Name: <?php echo $fname.' '.$lname?><br /><br />
-				<img src="http://localhost/farm/back/uploads/<?php echo $_SESSION['accType']."_".$_SESSION['user_id'];?>.jpg" width=auto; height="100px" id="userPic" onerror="this.src='fallback-img.jpg'"></img><br/><br/>
+				<?php echo $fname.' '.$lname?><br /><br />
+				<img src="http://localhost/farm/back/uploads/<?php echo $_SESSION['accType']."_".$_SESSION['user_id'];?>.jpg" width="100%"; height=auto id="userPic" onerror="this.src='fallback-img.jpg'"></img><br/><br/>
+				Value: <?php echo $val;?><br /><br />
 				<label for="profPic" class="custom-file-upload">
 					<i class="fa fa-user-circle"></i>&nbsp; Try New Pic
 				</label>
@@ -239,7 +246,43 @@
 								</div><br/><br/>
 							Category Division: <p id = "catslider" style = "display:inline;"></p>
 								<div id="slider" style = "width: 50%; float: right; margin-top: 6px;"></div><br/>
-							<button type = "submit" name = "confirm" disabled>Confirm</button>
+							<div id = "buttonSpace">
+								<button type = "submit" name = "confirm" disabled>Confirm</button>
+								<button type = "submit" name = "seeQueue" disabled>Queue</button>
+							</div>
+						</div>
+						<div id = "queueModal" class = "Vqueue modal">
+							<div class="modal-content">
+								<span class="close">&times;</span>
+								<div class="container-table100">
+									<div class="wrap-table100">
+										<div class="table100 ver5">
+											<div class="table100-head">
+												<table>
+													<thead>
+														<tr class="row100 head">
+															<th class="cell100 column1">Name</th>
+															<th class="cell100 column2">A</th>
+															<th class="cell100 column3">B</th>
+															<th class="cell100 column4">C</th>
+															<th class="cell100 column5">Price</th>
+															<th class="cell100 column6">Transport</th>
+															<th class="cell100 column7">Rank</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+
+											<div class="table100-body js-pscroll">
+												<table>
+													<tbody>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -273,16 +316,16 @@
 					</div>
 					<div id = "overlayContainer">
 						<div name="orderDetails" id="overlay" style="display:none">
-							Food:<span name="food"></span>, 
-							Time Placed::<span name="time"></span>, 
-							Date of Harvest:<span name="harvest"></span>, 
-							Date to Deliver:<span name="deliver"></span>, 
+							Time Placed::<span name="time"></span>, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							Date of Harvest:<span name="harvest"></span>, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							A:<span name="a"></span>kg, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							B:<span name="b"></span>kg, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							C:<span name="c"></span>kg, 
+							<!--Transport:<span name="transport"></span>, 
 							Cost:<span name="cost"></span>, 
-							A:<span name="a"></span>, 
-							B:<span name="b"></span>, 
-							C:<span name="c"></span>, 
-							Transport:<span name="transport"></span>, 
-							Rank:<span name="rank"></span>, 					
+							Date to Deliver:<span name="deliver"></span>, 
+							Food:<span name="food"></span>, 
+							Rank:<span name="rank"></span--> 					
 						</div>
 					</div>
 				</div>
@@ -325,7 +368,7 @@
 											</div>
 											<div class="address-right">
 												<h5>Mail Us</h5>
-												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in</a></p>
+												<p><a href="mailto:info@example.com"> prajwalm@iitk.ac.in,<br /> srajitk@iitk.ac.in, <br />shobhitj@iitk.ac.in</a></p>
 											</div>
 											<div class="clear"> </div>
 										</div>

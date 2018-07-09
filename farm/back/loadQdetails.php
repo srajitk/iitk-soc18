@@ -4,19 +4,19 @@
 		header("Location: index.php");
 		session_destroy();
 		exit();
-	}
-	if($_SESSION['accType']!="farmer"){
+	} elseif ($_SESSION['accType']!="farmer"){
+		session_destroy();
 		exit();
 	}
-	
-	$cxn = mysqli_connect("localhost","root","","farm_db");
-	
-	$query11 = "SELECT * FROM orders_placed WHERE farmer_id =". $_SESSION['user_id'];
-	
-	$result1 = mysqli_query($cxn , $query11);
-	$return['det'] = mysqli_fetch_all($result1) or die($query11);
-	
-	exit(JSON_encode($return));
-	
-	
+	else {
+		$cxn = mysqli_connect("localhost","root","","farm_db");
+		
+		$query11 = "SELECT * FROM orders_placed WHERE farmer_id =". $_SESSION['user_id'];
+		
+		$result1 = mysqli_query($cxn , $query11);
+		$return['det'] = mysqli_fetch_all($result1) or die($query11);
+		
+		exit(JSON_encode($return));
+		
+	}
 ?>

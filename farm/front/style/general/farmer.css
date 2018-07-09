@@ -40,11 +40,69 @@ body {
 	top: 5vh;
 	bottom: 5vh;
 	padding: 3vh 3vw;
-	font-size: 2.2vh;
+	font-size: 20px;
 	background: rgba(255,255,255, 0.84);
 	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
 	justify-content: center;
 	align-items: center;
+}
+
+
+@media (max-width: 1080px) {
+	.profile { 
+		font-size: 18px;
+	}
+	.profile button, .profile label{
+		font-size: 14px !important;
+		padding: 16px;
+		
+	}
+	
+}
+
+@media (max-width: 640px) {
+	.profile { 
+		font-size: 16px;
+	}
+	.profile button, .profile label{
+		font-size: 12px !important;
+		padding: 14px;
+		
+	}
+	
+}
+
+@media (max-width:560px) {
+	.profile { 
+		font-size: 13px;
+	}
+	.profile button, .profile label {
+		font-size: 11px !important;
+		padding: 8px;
+		
+	}
+}
+
+@media (max-width:480px) {
+	.profile { 
+		font-size: 12px;
+	}
+	.profile button, .profile label {
+		font-size: 10px !important;
+		padding: 6px;
+		
+	}
+}
+
+@media (max-width:400px) {
+	.profile { 
+		font-size: 11px;
+	}
+	.profile button, .profile label {
+		font-size: 8px !important;
+		padding: 5px;
+		
+	}
 }
 
 .profile button {
@@ -57,7 +115,7 @@ body {
 	height: 42px;
 	padding: 6px 25px;
     cursor: pointer;
-
+	width: 100%;
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
@@ -309,13 +367,18 @@ body {
 	float: right;
 }
 
-#orderForm button[name = confirm] {
-	background: green;
-	display: block;
+#orderForm #buttonSpace {
 	width: 80%;
 	margin-top: 40px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#orderForm button[name = confirm] {
+	background: green;
+	display: block;
+	width: 48%;
+	float: right;
 	height: 2.5em;
 	color: white;
 	font-size: 16px;
@@ -336,6 +399,35 @@ body {
 }
 
 #orderForm button[name = confirm]:disabled {
+	background-color: #777;
+	transition: all 0.4s;
+}
+
+#orderForm button[name = seeQueue] {
+	background: green;
+	display: block;
+	width: 48%;
+	float: left;
+	height: 2.5em;
+	color: white;
+	font-size: 16px;
+	background-color: #07af1a;
+	opacity: 0.96;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#orderForm button[name = seeQueue]:hover {
+	opacity: 1;
+	transition: all 0.4s;
+}
+
+#orderForm button[name = seeQueue]:active {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+	transition: all 0.4s;
+}
+
+#orderForm button[name = seeQueue]:disabled {
 	background-color: #777;
 	transition: all 0.4s;
 }
@@ -399,7 +491,7 @@ div#overlayContainer {
 	position: fixed;
 	height: 100vh;
 	width: 100vw;
-	background: rgba(100,100,100,0.7);
+	background: rgba(100,100,100,0);
 	transition: all 0.4s;
 	display: none;
 	left: 0px;
@@ -416,7 +508,8 @@ div#overlay {
 	display: block;
 	z-index: 10;
 	background: white;
-	padding: 6px;
+	padding-top: 16px;
+	text-align:center;
 	font-family: Poppins-Medium;
 }
 
@@ -477,5 +570,52 @@ input[type="file"] {
 	.custom-file-upload {
 		display:block;
 		margin:0.2em auto;
+	}
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	z-index: 10;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10vh auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+	height: 70vh;
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width:360px) {
+	.profile {
+		font-size: 8px !important;
 	}
 }

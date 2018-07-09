@@ -1,9 +1,16 @@
 <?php
-	
+	session_start();
+	if (empty($_SESSION['user_id']) or empty($_SESSION['accType'])){
+		header("Location: index.php");
+		session_destroy();
+		exit();
+	} elseif ($_SESSION['accType'] != 'farmer') {
+		session_destroy();
+		exit();
+	}
+		
 	$connection = mysqli_connect("localhost","root","","farm_db");
 	$query1= "SELECT `image_path` FROM `orders_placed` WHERE `orderid`= (SELECT max(`orderid`) FROM `orders_placed`)";
-		//	ERROR PRONE, PLEASE CHANGE MAX... TO DATA TAKEN FROM JS FILE, WHAT IF THE LAST ENTRY WERE DELETED OR CASES LIKE THIS
-		// OR TWO OR MORE REQUESTS CAME SIMULTANEOULSY ENOUGH FOR PHP NOT TO BE ABLE TO DISTNIGUISH BTW THEM
 
 	$result = mysqli_query($connection,$query1);
 

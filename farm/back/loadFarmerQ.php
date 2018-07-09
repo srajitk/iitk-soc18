@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	if (empty($_SESSION['user_id']) or empty($_SESSION['accType'])){
-		header("Location: index.php");
 		session_destroy();
 		exit();
 	} elseif ($_SESSION['accType'] != "farmer") {
+		session_destroy();
 		exit("you must be a farmer to access this facility");
 	}
 	else{

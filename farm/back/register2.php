@@ -7,7 +7,7 @@
 	
 	$regex = '/[`#\'"!;=<>]/';
 	
-	if  (preg_match($regex,$acc) === 0){
+	if  (preg_match($regex,$acc) === 0 && preg_match('/^[a-fA-F0-9]*$/', $front_hash) && preg_match('/^(\+?\d{1,3}[- ]?)?(\d{10})$/', $front_hash)){
 		//generating the password
 		
 		$salt2 = bin2hex(openssl_random_pseudo_bytes(32,$cstrong));

@@ -15,6 +15,14 @@
 	
 	$cxn = mysqli_connect($host, $username, "", $dbname);
 	
+	$acc = mysqli_real_escape_string($cxn, $acc);
+	$login = mysqli_real_escape_string($cxn, $login);
+
+	if (preg_match('/[><!=-]/', $acc) || preg_match('/[><!=-]/', $login)){
+		exit("dangerous character(s) encountered");
+	}
+
+	
 	if ($acc == "farmer"){
 		if ($login == "mobno"){
 			$query = "SELECT `salt` FROM `farmer_tbl` WHERE `mobile_no` = '".$mob."'";

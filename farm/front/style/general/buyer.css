@@ -40,7 +40,7 @@ body {
 	top: 5vh;
 	bottom: 5vh;
 	padding: 3vh 3vw;
-	font-size: 2.2vh;
+	font-size: 20px;
 	background: rgba(255,255,255, 0.84);
 	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
 	justify-content: center;
@@ -77,6 +77,26 @@ body {
 }
 .profile button:hover{
 	background-color:#338333;
+}
+
+
+@media (max-width: 600px) {
+	.profile { 
+		font-size: 16px;
+	}
+	.profile button, .profile label {
+		font-size: 12px !important;
+	}
+	
+}
+
+@media (max-width:400px) {
+	.profile { 
+		font-size: 13px;
+	}
+	.profile button, .profile label {
+		font-size: 11px !important;
+	}
 }
 
 @media all and (max-width:30em){
@@ -507,3 +527,7 @@ input[type="file"] {
 		margin:0.2em auto;
 	}
 }
+
+label.clearOrder:hover {
+	cursor: pointer;
+}	
