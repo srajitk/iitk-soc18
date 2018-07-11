@@ -9,7 +9,6 @@
 		exit();
 	}
 	else{
-
 		$fv = $_POST['id'];
 		$host = "localhost";
 		$username = "root";

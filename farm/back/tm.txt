@@ -1,0 +1,1 @@
+ALTER TABLE `farmer_tbl` CHANGE `value` `value` DOUBLE(11) AS ((20*`tm00`*`tm00`-`tm01`*`tm01`-3*`tm02`*`tm02`-5*`tm10`*`tm10`+15*`tm11`*`tm11`-`tm12`*`tm12`-10*`tm20`*`tm20`-3*`tm21`*`tm21`+12*`tm22`*`tm22`-50*`tm30`*`tm30`-20*`tm31`*`tm31`-7*`tm32`*`tm32`)*SQRT(`sellcontracts`)+`e_rep`) PERSISTENT; 

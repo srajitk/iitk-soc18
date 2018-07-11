@@ -55,9 +55,8 @@ body {
 	font-size: 14px;
 	line-height: 1.5;
 	height: 42px;
-	padding: 6px 25px;
     cursor: pointer;
-
+	width: 100%;
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
@@ -80,24 +79,63 @@ body {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 1080px) {
 	.profile { 
-		font-size: 16px;
+		font-size: 18px;
 	}
-	.profile button, .profile label {
-		font-size: 12px !important;
+	.profile button, .profile label{
+		font-size: 14px !important;
+		padding: 0 16px;
+		
 	}
 	
 }
 
-@media (max-width:400px) {
+@media (max-width: 640px) {
+	.profile { 
+		font-size: 16px;
+	}
+	.profile button, .profile label{
+		font-size: 12px !important;
+		padding: 0 14px;
+		
+	}
+	
+}
+
+@media (max-width:560px) {
 	.profile { 
 		font-size: 13px;
 	}
 	.profile button, .profile label {
 		font-size: 11px !important;
+		padding: 0 8px;
+		
 	}
 }
+
+@media (max-width:480px) {
+	.profile { 
+		font-size: 12px;
+	}
+	.profile button, .profile label {
+		font-size: 10px !important;
+		padding: 0 6px;
+		
+	}
+}
+
+@media (max-width:400px) {
+	.profile { 
+		font-size: 11px;
+	}
+	.profile button, .profile label {
+		font-size: 8px !important;
+		padding: 0 5px;
+		
+	}
+}
+
 
 @media all and (max-width:30em){
 	.profile button {
@@ -105,6 +143,7 @@ body {
 		margin:0.2em auto;
 	}
 }
+
 
 /* Order Portal */
 .orderPortal {
@@ -523,7 +562,6 @@ input[type="file"] {
 }
 @media all and (max-width:30em){
 	.custom-file-upload {
-		display:block;
 		margin:0.2em auto;
 	}
 }

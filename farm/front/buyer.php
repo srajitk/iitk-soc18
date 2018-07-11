@@ -52,7 +52,7 @@
 
 
 		<link rel = "stylesheet" type = "text/css" href="style/sideIcons/sidebar.css">
-		<link rel = "stylesheet" type = "text/css" href="style/general/style.css">
+		<link rel = "stylesheet" type = "text/css" href="style/general/contact.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/buyer.css">
 
 		<script src = "jslibs/jquery.js"></script>

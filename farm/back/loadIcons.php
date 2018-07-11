@@ -13,14 +13,14 @@
 
 
 		$cxn = mysqli_connect($host, $username, "", $dbname);
-
+		
 		$tabname = mysqli_real_escape_string($cxn, $tabname);
-
+		
 		if (preg_match('/[><!=-]/', $tabname)){
 		//if (preg_match('/[<>!=`-+]/', $tabname)) {
 			exit("dangerous character(s) encountered");
 		}
-
+		
 		$query = "SELECT `file_name`, `item_no` FROM `item_details_tbl` WHERE `tab_name` = '".$tabname."'";
 
 		$result = mysqli_query($cxn, $query) or die($query);

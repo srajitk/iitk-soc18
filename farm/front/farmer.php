@@ -51,7 +51,7 @@
 			<link rel="stylesheet" type="text/css" href="style/Table_Fixed_Header/css/main.css">
 		<!--===============================================================================================-->
 
-		<link rel = "stylesheet" type = "text/css" href="style/general/style.css">
+		<link rel = "stylesheet" type = "text/css" href="style/general/contact.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/farmer.css">
 		<link rel = "stylesheet" type = "text/css" href="style/sideIcons/sidebar.css">
 		<link rel = "stylesheet" type = "text/css" href="style/jquery-ui-1.12.1.custom/jquery-ui.css">

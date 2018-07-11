@@ -9,7 +9,7 @@
 	$mob = $_POST["mob"];
 	$acc = $_POST["accType"];
 	
-	$regex = '/[`#\'"!;=<>]/';			// ok? rules out ' which may be important in say addresses
+	$regex = '/[`#\-"!;=<>]/';
 	$mobRegex0 = '/0{5}/';
 	$mobRegex1 = '/^(\+?\d{1,3}[- ]?)?(\d{10})$/';
 	
