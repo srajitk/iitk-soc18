@@ -9,6 +9,9 @@
 		elseif ($_SESSION['accType'] == "buyer"){
 			header("Location: buyer.php");
 		}
+		elseif ($_SESSION['accType'] == "evaluator"){
+			header("Location: evaluator.php");
+		}
 		exit();
 	}
 ?>

@@ -47,7 +47,7 @@
 			$username = "root";
 			$dbname = "farm_db";
 			
-			$cxn = mysqli_connect($host, $username, "computer", $dbname);
+			$cxn = mysqli_connect($host, $username, "", $dbname);
 			
 			$return["msg"] = "";
 			// checking if the mobile number is taken
@@ -113,7 +113,7 @@
 			$username = "root";
 			$dbname = "farm_db";
 			
-			$cxn = mysqli_connect($host, $username, "computer", $dbname);
+			$cxn = mysqli_connect($host, $username, "", $dbname);
 			
 			$return["msg"] = "";
 			// checking if the mobile number is taken
@@ -178,7 +178,7 @@
 			$username = "root";
 			$dbname = "farm_db";
 			
-			$cxn = mysqli_connect($host, $username, "computer", $dbname);
+			$cxn = mysqli_connect($host, $username, "", $dbname);
 			
 			$return["msg"] = "";
 			// checking if the mobile number is taken

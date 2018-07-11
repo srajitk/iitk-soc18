@@ -2,22 +2,22 @@
 	$login = $_POST["loginType"];
 	$acc = $_POST["accType"];
 
-		
+
 	//retrieving the back hash from the database...
 	$host = "localhost";
 	$username = "root";
 	$dbname =  "farm_db";
-	
+
 	$cxn = mysqli_connect($host, $username, "", $dbname);
-	
+
 	$acc = mysqli_real_escape_string($cxn, $acc);
 	$login = mysqli_real_escape_string($cxn, $login);
-	
+
 	if (preg_match('/[><!=-]/', $acc) || preg_match('/[><!=-]/', $login)){
 		exit("dangerous character(s) encountered");
 	}
-	
-	
+
+
 	if ($login == "mobno") {
 		if ($acc == "farmer") {
 			$tblName = "farmer_tbl";
@@ -46,12 +46,12 @@
 			$paramName = "email";
 		}
 	}
-	
+
 	$front_hash = $_POST["psdhash"];
 	$data = $_POST["data"];
-	
-	if (preg_match('/^[a-fA-F0-9]*$/', $front_hash) && ! preg_match('/[<>=\-!"]/', $data)){	
-	
+
+	if (preg_match('/^[a-fA-F0-9]*$/', $front_hash) && ! preg_match('/[<>=\-!"]/', $data)){
+
 		$front_hash = mysqli_real_escape_string($cxn, $front_hash);
 		$data = mysqli_real_escape_string($cxn, $data);
 
