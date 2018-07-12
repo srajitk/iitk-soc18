@@ -40,7 +40,7 @@ body {
 	top: 5vh;
 	bottom: 5vh;
 	padding: 3vh 3vw;
-	font-size: 2.2vh;
+	font-size: 20px;
 	background: rgba(255,255,255, 0.84);
 	box-shadow: 0 1vw 3vh 0 rgba(0, 0, 0, 0.8), 0 1.5vw 7.5vh 0 rgba(0, 0, 0, 0.6);
 	justify-content: center;
@@ -55,9 +55,8 @@ body {
 	font-size: 14px;
 	line-height: 1.5;
 	height: 42px;
-	padding: 6px 25px;
     cursor: pointer;
-
+	width: 100%;
 	margin-right:auto;
 	margin-left:auto;
 	padding: 0 25px;
@@ -79,12 +78,72 @@ body {
 	background-color:#338333;
 }
 
+
+@media (max-width: 1080px) {
+	.profile { 
+		font-size: 18px;
+	}
+	.profile button, .profile label{
+		font-size: 14px !important;
+		padding: 0 16px;
+		
+	}
+	
+}
+
+@media (max-width: 640px) {
+	.profile { 
+		font-size: 16px;
+	}
+	.profile button, .profile label{
+		font-size: 12px !important;
+		padding: 0 14px;
+		
+	}
+	
+}
+
+@media (max-width:560px) {
+	.profile { 
+		font-size: 13px;
+	}
+	.profile button, .profile label {
+		font-size: 11px !important;
+		padding: 0 8px;
+		
+	}
+}
+
+@media (max-width:480px) {
+	.profile { 
+		font-size: 12px;
+	}
+	.profile button, .profile label {
+		font-size: 10px !important;
+		padding: 0 6px;
+		
+	}
+}
+
+@media (max-width:400px) {
+	.profile { 
+		font-size: 11px;
+	}
+	.profile button, .profile label {
+		font-size: 8px !important;
+		padding: 0 5px;
+		
+	}
+}
+
+
 @media all and (max-width:30em){
 	.profile button {
 		display:block;
 		margin:0.2em auto;
 	}
 }
+
 
 /* Order Portal */
 .orderPortal {
@@ -503,7 +562,10 @@ input[type="file"] {
 }
 @media all and (max-width:30em){
 	.custom-file-upload {
-		display:block;
 		margin:0.2em auto;
 	}
 }
+
+label.clearOrder:hover {
+	cursor: pointer;
+}	

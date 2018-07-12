@@ -1,15 +1,15 @@
 $(Document).ready(function(){
-	
 	$("button[name=submitId]").click(function(){
 		var farmerId = $("input[name=farmerId]").val();
-		
-		// var data = {
-			// farmId :farmerId,
-		// };
+		var regexChk = /^\d{0,8}$/;
+		if (farmerId.match(regexChk) == null) {
+			alert("improper farmer id");
+			return;
+		}
 		var data = {
 			farmId: farmerId,
 		};
-		// alert(data.id);
+		
 		
 		$.ajax({
 			type: "POST",
@@ -17,10 +17,16 @@ $(Document).ready(function(){
 			data: data,
 			url: "http://localhost/farm/back/evalGetFarmer.php",
 			success: function (data) {
-				var x = JSON.parse(data);
+				alert(data);
+				var x = JSON.parse(data);	/* this does not check if the farmer exists or not, if I first set a ok farmer,
+											then a non-existant one, the details still show for the previous, hide & clear them*/
 				
 				var name = x['farmer'][0][0] +" "+x['farmer'][0][1];
 				$("#farmerName").html(name);
+				$("#farmerDetails").show();
+				$("#tm").show();
+				$("#order_table_container").show();
+				
 				var i=2,row=0;
 				for(row;row<4;row++){
 					var a = "<td>"+x['farmer'][0][i++]+"</td>";
@@ -29,7 +35,7 @@ $(Document).ready(function(){
 					$("tr[name='"+row+"']").html(a+b+c);					
 				}
 				row=0;
-				// alert(x['orders'][row][0]);
+
 				while(x['orders'][row][0]){
 					var a = "<tr><td>"+x['orders'][row][0]+"</td>";
 					var b = "<td>"+x['orders'][row][1]+"</td>";
@@ -38,8 +44,9 @@ $(Document).ready(function(){
 					var e = "<td>"+x['orders'][row][4]+"</td>";
 					var f = "<td>"+x['orders'][row][5]+"</td></tr>";
 					row++;
-					// alert(a+b+c+d+e+f);
+
 					$("table[name=order_table]").append(a+b+c+d+e+f);
+					
 				}
 			},
 			error: function (data) {
@@ -49,8 +56,21 @@ $(Document).ready(function(){
 		});
 	});
 
+	
+	var chkOrder = function () {
+		var ono = $("#order_table_container input[name=order]").val();
+		if ($("table[name=order_table] tr").children("td:first-child").filter(function() {return $(this).text() === ono;}).length > 0){
+			$("#newtm_container").show();
+		} else {
+			$("#newtm_container").hide();
+		}
+	}
+	
+	$("#order_table_container input[name=order]").change(chkOrder);
+	$("#order_table_container input[name=order]").keyup(chkOrder);
+	
 	$("button[name=updateMatrix]").click(function(){
-		// alert(1);
+		
 		var upd = {
 			aa :$("input[name=aa]").val(),
 			ba :$("input[name=ba]").val(),
@@ -67,7 +87,6 @@ $(Document).ready(function(){
 			farmid:$("input[name=farmerId]").val(), 
 			orderid: $("input[name=order]").val(),		
 		};
-		// alert(upd.aa);
 		$.ajax({
 			type: "POST",
 			datatype: "json",

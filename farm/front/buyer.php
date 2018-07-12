@@ -5,6 +5,11 @@
 		session_destroy();
 		exit();
 	}
+	elseif ($_SESSION['accType'] != 'buyer') {
+		header("Location: index.php");
+		session_destroy();
+		exit();
+	}
 	else{
 		$usr = $_SESSION['user_id'];
 
@@ -12,7 +17,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 
-		$cxn = mysqli_connect($host, $username, "computer", $dbname);
+		$cxn = mysqli_connect($host, $username, "", $dbname);
 
 		$query = "SELECT `first_name`,`last_name` FROM `buyer_tbl` WHERE `user_id` = '".$usr."'";
 
@@ -47,7 +52,7 @@
 
 
 		<link rel = "stylesheet" type = "text/css" href="style/sideIcons/sidebar.css">
-		<link rel = "stylesheet" type = "text/css" href="style/general/style.css">
+		<link rel = "stylesheet" type = "text/css" href="style/general/contact.css">
 		<link rel = "stylesheet" type = "text/css" href="style/general/buyer.css">
 
 		<script src = "jslibs/jquery.js"></script>

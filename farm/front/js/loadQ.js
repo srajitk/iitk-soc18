@@ -30,26 +30,21 @@ $(Document).ready(function () {
 				alert(JSON.stringify(x));
 			},
 		});
-		// alert("a");
-		 $.ajax({
+		$.ajax({
 			type: "POST",
 			datatype: "json",
 			data: null,
 			url: "http://localhost/farm/back/loadQdetails.php",
 			success: function (data) {
-				// alert("a");
-				detailedOrder = JSON.parse(data);		// AGAIN, WHY IS THIS NOT A JSON OBJECT LIKE SOME OF THE OTHERS
-				// alert(detailedOrder['det'][1][3]);
-				// alert(data);
+				detailedOrder = JSON.parse(data);
 			},
 			error: function (data) {
 				detailedOrder = JSON.parse(data);
 				alert(JSON.stringify(x));
 			},
 		});
-		// alert(detailedOrder['det'][1][3]);
+
 	});	
-	// 
 	 $('body').on('mouseenter', 'tr.body', function () {
 		 // alert(1);
 		var rid = $(this).attr("id");
@@ -66,16 +61,16 @@ $(Document).ready(function () {
 		var b = detailedOrder['det'][rname-1][6];
 		var c = detailedOrder['det'][rname-1][7];
 		var del = detailedOrder['det'][rname-1][11];
-		$("div[name=orderDetails] span[name=food]").html(food);
+		//$("div[name=orderDetails] span[name=food]").html(food);
 		$("div[name=orderDetails] span[name=time]").html(time);
 		$("div[name=orderDetails] span[name=harvest]").html(har);
-		$("div[name=orderDetails] span[name=deliver]").html(del);
-		$("div[name=orderDetails] span[name=cost]").html(cost);
+		//$("div[name=orderDetails] span[name=deliver]").html(del);
+		//$("div[name=orderDetails] span[name=cost]").html(cost);
 		$("div[name=orderDetails] span[name=a]").html(a);
 		$("div[name=orderDetails] span[name=b]").html(b);
 		$("div[name=orderDetails] span[name=c]").html(c);
 		$("div[name=orderDetails] span[name=transport]").html(logistics);
-		$("div[name=orderDetails] span[name=rank]").html(rank);				
+		//$("div[name=orderDetails] span[name=rank]").html(rank);				
 		//alert(a);
 		$(this).css('z-index', 3);
 		$("#overlayContainer").show();

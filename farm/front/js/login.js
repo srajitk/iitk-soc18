@@ -120,7 +120,8 @@ $(Document).ready(function () {
 									}
 								},
 								error: function (data) {
-									alert("something went wrong");
+									alert(JSON.stringify(psdData));
+									alert("something went wrong inside");
 									alert(JSON.stringify(data));
 								},
 							});
@@ -129,7 +130,7 @@ $(Document).ready(function () {
 						}
 					},
 					error: function (data) {
-						alert("something went wrong");
+						alert("something went wrong outside");
 						alert(JSON.stringify(data));
 					}
 				});

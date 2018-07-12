@@ -206,6 +206,35 @@ th, td {
   width: 14%;
 }
 
+.Vqueue .column1 {
+  width: 26%;
+  padding-left: 20px;
+}
+
+.Vqueue .column2 {
+  width: 8%;
+}
+
+.Vqueue .column3 {
+  width: 8%;
+}	
+
+.Vqueue .column4 {
+  width: 8%;
+}
+
+.Vqueue .column5 {
+  width: 16%;
+}
+
+.Vqueue .column6 {
+  width: 20%;
+}
+
+.Vqueue .column7 {
+  width: 14%;
+}
+
 .cart .column1 {
   width: 45%;
   padding-left: 20px;
@@ -529,12 +558,10 @@ th, td {
 }
 
 .table100.ver5 .table100-head th:first-child {
-    border-left-style: solid;
     border-top-left-radius: 10px; 
     border-bottom-left-radius: 10px;
 }
 .table100.ver5 .table100-head th:last-child {
-    border-right-style: solid;
     border-bottom-right-radius: 10px; 
     border-top-right-radius: 10px; 
 }

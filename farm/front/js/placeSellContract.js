@@ -19,12 +19,12 @@ $(Document).ready(function(){
 		var form_data = new FormData();                  
 		form_data.append('file', file_data);
 		var name= file_data.name;
-
+		var tzoffset = (new Date()).getTimezoneOffset() * 60000;
 		var sellOrder = {
 			khana: fvid,
 			logistics : transport,
-			th: t1.toISOString().slice(0, 19).replace('T', ' '),
-			tc: t2.toISOString().slice(0, 19).replace('T', ' '),
+			th: new Date(t1 - tzoffset).toISOString().slice(0, -5).replace('T', ' '),
+			tc: new Date(t2 - tzoffset).toISOString().slice(0, -5).replace('T', ' '),
 			qty: qty,
 			price: price,
 			a: a,

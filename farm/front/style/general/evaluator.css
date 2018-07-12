@@ -1,0 +1,279 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+
+
+body {
+	background: url("../images/basketsFaded.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#header {
+	padding: 12px;
+	background: rgba(255,255,255, 0.86);
+	font-family: Poppins-Regular;
+	max-width: 1280px;
+	margin: 12px auto;
+}
+
+#rateImages {
+	padding: 12px;
+	background: rgba(255,255,255, 0.86);
+	font-family: Poppins-Regular;
+	max-width:1280px;
+	margin:12px auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#rateGoods {
+	padding: 12px;
+	background: rgba(255,255,255, 0.86);
+	font-family: Poppins-Regular;
+	max-width:1280px;
+	margin:12px auto;
+}
+
+button {
+    border: none;
+	background-color: #07af1a;
+	font-family: Montserrat-Bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.5;
+	height: 42px;
+    cursor: pointer;
+
+	margin-right:auto;
+	margin-left:auto;
+	padding: 0 100px;
+	color:#fff;
+	
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+}
+button:hover{
+	background-color:#338333;
+}
+
+@media (max-width: 1080px) {
+	button{
+		font-size: 14px !important;
+		padding: 0px 64px;
+		
+	}
+	
+}
+
+@media (max-width: 640px) {
+	button{
+		font-size: 12px !important;
+		padding:0px 56px;
+		
+	}
+	
+}
+
+@media (max-width:560px) {
+	button{
+		font-size: 11px !important;
+		padding: 0px 32px;
+		
+	}
+}
+
+@media (max-width:480px) {
+	button{
+		font-size: 10px !important;
+		padding:0px 24px;
+		
+	}
+}
+
+@media (max-width:400px) {
+	button{
+		font-size: 8px !important;
+		padding:0px 20px;
+		
+	}
+}
+
+
+@media all and (max-width:30em){
+	button {
+		display:block;
+		margin:0.2em auto;
+	}
+}
+
+#tm {
+	border-left: 3px solid #000;
+	border-right: 3px solid #000;
+	border-radius: 6px;
+	display:none;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+#tm tr {
+	display: flex;
+	width: 240px;
+	justify-content: space-evenly;
+}
+
+#tm td {
+	flex-grow: 1;
+	width: 40px;
+	text-align: center;
+}
+
+#order_table_container {
+	width: 100%;
+	overflow: auto;
+}
+
+#order_table_container table[name=order_table] {
+	width: 1120px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#order_table_container table[name=order_table] tr{
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#order_table_container table[name=order_table] th,#order_table_container  table[name=order_table] td{
+	flex-grow: 1;
+	width: 120px;
+	text-align: center;
+}
+
+
+#order_table_container table[name=order_table] td:nth-child(3){
+	flex-grow: 2;
+	text-align: center;
+}
+
+
+#order_table_container table[name=order_table] th:nth-child(3){
+	flex-grow: 2;
+	text-align: center;
+}
+
+#newtm_container {
+	width: 100%;
+	overflow: auto;
+}
+
+#newtm_container #newtm {
+	width: 1080px;
+	font-family: "Lucida Console", Monaco, monospace;
+	margin: 20px;
+}
+
+#newtm tr {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#newtm td {
+	width: 360px;
+	flex-grow: 1;
+	text-align: center;
+}
+
+#newtm td input[type=number] {
+	width: 180px;
+	text-align: center;
+}
+
+
+.imgBox {
+	width: 400px;
+	height: 400px;
+	display: block;
+	float: left;
+	margin: 12px;
+	background: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.imgSpace {
+	width: 400px;
+	height: 300px;
+	display: block;
+	margin-bottom: 12px;
+}
+
+#order1 {
+	background:url("../images/basketsFaded.jpg") no-repeat center center; /*may make this an inline/absolute url*/
+	-webkit-background-size: cover;	/* no idea what these lines do */
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#order2 {
+	background:url("../images/potato.png") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#order3 {
+	background:url("../images/vegBasket.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#order128 {
+	background:url("../images/finalPhotos.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.imgBox input[type = number]{
+	margin-top: 6px;
+	margin-left: 6px;
+}

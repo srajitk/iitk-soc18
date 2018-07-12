@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	if (empty($_SESSION['user_id']) or empty($_SESSION['accType'])){
-		header("Location: index.php");
 		session_destroy();
 		exit();
 	} elseif ($_SESSION['accType'] != "farmer") {
+		session_destroy();
 		exit("you must be a farmer to access this facility");
 	}
 	else{
@@ -14,7 +14,7 @@
 		$username = "root";
 		$dbname = "farm_db";
 		
-		$cxn = mysqli_connect($host, $username, "computer", $dbname);
+		$cxn = mysqli_connect($host, $username, "", $dbname);
 		
 		$query = "SELECT CONCAT(`item_details_tbl`.`name_line1`, \" \",`item_details_tbl`.`name_line2`) AS `name`, `date_deliver`,`time_placed`, `Cost`,`transport`,`rank_in_q` FROM `orders_placed`,`item_details_tbl` WHERE `farmer_id` = ".$_SESSION['user_id']." AND `item_details_tbl`.`item_no` = `orders_placed`.`food` ORDER BY `date_deliver` ";
 		

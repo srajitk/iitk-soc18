@@ -4,7 +4,11 @@
 		header("Location: index.php");
 		session_destroy();
 		exit();
+	} elseif ($_SESSION['accType'] != 'buyer') {
+		session_destroy();
+		exit();
 	}
+	
 	else{
 		$return = "";
 		foreach ($_POST as $order){
@@ -19,7 +23,7 @@
 			$username = "root";
 			$dbname = "farm_db";
 			$price=0;
-			$cxn = mysqli_connect($host, $username, "computer", $dbname);
+			$cxn = mysqli_connect($host, $username, "", $dbname);
 
 			$regexId = '/^\d{0,3}$/';
 			$regexDate = "/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/";

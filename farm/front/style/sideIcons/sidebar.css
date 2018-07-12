@@ -36,4 +36,8 @@
 		width: 40px;
 		padding: 8px;
 	}
+	
+	.limiter {
+		margin-left: 48px;
+	}
 }
